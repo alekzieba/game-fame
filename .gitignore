@@ -1,3 +1,10 @@
+# Dotenv
+.env
+
+# Why is this not already here?
+package-lock.json
+app/package-lock.json
+
 # Logs
 logs
 *.log

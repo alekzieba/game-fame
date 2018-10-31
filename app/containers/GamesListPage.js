@@ -2,11 +2,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reset, reduxForm } from 'redux-form';
-import Home from '../components/Home';
+import GamesList from '../components/GamesList';
 import * as GamesActions from '../actions/games';
 
-function mapStateToProps({ games, auth }) {
-  return { games, auth };
+function mapStateToProps({ auth, games }) {
+  return { auth, games };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -22,5 +22,5 @@ export default reduxForm({
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Home)
+  )(GamesList)
 );

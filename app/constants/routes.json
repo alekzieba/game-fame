@@ -1,5 +1,8 @@
 {
-  "HOME": "/",
+  "LOGIN": "/",
   "COUNTER": "/counter",
-  "POSTS": "/posts"
+  "POSTS": "/posts",
+  "HOME": "/home",
+  "GAMESLIST": "/home/gameSlist",
+  "CREATE_GAME": "/home/create_game"
 }

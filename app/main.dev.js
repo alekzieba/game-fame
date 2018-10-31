@@ -10,7 +10,11 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
+import { google } from 'googleapis';
+import http from 'http';
+import querystring from 'querystring';
+import url from 'url';
 import MenuBuilder from './menu';
 
 let mainWindow = null;
@@ -88,4 +92,57 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
+});
+
+// Sign in with Google
+ipcMain.on('signin:google', () => {
+  let oAuth2Client;
+
+  const server = http
+    .createServer(async (req, res) => {
+      if (req.url.indexOf('/oauth2callback') > -1) {
+        // acquire the code from the querystring, and close the web server.
+        const qs = querystring.parse(url.parse(req.url).query);
+        console.log(`Code is ${qs.code}`);
+        res.end('Authentication successful! Please return to the console.');
+        server.close();
+        // authWindow.close();
+
+        // Now that we have the code, use that to acquire tokens.
+        const r = await oAuth2Client.getToken(qs.code);
+        // Make sure to set the credentials on the OAuth2 client.
+        // oAuth2Client.setCredentials(r.tokens);
+        console.log(r.tokens);
+        mainWindow.webContents.send('signin:google', r);
+        // resolve(oAuth2Client);
+      }
+    })
+    .listen(0, () => {
+      // open the browser to the authorize url to start the workflow
+      const redirectUri = `http://localhost:${
+        server.address().port
+      }/oauth2callback`;
+      oAuth2Client = new google.auth.OAuth2({
+        clientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
+        redirectUri
+      });
+      // Generate the url that will be used for the consent dialog.
+      const authorizeUrl = oAuth2Client.generateAuthUrl({
+        access_type: 'offline',
+        scope: ['email', 'https://www.googleapis.com/auth/contacts.readonly']
+      });
+
+      // Load URL in web browser
+      shell.openExternal(authorizeUrl);
+
+      // authWindow = new BrowserWindow({
+      //   width: 500,
+      //   height: 500
+      // });
+      // authWindow.loadURL(authorizeUrl);
+      // authWindow.on('closed', () => {
+      //   authWindow = null;
+      //   server.close();
+      // });
+    });
 });

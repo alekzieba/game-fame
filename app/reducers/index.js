@@ -4,6 +4,7 @@ import { connectRouter } from 'connected-react-router';
 import { reducer as formReducer } from 'redux-form';
 import counter from './counter';
 import posts from './posts';
+import auth from './auth';
 
 export default function createRootReducer(history: {}) {
   const routerReducer = connectRouter(history)(() => {});
@@ -13,7 +14,8 @@ export default function createRootReducer(history: {}) {
       router: routerReducer,
       form: formReducer,
       counter,
-      posts
+      posts,
+      auth
     })
   );
 }

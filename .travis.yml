@@ -1,83 +1,76 @@
-# Config adapted from:
-# https://www.electron.build/multi-platform-build#sample-travisyml-to-build-electron-app-for-macos-linux-and-windows
 sudo: true
-
 matrix:
   include:
-    - os: osx
-      osx_image: xcode9.4
-      language: node_js
-      node_js:
-        - node
-        - 9
-      env:
-        - ELECTRON_CACHE=$HOME/.cache/electron
-        - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
-
-    - os: linux
-      services: docker
-      language: node_js
-      node_js:
-        - node
-        - 9
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-multilib
-            - g++-4.8
-            - g++-multilib
-            - icnsutils
-            - graphicsmagick
-            - xz-utils
-            - xorriso
-            - rpm
-
+  - os: osx
+    osx_image: xcode9.4
+    language: node_js
+    node_js:
+    - node
+    - 9
+    env:
+    - ELECTRON_CACHE=$HOME/.cache/electron
+    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+  - os: linux
+    services: docker
+    language: node_js
+    node_js:
+    - node
+    - 9
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - gcc-multilib
+        - g++-4.8
+        - g++-multilib
+        - icnsutils
+        - graphicsmagick
+        - xz-utils
+        - xorriso
+        - rpm
 before_cache:
-  - rm -rf $HOME/.cache/electron-builder/wine
-
+- rm -rf $HOME/.cache/electron-builder/wine
 cache:
   yarn: true
   directories:
-    - node_modules
-    - app/node_modules
-    - $(npm config get prefix)/lib/node_modules
-    - flow-typed
-    - $HOME/.cache/electron
-    - $HOME/.cache/electron-builder
-    - $HOME/docker
-
+  - node_modules
+  - app/node_modules
+  - "$(npm config get prefix)/lib/node_modules"
+  - flow-typed
+  - "$HOME/.cache/electron"
+  - "$HOME/.cache/electron-builder"
+  - "$HOME/docker"
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-4.8"; fi
-
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-4.8"; fi
 install:
-  - yarn
-  # On Linux, initialize "virtual display". See before_script
-  - |
-    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      /sbin/start-stop-daemon \
-      --start \
-      --quiet \
-      --pidfile /tmp/custom_xvfb_99.pid \
-      --make-pidfile \
-      --background \
-      --exec /usr/bin/Xvfb \
-      -- :99 -ac -screen 0 1280x1024x16
-    else
-      :
-    fi
-
+- yarn
+- |
+  if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    /sbin/start-stop-daemon \
+    --start \
+    --quiet \
+    --pidfile /tmp/custom_xvfb_99.pid \
+    --make-pidfile \
+    --background \
+    --exec /usr/bin/Xvfb \
+    -- :99 -ac -screen 0 1280x1024x16
+  else
+    :
+  fi
 before_script:
-  # On Linux, create a "virtual display". This allows browsers to work properly
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
-
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
+after_success:
+- .travis/push.sh
 script:
-  - yarn package-ci
-  - yarn lint
-  - yarn flow
-  - yarn test
-  - yarn build-e2e
-  - yarn test-e2e
+- yarn package-ci
+- yarn lint
+- yarn flow
+- yarn test
+- yarn build-e2e
+- yarn test-e2e
+env:
+  global:
+    secure: bLjK3Vu20HMnTGz5fdNUj+H25DSCT1H4bYEKgt28zizA/nU+8gyBlOhiQt0j6pthaqi9CouOGKYWdUEswu+AU5owIJyWPypdLWedZ6YbBIW1nHj7vCvKLnLJsmg5PuX5f83pQcW/4UmFACjmoRl1Os99IYusPusxmPXBhLREUZvILqhqcmiW7f+aG1dNGObH42P1BskBiUmS7M/DXgGFop6b7FHJpHiYY6AgMCk5FwXV6GT5ktXr1WcBglYLiQr8UGlFcXNVDs4l64vXRc1jHsjrmUwM/P7V1Wh47erLlS+WebprXV0jGLjin7fsOrHYih2VJPl4NOJdHnLi6kxk3DGy3c1aiUF95bVRQ78E/uakWngzLedSo7SdQbjeIMUK3pT7bsXP/NN4uo1TtG3U39EBSVW7EO8ZHxlQ6w7xaQ2e45ReHAX7Rkr5Ay7QxSq+LtsdQHB84EoNIztYHjYMjMcTz++HVh/C0coW2bsnymN3CGXyPsidf34LVismIURQ2KSs3ynIjPEymoYTawBuV/aIxsLWbEGprXefcDlVECj1HMqsXBCeq2fLGpDWsMGg6h4jEIQkdc1+qz7QqkwDe0XFRN5pHrb8QRyOOr5d1OMy/0K29BLs+JYBnMOnXTVNjfIR4JXYx9Wo44w/nT28LDMmfy1c07tBIgzBQ8JX54k=

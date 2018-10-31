@@ -67,10 +67,8 @@ after_success:
 script:
 - yarn package-ci
 - yarn lint
-- yarn flow
 - yarn test
 - yarn build-e2e
-- yarn test-e2e
 env:
   global:
     secure: bLjK3Vu20HMnTGz5fdNUj+H25DSCT1H4bYEKgt28zizA/nU+8gyBlOhiQt0j6pthaqi9CouOGKYWdUEswu+AU5owIJyWPypdLWedZ6YbBIW1nHj7vCvKLnLJsmg5PuX5f83pQcW/4UmFACjmoRl1Os99IYusPusxmPXBhLREUZvILqhqcmiW7f+aG1dNGObH42P1BskBiUmS7M/DXgGFop6b7FHJpHiYY6AgMCk5FwXV6GT5ktXr1WcBglYLiQr8UGlFcXNVDs4l64vXRc1jHsjrmUwM/P7V1Wh47erLlS+WebprXV0jGLjin7fsOrHYih2VJPl4NOJdHnLi6kxk3DGy3c1aiUF95bVRQ78E/uakWngzLedSo7SdQbjeIMUK3pT7bsXP/NN4uo1TtG3U39EBSVW7EO8ZHxlQ6w7xaQ2e45ReHAX7Rkr5Ay7QxSq+LtsdQHB84EoNIztYHjYMjMcTz++HVh/C0coW2bsnymN3CGXyPsidf34LVismIURQ2KSs3ynIjPEymoYTawBuV/aIxsLWbEGprXefcDlVECj1HMqsXBCeq2fLGpDWsMGg6h4jEIQkdc1+qz7QqkwDe0XFRN5pHrb8QRyOOr5d1OMy/0K29BLs+JYBnMOnXTVNjfIR4JXYx9Wo44w/nT28LDMmfy1c07tBIgzBQ8JX54k=

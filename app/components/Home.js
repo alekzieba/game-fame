@@ -6,6 +6,7 @@ import styles from './Home.css';
 
 import GamesListPage from '../containers/GamesListPage';
 import CreateGamePage from '../containers/CreateGamePage';
+import TicTacToe from './TicTacToe';
 
 type Props = {
   auth: object,
@@ -61,6 +62,7 @@ export default class Home extends Component<Props> {
           <Redirect exact from={routes.HOME} to={routes.GAMESLIST} />
           <Route path={routes.GAMESLIST} component={GamesListPage} />
           <Route path={routes.CREATE_GAME} component={CreateGamePage} />
+          <Route path={routes.TICTACTOE} component={TicTacToe} />
         </Switch>
       </div>
     );

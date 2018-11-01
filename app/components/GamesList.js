@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import _ from 'lodash';
+import routes from '../constants/routes.json';
 
 class GamesList extends Component {
   static renderGameCodeInput(field) {
@@ -16,8 +17,19 @@ class GamesList extends Component {
     );
   }
 
+  enterCode(values) {
+    const { history } = this.props;
+
+    const gameKey = `tictactoe/${values.game_code}`;
+    history.push({
+      pathname: routes.TICTACTOE,
+      gameKey,
+      exists: true
+    });
+  }
+
   renderGameList() {
-    const { games } = this.props;
+    const { games, history, handleSubmit } = this.props;
     if (!games || _.isEmpty(games)) {
       return (
         <div className="text-center">
@@ -27,7 +39,11 @@ class GamesList extends Component {
             Click the button below to make your first game!
           </h4>
           <br />
-          <button type="button" className="btn btn-lg">
+          <button
+            type="button"
+            className="btn btn-lg"
+            onClick={() => history.push(routes.CREATE_GAME)}
+          >
             Create New Game
           </button>
           <br />
@@ -35,11 +51,11 @@ class GamesList extends Component {
           <br />
           <h4 className="text-center">Or enter a game code to join a game:</h4>
           <br />
-          <form>
+          <form onSubmit={handleSubmit(this.enterCode.bind(this))}>
             <div className="form-group text-center">
               <Field
                 name="game_code"
-                placeholder="I had a good day today."
+                placeholder="ABCDEFG"
                 component={this.constructor.renderGameCodeInput}
               />
             </div>

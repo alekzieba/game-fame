@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+import routes from '../constants/routes';
 
 class CreateGame extends Component {
   static renderGameCodeInput(field) {
@@ -23,7 +24,32 @@ class CreateGame extends Component {
     );
   }
 
+  onSubmit(values) {
+    // const authemail = this.props.auth.email
+    //   .replace(/@/g, '|')
+    //   .replace(/\./g, '=');
+    // const secondemail = values.email
+    //   .replace(/@/g, '|')
+    //   .replace(/\./g, '=');
+    const { history } = this.props;
+
+    const gameKey = `${values.game_type}/${values.game_code}`;
+    switch (values.game_type) {
+      case 'tictactoe':
+        history.push({
+          pathname: routes.TICTACTOE,
+          gameKey,
+          exists: false
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
   render() {
+    const { handleSubmit } = this.props;
+
     return (
       <div className="container">
         <div className="row">
@@ -31,7 +57,7 @@ class CreateGame extends Component {
             <br />
             <h1 className="text-center">Create Game</h1>
             <br />
-            <form>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <div className="form-group text-center">
                 <label>Game Type</label>
                 <Field
@@ -41,10 +67,10 @@ class CreateGame extends Component {
               </div>
               <br />
               <div className="form-group text-center">
-                <label>Email</label>
+                <label>Game Code</label>
                 <Field
-                  name="email"
-                  placeholder="steve@apple.com"
+                  name="game_code"
+                  placeholder="ABCDEFG"
                   component={this.constructor.renderGameCodeInput}
                 />
               </div>

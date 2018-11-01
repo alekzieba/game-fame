@@ -67,7 +67,7 @@ after_success:
 script:
 - yarn package-ci
 - yarn lint
-- yarn test
+- yarn test -u
 - yarn build-e2e
 env:
   global:

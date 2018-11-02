@@ -1,0 +1,1004 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 27ff47be-7298-4918-b47f-55c8b7bc89d7@5733.wjb-1
+version: v4.4.0 https://github.com/travis-ci/worker/tree/80d1a9bbc1de0f176c56230ce9cc27f45ff1eb27
+instance: 02ab861e-7483-43c7-8c0a-727580f864ea travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 1m3.456227383s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: node_js
+Build id: 90027991
+Job id: 155881617
+Runtime kernel version: 17.4.0
+travis-build version: 9e5f2dec6
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+
+Fix WWDRCA Certificate
+Unable to delete certificate matching "0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75"security: AppleWWDRCA.cer: already in /Library/Keychains/System.keychain
+$ rvm use
+Using /Users/travis/.rvm/gems/ruby-2.4.3
+travis_fold:start:ssh_key[0KInstalling SSH key from: default repository key
+Key fingerprint: ce:05:92:53:02:27:2e:c1:ed:d1:46:d3:a9:f4:c6:f3
+travis_fold:end:ssh_key[0K[33;1mUsing /Users/travis/.netrc to clone repository.[0m
+
+
+travis_fold:start:git.checkout[0Ktravis_time:start:05037ad7[0K$ git clone --depth=50 --branch=master https://github.com/alekzieba/game-fame.git alekzieba/game-fame
+Cloning into 'alekzieba/game-fame'...
+
+travis_time:end:05037ad7:start=1541126850436154000,finish=1541126851131906000,duration=695752000[0K$ cd alekzieba/game-fame
+$ git checkout -qf 264dfc849dc21ae746414133b9f72359c46cdb0a
+travis_fold:end:git.checkout[0K
+[33;1mSetting environment variables from .travis.yml[0m
+$ export GH_TOKEN=[secure]
+$ export ELECTRON_CACHE=$HOME/.cache/electron
+$ export ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+
+
+
+travis_fold:start:nvm.setup[0K$ export PATH=./node_modules/.bin:$PATH
+[33;1mUpdating nvm[0m
+travis_fold:start:nvm.install[0Ktravis_time:start:0ab6df1c[0K$ nvm install node
+Downloading and installing node v11.0.0...
+Downloading https://nodejs.org/dist/v11.0.0/node-v11.0.0-darwin-x64.tar.xz...
+Computing checksum with shasum -a 256
+Checksums matched!
+Now using node v11.0.0 (npm v6.4.1)
+
+travis_time:end:0ab6df1c:start=1541126852693422000,finish=1541126859096782000,duration=6403360000[0Ktravis_fold:end:nvm.install[0Ktravis_fold:end:nvm.setup[0Ktravis_fold:start:install.yarn[0K[32;1mInstalling yarn[0m
+travis_time:start:050ad906[0K$ curl -o- -L https://yarnpkg.com/install.sh | bash
+[37mInstalling Yarn![0m
+[36m> Downloading tarball...[0m
+
+[1/2]: https://yarnpkg.com/latest.tar.gz --> /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/yarn.tar.gz.XXXXXXXXXX.FYbJca5F
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    93  100    93    0     0    967      0 --:--:-- --:--:-- --:--:--   958
+100   609    0   609    0     0   2575      0 --:--:-- --:--:-- --:--:--  2575
+100 1123k  100 1123k    0     0  2037k      0 --:--:-- --:--:-- --:--:-- 2037k
+
+[2/2]: https://yarnpkg.com/latest.tar.gz.asc --> /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/yarn.tar.gz.XXXXXXXXXX.FYbJca5F.asc
+100    97  100    97    0     0   3304      0 --:--:-- --:--:-- --:--:--  3304
+100   613    0   613    0     0   5061      0 --:--:-- --:--:-- --:--:--  5061
+100   832  100   832    0     0   1941      0 --:--:-- --:--:-- --:--:--  1941
+[36m> Verifying integrity...[0m
+gpg: key 1646B01B86E50310: public key "Yarn Packaging <yarn@dan.cx>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: Signature made Wed Oct 24 16:49:46 2018 GMT
+gpg:                using RSA key E21930C4D0A4AA4618581F7AE074D16EB6FF4DE3
+gpg: Good signature from "Yarn Packaging <yarn@dan.cx>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 72EC F46A 56B4 AD39 C907  BBB7 1646 B01B 86E5 0310
+     Subkey fingerprint: E219 30C4 D0A4 AA46 1858  1F7A E074 D16E B6FF 4DE3
+[32m> GPG signature looks good[0m
+[36m> Extracting to ~/.yarn...[0m
+[36m> Adding to $PATH...[0m
+[36m> We've added the following to your /Users/travis/.bashrc
+> If this isn't the profile of your current shell then please add the following to your correct profile:
+   
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+[0m
+[32m> Successfully installed Yarn 1.12.1! Please open another terminal where the `yarn` command will now be available.[0m
+
+travis_time:end:050ad906:start=1541126859808647000,finish=1541126862926608000,duration=3117961000[0K[32;1mSetting up $PATH[0m
+$ export PATH=${TRAVIS_HOME}/.yarn/bin:$PATH
+travis_fold:end:install.yarn[0Ktravis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+travis_time:start:073b7213[0K$ Installing caching utilities
+
+travis_time:end:073b7213:start=1541126864612061000,finish=1541126864740085000,duration=128024000[0Ktravis_time:start:0871761e[0K
+travis_time:end:0871761e:start=1541126864756198000,finish=1541126864764586000,duration=8388000[0Ktravis_time:start:12d3c617[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching master/cache-osx-xcode9.4-7243bb22481290cfbcce7c85bf6520426901e3ebe181e42eed18982ef2d74411--node-node.tgz[0m
+[32;1mfound cache[0m
+
+travis_time:end:12d3c617:start=1541126864774633000,finish=1541126879057977000,duration=14283344000[0Ktravis_time:start:01b5423e[0K
+travis_time:end:01b5423e:start=1541126879068649000,finish=1541126879082014000,duration=13365000[0Ktravis_time:start:0295f13a[0K[32;1madding /Users/travis/build/alekzieba/game-fame/node_modules to cache[0m
+[32;1mcreating directory /Users/travis/build/alekzieba/game-fame/node_modules[0m
+[32;1madding /Users/travis/build/alekzieba/game-fame/app/node_modules to cache[0m
+[32;1mcreating directory /Users/travis/build/alekzieba/game-fame/app/node_modules[0m
+[32;1madding /Users/travis/.nvm/versions/node/v11.0.0/lib/node_modules to cache[0m
+[32;1madding /Users/travis/build/alekzieba/game-fame/flow-typed to cache[0m
+[32;1madding /Users/travis/.cache/electron to cache[0m
+[32;1mcreating directory /Users/travis/.cache/electron[0m
+[32;1madding /Users/travis/.cache/electron-builder to cache[0m
+[32;1mcreating directory /Users/travis/.cache/electron-builder[0m
+[32;1madding /Users/travis/docker to cache[0m
+[32;1mcreating directory /Users/travis/docker[0m
+
+travis_time:end:0295f13a:start=1541126879092811000,finish=1541126920000180000,duration=40907369000[0Ktravis_fold:end:cache.1[0Ktravis_fold:start:cache.yarn[0K
+travis_time:start:1cc5c1c0[0K
+travis_time:end:1cc5c1c0:start=1541126920011753000,finish=1541126920020837000,duration=9084000[0Ktravis_time:start:03b75d40[0K[32;1madding /Users/travis/.cache/yarn to cache[0m
+[32;1mcreating directory /Users/travis/.cache/yarn[0m
+
+travis_time:end:03b75d40:start=1541126920031491000,finish=1541126928204173000,duration=8172682000[0Ktravis_fold:end:cache.yarn[0K$ node --version
+v11.0.0
+$ npm --version
+6.4.1
+$ nvm --version
+0.33.11
+$ yarn --version
+1.12.1
+travis_fold:start:before_install[0Ktravis_time:start:2ab97c66[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-4.8"; fi
+
+travis_time:end:2ab97c66:start=1541126928923896000,finish=1541126928933751000,duration=9855000[0Ktravis_fold:end:before_install[0Ktravis_fold:start:install.1[0Ktravis_time:start:0a6b243c[0K$ yarn
+yarn install v1.12.1
+[1/4] Resolving packages...
+success Already up-to-date.
+$ node -r babel-register internals/scripts/CheckNativeDep.js && yarn flow-typed && yarn build-dll && electron-builder install-app-deps package.json
+yarn run v1.12.1
+$ rimraf flow-typed/npm && flow-typed install --overwrite || true
+• Found 95 dependencies in package.json to install libdefs for. Searching...
+• flow-typed cache not found, fetching from GitHub...
+• Installing 15 libDefs...
+[1m  • react-redux_v5.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-redux_v5.x.x.js[39m[22m
+react-redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • history_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/history_v4.x.x.js[39m[22m
+history
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jquery_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jquery_v3.x.x.js[39m[22m
+jquery
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • babel-register_v6.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/babel-register_v6.x.x.js[39m[22m
+babel-register
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • chalk_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/chalk_v2.x.x.js[39m[22m
+chalk
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router_v4.x.x.js[39m[22m
+react-router
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router-dom_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router-dom_v4.x.x.js[39m[22m
+react-router-dom
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • enzyme_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/enzyme_v3.x.x.js[39m[22m
+enzyme
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • flow-bin_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/flow-bin_v0.x.x.js[39m[22m
+flow-bin
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • redux_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/redux_v4.x.x.js[39m[22m
+redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jest_v23.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jest_v23.x.x.js[39m[22m
+jest
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-test-renderer_v16.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-test-renderer_v16.x.x.js[39m[22m
+react-test-renderer
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • prettier_v1.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/prettier_v1.x.x.js[39m[22m
+prettier
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • rimraf_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/rimraf_v2.x.x.js[39m[22m
+rimraf
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • testcafe_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/testcafe_v0.x.x.js[39m[22m
+testcafe
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+• Generating stubs for untyped dependencies...
+[1m  • electron-debug@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/electron-debug_vx.x.x.js[39m[22m
+[1m  • babel-plugin-dev-expression@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-dev-expression_vx.x.x.js[39m[22m
+[1m  • eslint-formatter-pretty@^1.3.0[22m
+[1m    └> [31mflow-typed/npm/eslint-formatter-pretty_vx.x.x.js[39m[22m
+[1m  • eslint-import-resolver-webpack@^0.10.1[22m
+[1m    └> [31mflow-typed/npm/eslint-import-resolver-webpack_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-testcafe@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-testcafe_vx.x.x.js[39m[22m
+[1m  • source-map-support@^0.5.6[22m
+[1m    └> [31mflow-typed/npm/source-map-support_vx.x.x.js[39m[22m
+[1m  • enzyme-to-json@^3.3.4[22m
+[1m    └> [31mflow-typed/npm/enzyme-to-json_vx.x.x.js[39m[22m
+[1m  • stylelint-config-standard@^18.2.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-standard_vx.x.x.js[39m[22m
+[1m  • react-hot-loader@^4.3.4[22m
+[1m    └> [31mflow-typed/npm/react-hot-loader_vx.x.x.js[39m[22m
+[1m  • redux-thunk@^2.3.0[22m
+[1m    └> [31mflow-typed/npm/redux-thunk_vx.x.x.js[39m[22m
+[1m  • babel-plugin-add-module-exports@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-add-module-exports_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-class-properties@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-class-properties_vx.x.x.js[39m[22m
+[1m  • babel-preset-env@^1.7.0[22m
+[1m    └> [31mflow-typed/npm/babel-preset-env_vx.x.x.js[39m[22m
+[1m  • babel-preset-react@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react_vx.x.x.js[39m[22m
+[1m  • babel-preset-react-optimize@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react-optimize_vx.x.x.js[39m[22m
+[1m  • babel-preset-stage-0@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-stage-0_vx.x.x.js[39m[22m
+[1m  • detect-port@^1.2.3[22m
+[1m    └> [31mflow-typed/npm/detect-port_vx.x.x.js[39m[22m
+[1m  • electron-devtools-installer@^2.2.4[22m
+[1m    └> [31mflow-typed/npm/electron-devtools-installer_vx.x.x.js[39m[22m
+[1m  • enzyme-adapter-react-16@^1.1.1[22m
+[1m    └> [31mflow-typed/npm/enzyme-adapter-react-16_vx.x.x.js[39m[22m
+[1m  • eslint-config-airbnb@^17.0.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-airbnb_vx.x.x.js[39m[22m
+[1m  • eslint-config-prettier@^2.9.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-prettier_vx.x.x.js[39m[22m
+[1m  • file-loader@^1.1.11[22m
+[1m    └> [31mflow-typed/npm/file-loader_vx.x.x.js[39m[22m
+[1m  • lint-staged@^7.2.0[22m
+[1m    └> [31mflow-typed/npm/lint-staged_vx.x.x.js[39m[22m
+[1m  • mini-css-extract-plugin@^0.4.1[22m
+[1m    └> [31mflow-typed/npm/mini-css-extract-plugin_vx.x.x.js[39m[22m
+[1m  • redux-logger@^3.0.6[22m
+[1m    └> [31mflow-typed/npm/redux-logger_vx.x.x.js[39m[22m
+[1m  • sass-loader@^7.0.3[22m
+[1m    └> [31mflow-typed/npm/sass-loader_vx.x.x.js[39m[22m
+[1m  • spectron@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/spectron_vx.x.x.js[39m[22m
+[1m  • style-loader@^0.21.0[22m
+[1m    └> [31mflow-typed/npm/style-loader_vx.x.x.js[39m[22m
+[1m  • stylelint-config-prettier@^4.0.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-prettier_vx.x.x.js[39m[22m
+[1m  • testcafe-react-selectors@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/testcafe-react-selectors_vx.x.x.js[39m[22m
+[1m  • webpack-cli@^3.1.0[22m
+[1m    └> [31mflow-typed/npm/webpack-cli_vx.x.x.js[39m[22m
+[1m  • webpack-merge@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/webpack-merge_vx.x.x.js[39m[22m
+[1m  • yarn@^1.9.2[22m
+[1m    └> [31mflow-typed/npm/yarn_vx.x.x.js[39m[22m
+[1m  • babel-jest@^23.4.2[22m
+[1m    └> [31mflow-typed/npm/babel-jest_vx.x.x.js[39m[22m
+[1m  • @fortawesome/fontawesome-free@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/@fortawesome/fontawesome-free_vx.x.x.js[39m[22m
+[1m  • babel-eslint@^8.2.6[22m
+[1m    └> [31mflow-typed/npm/babel-eslint_vx.x.x.js[39m[22m
+[1m  • react-google-button@^0.5.3[22m
+[1m    └> [31mflow-typed/npm/react-google-button_vx.x.x.js[39m[22m
+[1m  • babel-loader@^7.1.5[22m
+[1m    └> [31mflow-typed/npm/babel-loader_vx.x.x.js[39m[22m
+[1m  • concurrently@^3.6.1[22m
+[1m    └> [31mflow-typed/npm/concurrently_vx.x.x.js[39m[22m
+[1m  • bootstrap@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/bootstrap_vx.x.x.js[39m[22m
+[1m  • cross-env@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/cross-env_vx.x.x.js[39m[22m
+[1m  • cross-spawn@^6.0.5[22m
+[1m    └> [31mflow-typed/npm/cross-spawn_vx.x.x.js[39m[22m
+[1m  • css-loader@^1.0.0[22m
+[1m    └> [31mflow-typed/npm/css-loader_vx.x.x.js[39m[22m
+[1m  • electron-builder@^20.26.0[22m
+[1m    └> [31mflow-typed/npm/electron-builder_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-compat@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-compat_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-import@^2.13.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-import_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-react@^7.10.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-react_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-promise@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-promise_vx.x.x.js[39m[22m
+[1m  • fbjs-scripts@^0.8.3[22m
+[1m    └> [31mflow-typed/npm/fbjs-scripts_vx.x.x.js[39m[22m
+[1m  • husky@^0.14.3[22m
+[1m    └> [31mflow-typed/npm/husky_vx.x.x.js[39m[22m
+[1m  • identity-obj-proxy@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/identity-obj-proxy_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-es2015-classes@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-es2015-classes_vx.x.x.js[39m[22m
+[1m  • testcafe-browser-provider-electron@^0.0.6[22m
+[1m    └> [31mflow-typed/npm/testcafe-browser-provider-electron_vx.x.x.js[39m[22m
+[1m  • testcafe-live@^0.1.3[22m
+[1m    └> [31mflow-typed/npm/testcafe-live_vx.x.x.js[39m[22m
+[1m  • uglifyjs-webpack-plugin@1.2.7[22m
+[1m    └> [31mflow-typed/npm/uglifyjs-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • url-loader@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/url-loader_vx.x.x.js[39m[22m
+[1m  • webpack-bundle-analyzer@^2.13.1[22m
+[1m    └> [31mflow-typed/npm/webpack-bundle-analyzer_vx.x.x.js[39m[22m
+[1m  • webpack-dev-server@^3.1.5[22m
+[1m    └> [31mflow-typed/npm/webpack-dev-server_vx.x.x.js[39m[22m
+[1m  • connected-react-router@^4.4.1[22m
+[1m    └> [31mflow-typed/npm/connected-react-router_vx.x.x.js[39m[22m
+[1m  • devtron@^1.4.0[22m
+[1m    └> [31mflow-typed/npm/devtron_vx.x.x.js[39m[22m
+[1m  • electron-rebuild@^1.8.2[22m
+[1m    └> [31mflow-typed/npm/electron-rebuild_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-flowtype@^2.50.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-flowtype_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jest@^21.18.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jest_vx.x.x.js[39m[22m
+[1m  • flow-typed@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/flow-typed_vx.x.x.js[39m[22m
+[1m  • stylelint@^9.4.0[22m
+[1m    └> [31mflow-typed/npm/stylelint_vx.x.x.js[39m[22m
+[1m  • eslint@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/eslint_vx.x.x.js[39m[22m
+[1m  • webpack@^4.16.3[22m
+[1m    └> [31mflow-typed/npm/webpack_vx.x.x.js[39m[22m
+[1m  • babel-core@^6.26.3[22m
+[1m    └> [31mflow-typed/npm/babel-core_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jsx-a11y@6.1.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jsx-a11y_vx.x.x.js[39m[22m
+[1m  • flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/flow-runtime_vx.x.x.js[39m[22m
+[1m  • optimize-css-assets-webpack-plugin@^5.0.0[22m
+[1m    └> [31mflow-typed/npm/optimize-css-assets-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • sinon@^6.1.4[22m
+[1m    └> [31mflow-typed/npm/sinon_vx.x.x.js[39m[22m
+[1m  • googleapis@^34.0.0[22m
+[1m    └> [31mflow-typed/npm/googleapis_vx.x.x.js[39m[22m
+[1m  • babel-plugin-flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-flow-runtime_vx.x.x.js[39m[22m
+[1m  • node-sass@^4.9.2[22m
+[1m    └> [31mflow-typed/npm/node-sass_vx.x.x.js[39m[22m
+[1m  • electron@^2.0.6[22m
+[1m    └> [31mflow-typed/npm/electron_vx.x.x.js[39m[22m
+[31m[39m
+[31m!! No flow@v0.77.0-compatible libdefs found in flow-typed for the above untyped dependencies !![39m
+
+I've generated `any`-typed stubs for these packages, but consider submitting 
+libdefs for them to [1mhttps://github.com/flowtype/flow-typed/[22m
+
+Done in 30.33s.
+yarn run v1.12.1
+$ cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.dev.dll.js --colors
+Hash: 15b75df607a25a803d71
+Version: webpack 4.23.1
+Time: 7265ms
+Built at: 11/02/2018 2:49:41 AM
+              Asset      Size    Chunks             Chunk Names
+renderer.dev.dll.js  12.7 MiB  renderer  [emitted]  renderer
+Entrypoint renderer = renderer.dev.dll.js
+[0] dll renderer 12 bytes {renderer} [built]
+[./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {renderer} [built]
+[./node_modules/webpack/buildin/harmony-module.js] (webpack)/buildin/harmony-module.js 573 bytes {renderer} [built]
+[child_process] external "child_process" 42 bytes {renderer} [built]
+[crypto] external "crypto" 42 bytes {renderer} [built]
+[electron] external "electron" 42 bytes {renderer} [built]
+[events] external "events" 42 bytes {renderer} [built]
+[fs] external "fs" 42 bytes {renderer} [built]
+[module] external "module" 42 bytes {renderer} [built]
+[os] external "os" 42 bytes {renderer} [built]
+[path] external "path" 42 bytes {renderer} [built]
+[querystring] external "querystring" 42 bytes {renderer} [built]
+[stream] external "stream" 42 bytes {renderer} [built]
+[url] external "url" 42 bytes {renderer} [built]
+[util] external "util" 42 bytes {renderer} [built]
+    + 849 hidden modules
+
+WARNING in ./node_modules/electron-debug/index.js 101:45-58
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+
+WARNING in ./node_modules/electron-debug/index.js 102:61-74
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+Done in 10.04s.
+  • electron-builder version=20.29.0
+  • loaded configuration file=package.json ("build" field)
+  • installing production dependencies platform=darwin arch=x64 appDir=/Users/travis/build/alekzieba/game-fame/app
+Done in 259.61s.
+
+travis_time:end:0a6b243c:start=1541126928944417000,finish=1541127188957227000,duration=260012810000[0Ktravis_fold:end:install.1[0Ktravis_fold:start:install.2[0Ktravis_time:start:0c73c9ae[0K$ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    /sbin/start-stop-daemon \
+    --start \
+    --quiet \
+    --pidfile /tmp/custom_xvfb_99.pid \
+    --make-pidfile \
+    --background \
+    --exec /usr/bin/Xvfb \
+    -- :99 -ac -screen 0 1280x1024x16
+  else
+    :
+  fi
+  
+
+travis_time:end:0c73c9ae:start=1541127188977103000,finish=1541127188988795000,duration=11692000[0Ktravis_fold:end:install.2[0Ktravis_fold:start:before_script.1[0Ktravis_time:start:0794c59b[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
+
+travis_time:end:0794c59b:start=1541127189000877000,finish=1541127189009138000,duration=8261000[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:00649dcd[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
+
+travis_time:end:00649dcd:start=1541127189021376000,finish=1541127189032072000,duration=10696000[0Ktravis_fold:end:before_script.2[0Ktravis_fold:start:before_script.3[0Ktravis_time:start:2065ae90[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
+
+travis_time:end:2065ae90:start=1541127189043354000,finish=1541127189051593000,duration=8239000[0Ktravis_fold:end:before_script.3[0Ktravis_time:start:04c1bdfe[0K$ yarn package-ci
+yarn run v1.12.1
+$ yarn postinstall && yarn build && electron-builder --publish always
+$ node -r babel-register internals/scripts/CheckNativeDep.js && yarn flow-typed && yarn build-dll && electron-builder install-app-deps package.json
+$ rimraf flow-typed/npm && flow-typed install --overwrite || true
+• Found 95 dependencies in package.json to install libdefs for. Searching...
+• rebasing flow-typed cache...
+• Installing 15 libDefs...
+[1m  • babel-register_v6.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/babel-register_v6.x.x.js[39m[22m
+babel-register
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • history_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/history_v4.x.x.js[39m[22m
+history
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jquery_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jquery_v3.x.x.js[39m[22m
+jquery
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jest_v23.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jest_v23.x.x.js[39m[22m
+jest
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router-dom_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router-dom_v4.x.x.js[39m[22m
+react-router-dom
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router_v4.x.x.js[39m[22m
+react-router
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-redux_v5.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-redux_v5.x.x.js[39m[22m
+react-redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • enzyme_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/enzyme_v3.x.x.js[39m[22m
+enzyme
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • chalk_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/chalk_v2.x.x.js[39m[22m
+chalk
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • flow-bin_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/flow-bin_v0.x.x.js[39m[22m
+flow-bin
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • prettier_v1.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/prettier_v1.x.x.js[39m[22m
+prettier
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • redux_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/redux_v4.x.x.js[39m[22m
+redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-test-renderer_v16.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-test-renderer_v16.x.x.js[39m[22m
+react-test-renderer
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • rimraf_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/rimraf_v2.x.x.js[39m[22m
+rimraf
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • testcafe_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/testcafe_v0.x.x.js[39m[22m
+testcafe
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+• Generating stubs for untyped dependencies...
+[1m  • source-map-support@^0.5.6[22m
+[1m    └> [31mflow-typed/npm/source-map-support_vx.x.x.js[39m[22m
+[1m  • electron-debug@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/electron-debug_vx.x.x.js[39m[22m
+[1m  • enzyme-to-json@^3.3.4[22m
+[1m    └> [31mflow-typed/npm/enzyme-to-json_vx.x.x.js[39m[22m
+[1m  • babel-plugin-dev-expression@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-dev-expression_vx.x.x.js[39m[22m
+[1m  • eslint-import-resolver-webpack@^0.10.1[22m
+[1m    └> [31mflow-typed/npm/eslint-import-resolver-webpack_vx.x.x.js[39m[22m
+[1m  • eslint-formatter-pretty@^1.3.0[22m
+[1m    └> [31mflow-typed/npm/eslint-formatter-pretty_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-testcafe@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-testcafe_vx.x.x.js[39m[22m
+[1m  • stylelint-config-standard@^18.2.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-standard_vx.x.x.js[39m[22m
+[1m  • react-hot-loader@^4.3.4[22m
+[1m    └> [31mflow-typed/npm/react-hot-loader_vx.x.x.js[39m[22m
+[1m  • redux-thunk@^2.3.0[22m
+[1m    └> [31mflow-typed/npm/redux-thunk_vx.x.x.js[39m[22m
+[1m  • babel-jest@^23.4.2[22m
+[1m    └> [31mflow-typed/npm/babel-jest_vx.x.x.js[39m[22m
+[1m  • babel-plugin-add-module-exports@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-add-module-exports_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-class-properties@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-class-properties_vx.x.x.js[39m[22m
+[1m  • babel-preset-env@^1.7.0[22m
+[1m    └> [31mflow-typed/npm/babel-preset-env_vx.x.x.js[39m[22m
+[1m  • babel-preset-react-optimize@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react-optimize_vx.x.x.js[39m[22m
+[1m  • babel-preset-react@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react_vx.x.x.js[39m[22m
+[1m  • babel-preset-stage-0@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-stage-0_vx.x.x.js[39m[22m
+[1m  • detect-port@^1.2.3[22m
+[1m    └> [31mflow-typed/npm/detect-port_vx.x.x.js[39m[22m
+[1m  • electron-devtools-installer@^2.2.4[22m
+[1m    └> [31mflow-typed/npm/electron-devtools-installer_vx.x.x.js[39m[22m
+[1m  • eslint-config-airbnb@^17.0.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-airbnb_vx.x.x.js[39m[22m
+[1m  • enzyme-adapter-react-16@^1.1.1[22m
+[1m    └> [31mflow-typed/npm/enzyme-adapter-react-16_vx.x.x.js[39m[22m
+[1m  • eslint-config-prettier@^2.9.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-prettier_vx.x.x.js[39m[22m
+[1m  • file-loader@^1.1.11[22m
+[1m    └> [31mflow-typed/npm/file-loader_vx.x.x.js[39m[22m
+[1m  • lint-staged@^7.2.0[22m
+[1m    └> [31mflow-typed/npm/lint-staged_vx.x.x.js[39m[22m
+[1m  • mini-css-extract-plugin@^0.4.1[22m
+[1m    └> [31mflow-typed/npm/mini-css-extract-plugin_vx.x.x.js[39m[22m
+[1m  • redux-logger@^3.0.6[22m
+[1m    └> [31mflow-typed/npm/redux-logger_vx.x.x.js[39m[22m
+[1m  • sass-loader@^7.0.3[22m
+[1m    └> [31mflow-typed/npm/sass-loader_vx.x.x.js[39m[22m
+[1m  • spectron@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/spectron_vx.x.x.js[39m[22m
+[1m  • style-loader@^0.21.0[22m
+[1m    └> [31mflow-typed/npm/style-loader_vx.x.x.js[39m[22m
+[1m  • stylelint-config-prettier@^4.0.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-prettier_vx.x.x.js[39m[22m
+[1m  • testcafe-react-selectors@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/testcafe-react-selectors_vx.x.x.js[39m[22m
+[1m  • webpack-cli@^3.1.0[22m
+[1m    └> [31mflow-typed/npm/webpack-cli_vx.x.x.js[39m[22m
+[1m  • webpack-merge@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/webpack-merge_vx.x.x.js[39m[22m
+[1m  • yarn@^1.9.2[22m
+[1m    └> [31mflow-typed/npm/yarn_vx.x.x.js[39m[22m
+[1m  • @fortawesome/fontawesome-free@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/@fortawesome/fontawesome-free_vx.x.x.js[39m[22m
+[1m  • bootstrap@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/bootstrap_vx.x.x.js[39m[22m
+[1m  • react-google-button@^0.5.3[22m
+[1m    └> [31mflow-typed/npm/react-google-button_vx.x.x.js[39m[22m
+[1m  • babel-eslint@^8.2.6[22m
+[1m    └> [31mflow-typed/npm/babel-eslint_vx.x.x.js[39m[22m
+[1m  • babel-loader@^7.1.5[22m
+[1m    └> [31mflow-typed/npm/babel-loader_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-es2015-classes@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-es2015-classes_vx.x.x.js[39m[22m
+[1m  • concurrently@^3.6.1[22m
+[1m    └> [31mflow-typed/npm/concurrently_vx.x.x.js[39m[22m
+[1m  • cross-env@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/cross-env_vx.x.x.js[39m[22m
+[1m  • cross-spawn@^6.0.5[22m
+[1m    └> [31mflow-typed/npm/cross-spawn_vx.x.x.js[39m[22m
+[1m  • css-loader@^1.0.0[22m
+[1m    └> [31mflow-typed/npm/css-loader_vx.x.x.js[39m[22m
+[1m  • electron-builder@^20.26.0[22m
+[1m    └> [31mflow-typed/npm/electron-builder_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-compat@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-compat_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-import@^2.13.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-import_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-promise@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-promise_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-react@^7.10.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-react_vx.x.x.js[39m[22m
+[1m  • fbjs-scripts@^0.8.3[22m
+[1m    └> [31mflow-typed/npm/fbjs-scripts_vx.x.x.js[39m[22m
+[1m  • husky@^0.14.3[22m
+[1m    └> [31mflow-typed/npm/husky_vx.x.x.js[39m[22m
+[1m  • testcafe-browser-provider-electron@^0.0.6[22m
+[1m    └> [31mflow-typed/npm/testcafe-browser-provider-electron_vx.x.x.js[39m[22m
+[1m  • testcafe-live@^0.1.3[22m
+[1m    └> [31mflow-typed/npm/testcafe-live_vx.x.x.js[39m[22m
+[1m  • uglifyjs-webpack-plugin@1.2.7[22m
+[1m    └> [31mflow-typed/npm/uglifyjs-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • url-loader@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/url-loader_vx.x.x.js[39m[22m
+[1m  • webpack-bundle-analyzer@^2.13.1[22m
+[1m    └> [31mflow-typed/npm/webpack-bundle-analyzer_vx.x.x.js[39m[22m
+[1m  • webpack-dev-server@^3.1.5[22m
+[1m    └> [31mflow-typed/npm/webpack-dev-server_vx.x.x.js[39m[22m
+[1m  • identity-obj-proxy@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/identity-obj-proxy_vx.x.x.js[39m[22m
+[1m  • connected-react-router@^4.4.1[22m
+[1m    └> [31mflow-typed/npm/connected-react-router_vx.x.x.js[39m[22m
+[1m  • devtron@^1.4.0[22m
+[1m    └> [31mflow-typed/npm/devtron_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-flowtype@^2.50.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-flowtype_vx.x.x.js[39m[22m
+[1m  • eslint@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/eslint_vx.x.x.js[39m[22m
+[1m  • flow-typed@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/flow-typed_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jest@^21.18.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jest_vx.x.x.js[39m[22m
+[1m  • electron-rebuild@^1.8.2[22m
+[1m    └> [31mflow-typed/npm/electron-rebuild_vx.x.x.js[39m[22m
+[1m  • stylelint@^9.4.0[22m
+[1m    └> [31mflow-typed/npm/stylelint_vx.x.x.js[39m[22m
+[1m  • webpack@^4.16.3[22m
+[1m    └> [31mflow-typed/npm/webpack_vx.x.x.js[39m[22m
+[1m  • babel-core@^6.26.3[22m
+[1m    └> [31mflow-typed/npm/babel-core_vx.x.x.js[39m[22m
+[1m  • googleapis@^34.0.0[22m
+[1m    └> [31mflow-typed/npm/googleapis_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jsx-a11y@6.1.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jsx-a11y_vx.x.x.js[39m[22m
+[1m  • flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/flow-runtime_vx.x.x.js[39m[22m
+[1m  • optimize-css-assets-webpack-plugin@^5.0.0[22m
+[1m    └> [31mflow-typed/npm/optimize-css-assets-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • sinon@^6.1.4[22m
+[1m    └> [31mflow-typed/npm/sinon_vx.x.x.js[39m[22m
+[1m  • babel-plugin-flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-flow-runtime_vx.x.x.js[39m[22m
+[1m  • node-sass@^4.9.2[22m
+[1m    └> [31mflow-typed/npm/node-sass_vx.x.x.js[39m[22m
+[1m  • electron@^2.0.6[22m
+[1m    └> [31mflow-typed/npm/electron_vx.x.x.js[39m[22m
+[31m[39m
+[31m!! No flow@v0.77.0-compatible libdefs found in flow-typed for the above untyped dependencies !![39m
+
+I've generated `any`-typed stubs for these packages, but consider submitting 
+libdefs for them to [1mhttps://github.com/flowtype/flow-typed/[22m
+
+$ cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.dev.dll.js --colors
+Hash: 15b75df607a25a803d71
+Version: webpack 4.23.1
+Time: 7073ms
+Built at: 11/02/2018 2:54:00 AM
+              Asset      Size    Chunks             Chunk Names
+renderer.dev.dll.js  12.7 MiB  renderer  [emitted]  renderer
+Entrypoint renderer = renderer.dev.dll.js
+[0] dll renderer 12 bytes {renderer} [built]
+[./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {renderer} [built]
+[./node_modules/webpack/buildin/harmony-module.js] (webpack)/buildin/harmony-module.js 573 bytes {renderer} [built]
+[child_process] external "child_process" 42 bytes {renderer} [built]
+[crypto] external "crypto" 42 bytes {renderer} [built]
+[electron] external "electron" 42 bytes {renderer} [built]
+[events] external "events" 42 bytes {renderer} [built]
+[fs] external "fs" 42 bytes {renderer} [built]
+[module] external "module" 42 bytes {renderer} [built]
+[os] external "os" 42 bytes {renderer} [built]
+[path] external "path" 42 bytes {renderer} [built]
+[querystring] external "querystring" 42 bytes {renderer} [built]
+[stream] external "stream" 42 bytes {renderer} [built]
+[url] external "url" 42 bytes {renderer} [built]
+[util] external "util" 42 bytes {renderer} [built]
+    + 849 hidden modules
+
+WARNING in ./node_modules/electron-debug/index.js 101:45-58
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+
+WARNING in ./node_modules/electron-debug/index.js 102:61-74
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+  • electron-builder version=20.29.0
+  • loaded configuration file=package.json ("build" field)
+  • installing production dependencies platform=darwin arch=x64 appDir=/Users/travis/build/alekzieba/game-fame/app
+$ concurrently "yarn build-main" "yarn build-renderer"
+[0] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.main.prod.js --colors
+[1] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.prod.js --colors
+[0] Hash: 86cb80d64ecddad3c3be
+[0] Version: webpack 4.23.1
+[0] Time: 26507ms
+[0] Built at: 11/02/2018 2:57:59 AM
+[0]                  Asset      Size  Chunks             Chunk Names
+[0]     ./app/main.prod.js  3.58 MiB       0  [emitted]  main
+[0] ./app/main.prod.js.map  13.7 MiB       0  [emitted]  main
+[0] Entrypoint main = ./app/main.prod.js ./app/main.prod.js.map
+[0] [./app/main.dev.js] 5.31 KiB {0} [built]
+[0] [./app/menu.js] 5.99 KiB {0} [built]
+[0] [./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {0} [built]
+[0] [assert] external "assert" 42 bytes {0} [built]
+[0] [child_process] external "child_process" 42 bytes {0} [built]
+[0] [crypto] external "crypto" 42 bytes {0} [built]
+[0] [electron] external "electron" 42 bytes {0} [built]
+[0] [events] external "events" 42 bytes {0} [built]
+[0] [fs] external "fs" 42 bytes {0} [built]
+[0] [http] external "http" 42 bytes {0} [built]
+[0] [https] external "https" 42 bytes {0} [built]
+[0] [module] external "module" 42 bytes {0} [built]
+[0] [path] external "path" 42 bytes {0} [built]
+[0] [querystring] external "querystring" 42 bytes {0} [built]
+[0] [url] external "url" 42 bytes {0} [built]
+[0]     + 550 hidden modules
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 101:45-58
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 102:61-74
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] yarn build-main exited with code 0
+[1] Hash: b3ca2eb5e6e3ff47b04a
+[1] Version: webpack 4.23.1
+[1] Time: 36340ms
+[1] Built at: 11/02/2018 2:58:11 AM
+[1]                                  Asset      Size  Chunks             Chunk Names
+[1]  09bc9e8c7d6dfdace635ea073974db13.woff  90.6 KiB          [emitted]  
+[1]   0e2e26fb3527ae47f9eb1c217592b706.ttf  39.4 KiB          [emitted]  
+[1]   3f4d4ad447e748754e994a11ff8c6a6f.svg   684 KiB          [emitted]  
+[1]   3f759796d3d16b8434841d61cd2c007a.svg   709 KiB          [emitted]  
+[1]  52899632324b722c9c7931bd38196afb.woff  17.7 KiB          [emitted]  
+[1]   a31c967484b343189fc58bce914ed245.eot   122 KiB          [emitted]  
+[1]   b5a61b229c9c92a6ac21f5b0e3c6e9f1.svg   139 KiB          [emitted]  
+[1]   baa1e2496e8c71f636587c32f4016ca4.eot   187 KiB          [emitted]  
+[1]   c38ef825039cbe8ec76d4f13854f767e.eot  39.6 KiB          [emitted]  
+[1] dd25437adf06f377113f5df3507423b2.woff2  14.5 KiB          [emitted]  
+[1]   dec02372212aab5a2e5294f1a11756ed.ttf   122 KiB          [emitted]  
+[1]   e143b57de78138e6d5963908afa7e393.ttf   187 KiB          [emitted]  
+[1] e4a6cecbe2bb89b0722b5dc85090af7c.woff2  67.4 KiB          [emitted]  
+[1]  eef6051639f95300dbf0293ad216c6b0.woff  78.8 KiB          [emitted]  
+[1] fd531d212b567d6049f400165473589f.woff2  70.3 KiB          [emitted]  
+[1]                       renderer.prod.js  3.87 MiB       0  [emitted]  main
+[1]                   renderer.prod.js.map    15 MiB       0  [emitted]  main
+[1]                              style.css   187 KiB       0  [emitted]  main
+[1]                          style.css.map   342 KiB          [emitted]  
+[1] Entrypoint main = style.css renderer.prod.js renderer.prod.js.map
+[1] [./app/Routes.js] 2.18 KiB {0} [built]
+[1] [./app/actions/auth.js] 2.02 KiB {0} [built]
+[1] [./app/app.global.css] 39 bytes {0} [built]
+[1] [./app/constants/routes.json] 190 bytes {0} [built]
+[1] [./app/containers/App.js] 1.48 KiB {0} [built]
+[1] [./app/containers/HomePage.js] 1.21 KiB {0} [built]
+[1] [./app/containers/LoginPage.js] 1010 bytes {0} [built]
+[1] [./app/containers/Root.js] 1.7 KiB {0} [built]
+[1] [./app/index.js] 1.93 KiB {0} [built]
+[1] [./app/reducers/index.js] 1.11 KiB {0} [built]
+[1] [./app/store/configureStore.js] 251 bytes {0} [built]
+[1] [./app/store/configureStore.prod.js] 953 bytes {0} [built]
+[1] [./node_modules/history/es/index.js] ./node_modules/history/es/index.js + 9 modules 34.8 KiB {0} [built]
+[1]     |    10 modules
+[1] [./node_modules/react-redux/es/index.js] ./node_modules/react-redux/es/index.js + 19 modules 36.1 KiB {0} [built]
+[1]     |    20 modules
+[1] [./node_modules/react-router/es/index.js] ./node_modules/react-router/es/index.js + 10 modules 32.2 KiB {0} [built]
+[1]     |    11 modules
+[1]     + 574 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!app/app.global.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]     [./node_modules/css-loader/index.js?!./app/app.global.css] ./node_modules/css-loader??ref--5-1!./app/app.global.css 1.7 KiB {0} [built]
+[1]         + 19 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Home.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Login.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/TicTacToe.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] yarn build-renderer exited with code 0
+  • electron-builder version=20.29.0
+  • loaded configuration file=package.json ("build" field)
+  • rebuilding native production dependencies platform=darwin arch=x64
+  • rebuilding native dependency name=grpc
+  • packaging       platform=darwin arch=x64 electron=2.0.12 appOutDir=release/mac
+  • skipped macOS application code signing reason=cannot find valid "Developer ID Application" identity or custom non-Apple code signing certificate, see https://electron.build/code-signing allIdentities=
+                                                  0 identities found
+                                             
+                                               Valid identities only
+                                                  0 valid identities found
+  • building        target=macOS zip arch=x64 file=release/ElectronReact-0.16.0-mac.zip
+  • building        target=DMG arch=x64 file=release/ElectronReact-0.16.0.dmg
+  • building block map blockMapFile=release/ElectronReact-0.16.0.dmg.blockmap
+  • publishing      publisher=Github (owner: electron-react-boilerplate, project: electron-react-boilerplate, version: 0.16.0)
+  • uploading       file=ElectronReact-0.16.0.dmg.blockmap provider=GitHub
+  • uploading       file=ElectronReact-0.16.0.dmg provider=GitHub
+  • GitHub release not created reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • skipped publishing file=ElectronReact-0.16.0.dmg.blockmap reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • skipped publishing file=ElectronReact-0.16.0.dmg reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • building embedded block map file=release/ElectronReact-0.16.0-mac.zip
+  • uploading       file=ElectronReact-0.16.0-mac.zip provider=GitHub
+  • skipped publishing file=ElectronReact-0.16.0-mac.zip reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • skipped publishing file=latest-mac.yml reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+Done in 392.18s.
+
+travis_time:end:04c1bdfe:start=1541127189062757000,finish=1541127581652766000,duration=392590009000[0K
+[32;1mThe command "yarn package-ci" exited with 0.[0m
+travis_time:start:1b031da6[0K$ yarn lint
+yarn run v1.12.1
+$ cross-env NODE_ENV=development eslint --cache --format=pretty .
+
+  flow-typed/module_vx.x.x.js:2:27
+  ⚠  2:27  Unexpected use of weak type "any"  flowtype/no-weak-types
+
+  1 warning
+
+Done in 5.28s.
+
+travis_time:end:1b031da6:start=1541127581664093000,finish=1541127587368654000,duration=5704561000[0K
+[32;1mThe command "yarn lint" exited with 0.[0m
+travis_time:start:00972645[0K$ yarn test -u
+yarn run v1.12.1
+$ cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings -r babel-register ./internals/scripts/RunTests.js -u
+jest-haste-map: @providesModule naming collision:
+  Duplicate module name: electron-react-boilerplate
+  Paths: /Users/travis/build/alekzieba/game-fame/package.json collides with /Users/travis/build/alekzieba/game-fame/app/package.json
+
+This warning is caused by a @providesModule declaration with the same name across two different files.
+PASS test/actions/counter.spec.js
+PASS test/reducers/counter.spec.js
+
+Test Suites: 2 passed, 2 total
+Tests:       9 passed, 9 total
+Snapshots:   6 passed, 6 total
+Time:        2.491s
+Ran all test suites matching /test\/(?!e2e\/)[^\/]+\/.+\.spec\.js$/i.
+Done in 6.07s.
+
+travis_time:end:00972645:start=1541127587379555000,finish=1541127593833573000,duration=6454018000[0K
+[32;1mThe command "yarn test -u" exited with 0.[0m
+travis_time:start:174a3fe6[0K$ yarn build-e2e
+yarn run v1.12.1
+$ cross-env E2E_BUILD=true yarn build
+$ concurrently "yarn build-main" "yarn build-renderer"
+[0] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.main.prod.js --colors
+[1] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.prod.js --colors
+[0] Hash: 86cb80d64ecddad3c3be
+[0] Version: webpack 4.23.1
+[0] Time: 13402ms
+[0] Built at: 11/02/2018 3:00:11 AM
+[0]                  Asset      Size  Chunks             Chunk Names
+[0]     ./app/main.prod.js  10.2 MiB       0  [emitted]  main
+[0] ./app/main.prod.js.map    12 MiB       0  [emitted]  main
+[0] Entrypoint main = ./app/main.prod.js ./app/main.prod.js.map
+[0] [./app/main.dev.js] 5.31 KiB {0} [built]
+[0] [./app/menu.js] 5.99 KiB {0} [built]
+[0] [./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {0} [built]
+[0] [assert] external "assert" 42 bytes {0} [built]
+[0] [child_process] external "child_process" 42 bytes {0} [built]
+[0] [crypto] external "crypto" 42 bytes {0} [built]
+[0] [electron] external "electron" 42 bytes {0} [built]
+[0] [events] external "events" 42 bytes {0} [built]
+[0] [fs] external "fs" 42 bytes {0} [built]
+[0] [http] external "http" 42 bytes {0} [built]
+[0] [https] external "https" 42 bytes {0} [built]
+[0] [module] external "module" 42 bytes {0} [built]
+[0] [path] external "path" 42 bytes {0} [built]
+[0] [querystring] external "querystring" 42 bytes {0} [built]
+[0] [url] external "url" 42 bytes {0} [built]
+[0]     + 550 hidden modules
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 101:45-58
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 102:61-74
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] yarn build-main exited with code 0
+[1] Hash: b3ca2eb5e6e3ff47b04a
+[1] Version: webpack 4.23.1
+[1] Time: 18318ms
+[1] Built at: 11/02/2018 3:00:16 AM
+[1]                                  Asset      Size  Chunks             Chunk Names
+[1]  09bc9e8c7d6dfdace635ea073974db13.woff  90.6 KiB          [emitted]  
+[1]   0e2e26fb3527ae47f9eb1c217592b706.ttf  39.4 KiB          [emitted]  
+[1]   3f4d4ad447e748754e994a11ff8c6a6f.svg   684 KiB          [emitted]  
+[1]   3f759796d3d16b8434841d61cd2c007a.svg   709 KiB          [emitted]  
+[1]  52899632324b722c9c7931bd38196afb.woff  17.7 KiB          [emitted]  
+[1]   a31c967484b343189fc58bce914ed245.eot   122 KiB          [emitted]  
+[1]   b5a61b229c9c92a6ac21f5b0e3c6e9f1.svg   139 KiB          [emitted]  
+[1]   baa1e2496e8c71f636587c32f4016ca4.eot   187 KiB          [emitted]  
+[1]   c38ef825039cbe8ec76d4f13854f767e.eot  39.6 KiB          [emitted]  
+[1] dd25437adf06f377113f5df3507423b2.woff2  14.5 KiB          [emitted]  
+[1]   dec02372212aab5a2e5294f1a11756ed.ttf   122 KiB          [emitted]  
+[1]   e143b57de78138e6d5963908afa7e393.ttf   187 KiB          [emitted]  
+[1] e4a6cecbe2bb89b0722b5dc85090af7c.woff2  67.4 KiB          [emitted]  
+[1]  eef6051639f95300dbf0293ad216c6b0.woff  78.8 KiB          [emitted]  
+[1] fd531d212b567d6049f400165473589f.woff2  70.3 KiB          [emitted]  
+[1]                       renderer.prod.js  11.2 MiB       0  [emitted]  main
+[1]                   renderer.prod.js.map  13.1 MiB       0  [emitted]  main
+[1]                              style.css   233 KiB       0  [emitted]  main
+[1]                          style.css.map   345 KiB       0  [emitted]  main
+[1] Entrypoint main = style.css renderer.prod.js style.css.map renderer.prod.js.map
+[1] [./app/Routes.js] 2.18 KiB {0} [built]
+[1] [./app/actions/auth.js] 2.02 KiB {0} [built]
+[1] [./app/app.global.css] 39 bytes {0} [built]
+[1] [./app/constants/routes.json] 190 bytes {0} [built]
+[1] [./app/containers/App.js] 1.48 KiB {0} [built]
+[1] [./app/containers/HomePage.js] 1.21 KiB {0} [built]
+[1] [./app/containers/LoginPage.js] 1010 bytes {0} [built]
+[1] [./app/containers/Root.js] 1.7 KiB {0} [built]
+[1] [./app/index.js] 1.93 KiB {0} [built]
+[1] [./app/reducers/index.js] 1.11 KiB {0} [built]
+[1] [./app/store/configureStore.js] 251 bytes {0} [built]
+[1] [./app/store/configureStore.prod.js] 953 bytes {0} [built]
+[1] [./node_modules/history/es/index.js] ./node_modules/history/es/index.js + 9 modules 34.8 KiB {0} [built]
+[1]     |    10 modules
+[1] [./node_modules/react-redux/es/index.js] ./node_modules/react-redux/es/index.js + 19 modules 36.1 KiB {0} [built]
+[1]     |    20 modules
+[1] [./node_modules/react-router/es/index.js] ./node_modules/react-router/es/index.js + 10 modules 32.2 KiB {0} [built]
+[1]     |    11 modules
+[1]     + 574 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!app/app.global.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]     [./node_modules/css-loader/index.js?!./app/app.global.css] ./node_modules/css-loader??ref--5-1!./app/app.global.css 1.7 KiB {0} [built]
+[1]         + 19 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Home.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Login.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/TicTacToe.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] yarn build-renderer exited with code 0
+Done in 22.60s.
+
+travis_time:end:174a3fe6:start=1541127593844884000,finish=1541127616837871000,duration=22992987000[0K
+[32;1mThe command "yarn build-e2e" exited with 0.[0m
+travis_fold:start:before_cache[0Ktravis_time:start:14e6237c[0K$ rm -rf $HOME/.cache/electron-builder/wine
+
+travis_time:end:14e6237c:start=1541127616861438000,finish=1541127616889564000,duration=28126000[0Ktravis_fold:end:before_cache[0Ktravis_fold:start:cache.2[0Kstore build cache
+travis_time:start:1df0aadd[0K
+travis_time:end:1df0aadd:start=1541127616918937000,finish=1541127616937588000,duration=18651000[0Ktravis_time:start:04073688[0K[32;1mchange detected (content changed, file is created, or file is deleted):
+/Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/bin/darwin-x64-57/grpc.node
+/Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/build/Release/grpc_node.node
+
+[0m
+[32;1mchanges detected, packing new archive[0m
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+[32;1muploading master/cache-osx-xcode9.4-7243bb22481290cfbcce7c85bf6520426901e3ebe181e42eed18982ef2d74411--node-node.tgz[0m
+[32;1mcache uploaded[0m
+
+travis_time:end:04073688:start=1541127616960798000,finish=1541127710282770000,duration=93321972000[0Ktravis_fold:end:cache.2[0Ktravis_fold:start:after_success.1[0Ktravis_time:start:1442e50a[0K$ chmod 700 push.sh
+
+travis_time:end:1442e50a:start=1541127710294838000,finish=1541127710307564000,duration=12726000[0Ktravis_fold:end:after_success.1[0Ktravis_fold:start:after_success.2[0Ktravis_time:start:1c471da0[0K$ ./push.sh
+Switched to a new branch 'gh-pages'
+M	push.sh
+[gh-pages 31bfd8b] Travis build
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 push.sh
+remote: 
+remote: Create a pull request for 'gh-pages' on GitHub by visiting:        
+remote:      https://github.com/alekzieba/game-fame/pull/new/gh-pages        
+remote: 
+To https://github.com/alekzieba/game-fame.git
+ * [new branch]      gh-pages -> gh-pages
+Branch 'gh-pages' set up to track remote branch 'gh-pages' from 'origin-pages'.
+
+travis_time:end:1c471da0:start=1541127710320815000,finish=1541127713500331000,duration=3179516000[0Ktravis_fold:end:after_success.2[0K
+Done. Your build exited with 0.

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import styles from './ConnectFour.css';
+
 export function Status(props) {
   function generateStatus() {
     if (props.gameIsWon) {
@@ -19,9 +21,9 @@ export function Status(props) {
   const { player1IsNext } = props;
 
   if (player1IsNext) {
-    return <div className="Status-P1">{generateStatus()}</div>;
+    return <div className={styles.StatusP1}>{generateStatus()}</div>;
   }
-  return <div className="Status-P2">{generateStatus()}</div>;
+  return <div className={styles.StatusP2}>{generateStatus()}</div>;
 }
 
 Status.propTypes = {
@@ -32,12 +34,7 @@ Status.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  board: state.board,
-  player1IsNext: state.player1IsNext,
-  player1: state.player1,
-  player2: state.player2,
-  gameIsWon: state.gameIsWon,
-  gameKey: state.gameKey
+  ...state.connectfour
 });
 
 export default connect(mapStateToProps)(Status);

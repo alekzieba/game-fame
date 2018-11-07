@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createBoard } from '../actions/ConnectFour';
 
+import styles from './ConnectFour.css';
+
 export function Reset(props) {
   function generateReset() {
     if (props.gameIsWon) {
       return (
         <button
-          className="NewGame"
+          className={styles.NewGame}
           type="button"
           onClick={() =>
             props.dispatch(
@@ -23,7 +25,7 @@ export function Reset(props) {
     return '';
   }
 
-  return <div className="NewGameDiv">{generateReset()}</div>;
+  return <div className={styles.NewGameDiv}>{generateReset()}</div>;
 }
 
 Reset.propTypes = {
@@ -35,12 +37,7 @@ Reset.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  board: state.board,
-  player1IsNext: state.player1IsNext,
-  player1: state.player1,
-  player2: state.player2,
-  gameIsWon: state.gameIsWon,
-  gameKey: state.gameKey
+  ...state.connectfour
 });
 
 export default connect(mapStateToProps)(Reset);

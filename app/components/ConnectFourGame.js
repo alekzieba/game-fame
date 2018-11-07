@@ -4,9 +4,11 @@ import StatusComp from './Status';
 import ResetComp from './Reset';
 import ConnectFourBoard from './ConnectFourBoard';
 
+import styles from './ConnectFour.css';
+
 export function App() {
   return (
-    <div className="ConnectFour">
+    <div className={styles.ConnectFour}>
       <StatusComp />
       <ResetComp />
       <ConnectFourBoard />
@@ -15,12 +17,7 @@ export function App() {
 }
 
 const mapStateToProps = state => ({
-  board: state.board,
-  player1IsNext: state.player1IsNext,
-  player1: state.player1,
-  player2: state.player2,
-  gameIsWon: state.gameIsWon,
-  gameKey: state.gameKey
+  ...state.connectfour
 });
 
 export default connect(mapStateToProps)(App);

@@ -4,14 +4,14 @@
   margin: 0 auto;
 }
 
-.Status-P1 {
+.StatusP1 {
   padding: 10px 0 15px;
   font-size: 35px;
   border: black solid;
   background: #ffff007e;
 }
 
-.Status-P2 {
+.StatusP2 {
   padding: 10px 0 15px;
   font-size: 35px;
   border: black solid;
@@ -50,7 +50,6 @@
   width: 100%;
   height: 100px;
   padding: 7px;
-  background: blue;
 }
 
 .Circle {

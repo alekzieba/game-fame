@@ -7,6 +7,7 @@ import styles from './Home.css';
 import GamesListPage from '../containers/GamesListPage';
 import CreateGamePage from '../containers/CreateGamePage';
 import TicTacToe from './TicTacToe';
+import ConnectFour from './ConnectFourGame';
 
 type Props = {
   auth: object,
@@ -63,6 +64,7 @@ export default class Home extends Component<Props> {
           <Route path={routes.GAMESLIST} component={GamesListPage} />
           <Route path={routes.CREATE_GAME} component={CreateGamePage} />
           <Route path={routes.TICTACTOE} component={TicTacToe} />
+          <Route path={routes.CONNECTFOUR} component={ConnectFour} />
         </Switch>
       </div>
     );

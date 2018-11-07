@@ -1,12 +1,15 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import styles from './ConnectFour.css';
 
 export default function BoardColumn(props) {
   const { handleColumnClick } = props;
   const { children } = props;
   return (
     <div
-      className="BoardColumn"
+      className={styles.BoardColumn}
       onClick={handleColumnClick}
       onKeyDown={handleColumnClick}
       role="button"
@@ -19,5 +22,5 @@ export default function BoardColumn(props) {
 
 BoardColumn.propTypes = {
   handleColumnClick: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired
+  children: PropTypes.array.isRequired
 };

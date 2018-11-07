@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import routes from '../constants/routes';
 
+import { createBoard } from '../actions/ConnectFour';
+
 class CreateGame extends Component {
   static renderGameCodeInput(field) {
     return (
@@ -15,10 +17,21 @@ class CreateGame extends Component {
     );
   }
 
+  static renderFriendEmailInput(field) {
+    return (
+      <input
+        type="email"
+        className="form-control"
+        placeholder={field.placeholder}
+        {...field.input}
+      />
+    );
+  }
+
   static renderGameTypeInput(field) {
     return (
       <select className="form-control" {...field.input}>
-        <option value="checkers">Checkers</option>
+        <option value="connectfour">Connect Four</option>
         <option value="tictactoe">Tic-Tac Toe</option>
       </select>
     );
@@ -31,7 +44,7 @@ class CreateGame extends Component {
     // const secondemail = values.email
     //   .replace(/@/g, '|')
     //   .replace(/\./g, '=');
-    const { history } = this.props;
+    const { auth, dispatch, history } = this.props;
 
     const gameKey = `${values.game_type}/${values.game_code}`;
     switch (values.game_type) {
@@ -40,6 +53,12 @@ class CreateGame extends Component {
           pathname: routes.TICTACTOE,
           gameKey,
           exists: false
+        });
+        break;
+      case 'connectfour':
+        dispatch(createBoard(gameKey, auth.email, values.friend_email));
+        history.push({
+          pathname: routes.CONNECTFOUR
         });
         break;
       default:
@@ -72,6 +91,15 @@ class CreateGame extends Component {
                   name="game_code"
                   placeholder="ABCDEFG"
                   component={this.constructor.renderGameCodeInput}
+                />
+              </div>
+              <br />
+              <div className="form-group text-center">
+                <label>Friend Email (Connect Four only)</label>
+                <Field
+                  name="friend_email"
+                  placeholder="eleanor@sbeleanor.com"
+                  component={this.constructor.renderFriendEmailInput}
                 />
               </div>
               <br />

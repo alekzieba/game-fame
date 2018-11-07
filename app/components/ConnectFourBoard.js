@@ -10,7 +10,17 @@ import {
   dbChanged
 } from '../actions/ConnectFour';
 
+import styles from './ConnectFour.css';
+
 class Board extends Component {
+  // generates circles within given column
+  static generateCircles(circles) {
+    return circles.map((circleVal, circleIndex) => {
+      const index = circleIndex;
+      return <Circle circleOccupier={circleVal} index={index} key={index} />;
+    });
+  }
+
   constructor(props) {
     super(props);
     this.generateColumns = this.generateColumns.bind(this);
@@ -20,7 +30,7 @@ class Board extends Component {
     const user1 = 'gharvhel';
     const user2 = 'sarthak';
     const gameKey = `games/connect-four/${user1}&${user2}`;
-    const existingGame = true;
+    const existingGame = false;
     const { dispatch } = this.props;
     if (existingGame) {
       dispatch(getBoard(gameKey, user1, user2));
@@ -29,16 +39,6 @@ class Board extends Component {
     }
 
     dbChanged(gameKey, user1, user2, dispatch);
-  }
-
-  // generates circles within given column
-  generateCircles(circles) {
-    return circles.map((circleVal, circleIndex) => {
-      const index = circleIndex;
-      return (
-        <Circle circleOccupier={circleVal} index={index} key={this.index} />
-      );
-    });
   }
 
   generateColumns() {
@@ -68,14 +68,16 @@ class Board extends Component {
 
       return (
         <BoardColumn handleColumnClick={handleColumnClick} key={index}>
-          {this.generateCircles(column, colIndex)}
+          {this.constructor.generateCircles(column, colIndex)}
         </BoardColumn>
       );
     });
   }
 
   render() {
-    return <div className="ConnectFourBoard">{this.generateColumns()}</div>;
+    return (
+      <div className={styles.ConnectFourBoard}>{this.generateColumns()}</div>
+    );
   }
 }
 
@@ -90,12 +92,7 @@ Board.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  board: state.board,
-  player1IsNext: state.player1IsNext,
-  player1: state.player1,
-  player2: state.player2,
-  gameIsWon: state.gameIsWon,
-  gameKey: state.gameKey
+  ...state.connectfour
 });
 
 export default connect(mapStateToProps)(Board);

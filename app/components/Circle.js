@@ -1,14 +1,20 @@
+/* eslint-disable prefer-template */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './ConnectFour.css';
+
 export default function Circle(props) {
   function getClassName() {
-    return props.circleOccupier && `Circle-${props.circleOccupier}`;
+    return (
+      props.circleOccupier && `${styles['Circle-' + props.circleOccupier]}`
+    );
   }
 
   return (
-    <div className="CircleWrap">
-      <div className={`Circle ${getClassName()}`} />
+    <div className={styles.CircleWrap}>
+      <div className={`${styles.Circle} ${getClassName()}`} />
     </div>
   );
 }

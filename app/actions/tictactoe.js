@@ -7,7 +7,7 @@ function convertBoard(board, type1, type2) {
       boardRet[i] = type2;
     }
   }
-  return board;
+  return boardRet;
 }
 
 export function fillSquare(index, board, symbol, gameKey) {

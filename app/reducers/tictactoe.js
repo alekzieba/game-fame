@@ -21,7 +21,7 @@ export default function(
         board: Array(9).fill(null)
       };
     case 'GET_BOARD':
-      board = action.payload.board[0];
+      board = action.payload.board[0].slice();
       for (let i = 0; i < board.length; i += 1) {
         if (board[i] === 'null') {
           board[i] = null;
@@ -40,7 +40,12 @@ export default function(
           board[j] = null;
         }
       }
-      return { ...state, gameKey: action.payload.gameKey, board };
+      return {
+        ...state,
+        gameKey: action.payload.gameKey,
+        xIsTrue: action.payload.xIsTrue,
+        board
+      };
     default:
       return state;
   }

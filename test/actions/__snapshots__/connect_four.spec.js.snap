@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions should clickColumn should succeed 1`] = `
+Object {
+  "payload": Object {
+    "board": Array [
+      Array [
+        "player1",
+        "x",
+        "o",
+        "x",
+        "o",
+        "x",
+      ],
+      Array [
+        "x",
+        "o",
+        "x",
+        "o",
+        "x",
+        "o",
+      ],
+      Array [
+        "o",
+        "x",
+        "o",
+        "x",
+        "o",
+        "x",
+      ],
+      Array [
+        "x",
+        "o",
+        "x",
+        "o",
+        "x",
+        "o",
+      ],
+      Array [
+        "o",
+        "x",
+        "o",
+        "x",
+        "o",
+        "x",
+      ],
+      Array [
+        "x",
+        "o",
+        "x",
+        "o",
+        "x",
+        "o",
+      ],
+      Array [
+        "o",
+        "x",
+        "o",
+        "x",
+        "o",
+        "x",
+      ],
+    ],
+    "gameIsWon": true,
+    "gameKey": "testgamekey",
+    "player1": "sarthak",
+    "player1IsNext": true,
+    "player2": "gharvhel",
+  },
+  "type": "CLICK_COLUMN",
+}
+`;
+
+exports[`actions should createBoard should create new board 1`] = `
+Object {
+  "payload": Object {
+    "board": Array [
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+    ],
+    "gameIsWon": false,
+    "gameKey": "",
+    "player1": "",
+    "player1IsNext": true,
+    "player2": "",
+  },
+  "type": "CREATE_BOARD",
+}
+`;

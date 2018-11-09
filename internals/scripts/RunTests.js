@@ -1,6 +1,8 @@
 import spawn from 'cross-spawn';
 import path from 'path';
 
+require('dotenv').config({ path: '../../.env' });
+
 const pattern =
   process.argv[2] === 'e2e'
     ? 'test/e2e/.+\\.spec\\.js'

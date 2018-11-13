@@ -68,6 +68,8 @@ after_success:
 script:
 - yarn package-ci
 - yarn lint
+- cd app && npm rebuild
+- cd ..
 - yarn test -u
 - yarn build-e2e
 env:

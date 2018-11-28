@@ -67,7 +67,8 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728
+    height: 728,
+    minWidth: 950
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -104,7 +105,7 @@ ipcMain.on('signin:google', () => {
         // acquire the code from the querystring, and close the web server.
         const qs = querystring.parse(url.parse(req.url).query);
         console.log(`Code is ${qs.code}`);
-        res.end('Authentication successful! Please return to the console.');
+        res.end('Authentication successful!  Please return to the app.');
         server.close();
         // authWindow.close();
 

@@ -5,18 +5,6 @@ import routes from '../constants/routes';
 import { createBoard } from '../actions/ConnectFour';
 
 class CreateGame extends Component {
-  static renderGameCodeInput(field) {
-    return (
-      <input
-        type="text"
-        className="form-control"
-        placeholder={field.placeholder}
-        autoFocus
-        {...field.input}
-      />
-    );
-  }
-
   static renderFriendEmailInput(field) {
     return (
       <input
@@ -46,17 +34,27 @@ class CreateGame extends Component {
     //   .replace(/\./g, '=');
     const { auth, dispatch, history } = this.props;
 
-    const gameKey = `${values.game_type}/${values.game_code}`;
+    // Make a random game ID -- very low chance of a collision, but this
+    //   is a risk we take for not using a web server.
+    const gameId =
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15);
+
+    // waiting for game implementation before making sure to pass the proper values
     switch (values.game_type) {
       case 'tictactoe':
         history.push({
           pathname: routes.TICTACTOE,
-          gameKey,
+          gameKey: gameId,
           exists: false
         });
         break;
       case 'connectfour':
-        dispatch(createBoard(gameKey, auth.email, values.friend_email));
+        dispatch(createBoard(gameId, auth.email, values.friend_email));
         history.push({
           pathname: routes.CONNECTFOUR
         });
@@ -86,16 +84,7 @@ class CreateGame extends Component {
               </div>
               <br />
               <div className="form-group text-center">
-                <label>Game Code</label>
-                <Field
-                  name="game_code"
-                  placeholder="ABCDEFG"
-                  component={this.constructor.renderGameCodeInput}
-                />
-              </div>
-              <br />
-              <div className="form-group text-center">
-                <label>Friend Email (Connect Four only)</label>
+                <label>Friend Email</label>
                 <Field
                   name="friend_email"
                   placeholder="eleanor@sbeleanor.com"
@@ -105,7 +94,7 @@ class CreateGame extends Component {
               <br />
               <div className="text-center">
                 <button type="submit" className="btn btn-lg btn-primary">
-                  Create
+                  Create Game
                 </button>
               </div>
             </form>

@@ -12,6 +12,7 @@ import ConnectFour from './ConnectFourGame';
 type Props = {
   auth: object,
   getGames: () => void,
+  userSignOut: () => void,
   history: object
 };
 
@@ -21,11 +22,17 @@ export default class Home extends Component<Props> {
   componentDidMount() {
     const { auth, getGames, history } = this.props;
 
-    console.log(auth.id);
-    if (!auth.id) {
+    if (!auth.email) {
       history.push(routes.LOGIN);
     }
-    getGames(auth.id);
+
+    getGames(auth.sanitized_email);
+  }
+
+  signoutButtonPressed() {
+    const { userSignOut, history } = this.props;
+    userSignOut();
+    history.push(routes.LOGIN);
   }
 
   render() {
@@ -42,13 +49,24 @@ export default class Home extends Component<Props> {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  onClick={() => history.push(routes.CREATE_GAME)}
+                  onClick={() => {
+                    history.push(routes.CREATE_GAME);
+                  }}
                 >
                   Create Game <span className="sr-only">(current)</span>
                 </a>
               </li>
             </ul>
           </div>
+          <a
+            className="nav-link btn-danger"
+            onClick={this.signoutButtonPressed.bind(this)}
+          >
+            Sign Out
+          </a>
+          <span className={`navbar-text ${styles.win_loss}`}>
+            Wins / Losses: {auth.wins} / {auth.losses}
+          </span>
           <span className="navbar-text">
             {auth.name}
             <img

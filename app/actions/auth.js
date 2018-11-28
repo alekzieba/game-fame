@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // @flow
 // import * as firebase from 'firebase';
 import { ipcRenderer } from 'electron';
@@ -32,18 +33,31 @@ export function promptUserSignIn(loginHandler) {
           console.log(sanitizedEmail);
           usersRef.child(sanitizedEmail).transaction(
             currentUserData => {
-              if (currentUserData === null) {
+              if (currentUserData == null) {
+                const { email, name, given_name, picture } = res.data;
+                const userInfo = {
+                  email,
+                  name,
+                  given_name,
+                  picture,
+                  sanitized_email: sanitizedEmail,
+                  game_ids: [],
+                  game_invite_ids: [],
+                  wins: 0,
+                  losses: 0
+                };
                 dispatch({
                   type: USER_SIGNED_IN,
-                  payload: res
+                  payload: userInfo
                 });
                 loginHandler(true);
-                return {
-                  email: res.data.email,
-                  name: res.data.name,
-                  game_ids: []
-                };
+                return userInfo;
               }
+              dispatch({
+                type: USER_SIGNED_IN,
+                payload: currentUserData
+              });
+              loginHandler(true);
             },
             () => {
               // params: error, committed

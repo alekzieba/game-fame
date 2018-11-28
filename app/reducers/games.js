@@ -1,13 +1,12 @@
 // @flow
-import { USER_SIGNED_IN, USER_SIGNED_OUT } from '../actions/auth';
+import { GET_GAME } from '../actions/games';
 import type { Action } from './types';
 
 export default function counter(state = {}, action: Action) {
   switch (action.type) {
-    case USER_SIGNED_IN:
-      return action.payload;
-    case USER_SIGNED_OUT:
-      return {};
+    case GET_GAME:
+      console.log(action.payload);
+      return { ...state, [action.payload.id]: action.payload };
     default:
       return state;
   }

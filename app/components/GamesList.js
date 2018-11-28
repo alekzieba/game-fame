@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import _ from 'lodash';
 import routes from '../constants/routes.json';
+import styles from './GamesList.css';
+
+import { gameTypeToString } from '../constants/gameinfo';
 
 class GamesList extends Component {
   static renderGameCodeInput(field) {
@@ -29,7 +32,7 @@ class GamesList extends Component {
   }
 
   renderGameList() {
-    const { games, history, handleSubmit } = this.props;
+    const { auth, games, history, handleSubmit } = this.props;
     if (!games || _.isEmpty(games)) {
       return (
         <div className="text-center">
@@ -67,35 +70,41 @@ class GamesList extends Component {
       );
     }
 
-    // <tbody>
-    //   // {_.map(posts, (post, postID) => (
-    //   //   <tr key={postID}>
-    //   //     <td>{post.author}</td>
-    //   //     <td>{post.content}</td>
-    //   //     <td>{post.datetime}</td>
-    //   //     <td>
-    //   //       <button
-    //   //         type="button"
-    //   //         className="btn btn-danger"
-    //   //         onClick={deletePost.bind(this, postID)}
-    //   //       >
-    //   //         Click to Delete
-    //   //       </button>
-    //   //     </td>
-    //   //   </tr>
-    //   // ))}
-    // </tbody>
-
+    // TODO implement game invites, will be added when we have integration w/ games working
     return (
-      <table className="table">
-        <thead className="thead-dark">
-          <tr>
-            <th scope="col">Game Code</th>
-            <th scope="col">Active</th>
-            <th scope="col">Your Turn</th>
-          </tr>
-        </thead>
-      </table>
+      <div className="row">
+        <div className="col-6">
+          <h3 className="text-center">Game History</h3>
+          <br />
+          <table className="table">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Game Type</th>
+                <th scope="col">Last Move</th>
+                <th scope="col">Your Turn?</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {_.map(games, (game, gameId) => (
+                <tr key={gameId} className={styles.clickable}>
+                  <td>{gameTypeToString[game.type]}</td>
+                  <td>{game.last_move_time}</td>
+                  <td>
+                    {game.whose_turn === auth.sanitized_email ? 'Yes' : 'No'}
+                  </td>
+                  <td>{game.whose_turn == null ? 'Complete' : 'Ongoing'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col-6">
+          <h3 className="text-center">Your Game Invites</h3>
+          <br />
+          <h4 className="text-center"> You have no game invites... Yet!</h4>
+        </div>
+      </div>
     );
   }
 
@@ -105,6 +114,7 @@ class GamesList extends Component {
       <div>
         <br />
         <h1 className="text-center">Welcome, {auth.given_name}!</h1>
+        <br />
         {this.renderGameList()}
       </div>
     );

@@ -3,6 +3,11 @@ import thunk from 'redux-thunk';
 import { createHashHistory } from 'history';
 import { routerMiddleware, routerActions } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
+
+import { persistStore, persistReducer } from 'redux-persist';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
+import createElectronStorage from 'redux-persist-electron-storage';
+
 import createRootReducer from '../reducers';
 import * as counterActions from '../actions/counter';
 import type { counterStateType } from '../reducers/types';
@@ -15,6 +20,18 @@ const configureStore = (initialState?: counterStateType) => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
+
+  // Persistence Configuration
+  const persistConfig = {
+    key: 'root',
+    storage: createElectronStorage({
+      electronStoreOpts: {
+        encryptionKey: 'MY_ENCRYPTION_KEY'
+      }
+    }),
+    blacklist: ['history'],
+    stateReconciler: hardSet
+  };
 
   // Thunk Middleware
   middleware.push(thunk);
@@ -54,7 +71,8 @@ const configureStore = (initialState?: counterStateType) => {
   const enhancer = composeEnhancers(...enhancers);
 
   // Create Store
-  const store = createStore(rootReducer, initialState, enhancer);
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+  const store = createStore(persistedReducer, initialState, enhancer);
 
   if (module.hot) {
     module.hot.accept(
@@ -63,7 +81,8 @@ const configureStore = (initialState?: counterStateType) => {
     );
   }
 
-  return store;
+  const persistor = persistStore(store);
+  return { store, persistor };
 };
 
 export default { configureStore, history };

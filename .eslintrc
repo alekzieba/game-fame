@@ -34,6 +34,7 @@
     "generator-star-spacing": "off",
     "import/no-unresolved": "error",
     "import/no-extraneous-dependencies": "off",
+    "import/extensions": ["error", "ignorePackages"],
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/no-autofocus": "off",
     "jsx-a11y/label-has-for": "off",
@@ -69,8 +70,8 @@
   "plugins": ["flowtype", "import", "promise", "compat", "react"],
   "settings": {
     "import/resolver": {
-      "webpack": {
-        "config": "webpack.config.eslint.js"
+      "node": {
+        "extensions": [".js", ".node"]
       }
     }
   }

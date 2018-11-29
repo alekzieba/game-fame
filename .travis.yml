@@ -62,16 +62,15 @@ before_script:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd app/node_modules/\@firebase/firestore/node_modules/grpc/src/node/extension_binary && mv $(find . -type d -name '*node*') electron-v2.0-darwin-x64-unknown && cd ../../../../../../../../..; fi
 after_success:
 - chmod 700 push.sh
-- ./push.sh
+- "./push.sh"
 script:
 - yarn package-ci
 - yarn lint
-- cd app && npm rebuild
-- cd ..
 - yarn test -u
 - yarn build-e2e
 env:
   global:
-    secure: bLjK3Vu20HMnTGz5fdNUj+H25DSCT1H4bYEKgt28zizA/nU+8gyBlOhiQt0j6pthaqi9CouOGKYWdUEswu+AU5owIJyWPypdLWedZ6YbBIW1nHj7vCvKLnLJsmg5PuX5f83pQcW/4UmFACjmoRl1Os99IYusPusxmPXBhLREUZvILqhqcmiW7f+aG1dNGObH42P1BskBiUmS7M/DXgGFop6b7FHJpHiYY6AgMCk5FwXV6GT5ktXr1WcBglYLiQr8UGlFcXNVDs4l64vXRc1jHsjrmUwM/P7V1Wh47erLlS+WebprXV0jGLjin7fsOrHYih2VJPl4NOJdHnLi6kxk3DGy3c1aiUF95bVRQ78E/uakWngzLedSo7SdQbjeIMUK3pT7bsXP/NN4uo1TtG3U39EBSVW7EO8ZHxlQ6w7xaQ2e45ReHAX7Rkr5Ay7QxSq+LtsdQHB84EoNIztYHjYMjMcTz++HVh/C0coW2bsnymN3CGXyPsidf34LVismIURQ2KSs3ynIjPEymoYTawBuV/aIxsLWbEGprXefcDlVECj1HMqsXBCeq2fLGpDWsMGg6h4jEIQkdc1+qz7QqkwDe0XFRN5pHrb8QRyOOr5d1OMy/0K29BLs+JYBnMOnXTVNjfIR4JXYx9Wo44w/nT28LDMmfy1c07tBIgzBQ8JX54k=
+    secure: WaCjFk33NNxibc71EoQFvBjOFzXl/acgAMqtzijgpZqeCGJFjGhfch5h7VnLdJCLMRP7OIgylg9fr7v8asA8B1P9B4KVRRRX2lmtyjQrN/hHhm0koA3ya92k1qWco+fd1bhG3Q/A+xe/+ewI65FwKjMp4/6AvVivN3Z31CtgniKWkfQPBMC+KRbX1X6F8LodW8i6eSqcZq5ltra4gN3vJ8XgpxWHS4rC2DVpkmwaddWilUfyC6rD2b3d2UCu0mCwgXrS+vtynwbm/eIyEQEfa+1k9Fza1DQibtohMFwNaxz2PmNOPk+t8KCIfRkqXSz32ALJyPJHafBRwvxYQjmfe8pLicYRApyrGzAMlrEM2pRPbMLJAg06rJfBnsrJCgj2NO9N3hhV9Ne4eek3DK3W+rpWVlozXNRp2eihwK1Jzo1bvCrU7jFElbyPM9OOzu/FeNJb51JBmt24vYQtaZkK2Gq7wmdD/VAxSQT4dyxKobKbB6jRL7zjTzmFlx7tLjdMyv4DFE2pkzomkuE72Eww40TSY+bp+LSl55AJM99kpwg6zlENQkJpmX6MpSa2UtNUTXCZabj45nPeiQm0JFjciZS0OHMdIU6ftFjsiv+0nVyhfCNEjdfgUB32WC7u94M35f6TIIcFze0OuPrsLaQ+M3TCibRWJCoPfRHJ2F9g5/w=

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`actions should clickColumn should succeed 1`] = `
+exports[`actions should clickColumn should succeed when almost full 1`] = `
 Object {
   "payload": Object {
     "board": Array [
@@ -65,6 +65,77 @@ Object {
     "gameKey": "testgamekey",
     "player1": "sarthak",
     "player1IsNext": true,
+    "player2": "gharvhel",
+  },
+  "type": "CLICK_COLUMN",
+}
+`;
+
+exports[`actions should clickColumn should succeed when empty 1`] = `
+Object {
+  "payload": Object {
+    "board": Array [
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "player1",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      Array [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+    ],
+    "gameIsWon": false,
+    "gameKey": "testgamekey",
+    "player1": "sarthak",
+    "player1IsNext": false,
     "player2": "gharvhel",
   },
   "type": "CLICK_COLUMN",

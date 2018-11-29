@@ -10,9 +10,28 @@ describe('actions', () => {
     expect(dispatch.called).toBe(false);
   });
 
-  // TODO create test where getBoard succeeds
+  it('should clickColumn should succeed when empty', () => {
+    const fn = actions.clickColumn(
+      0,
+      [
+        ['', '', '', '', '', ''],
+        ['', '', '', '', '', ''],
+        ['', '', '', '', '', ''],
+        ['', '', '', '', '', ''],
+        ['', '', '', '', '', ''],
+        ['', '', '', '', '', ''],
+        ['', '', '', '', '', '']
+      ],
+      true,
+      'sarthak',
+      'gharvhel',
+      false,
+      'testgamekey'
+    );
+    expect(fn).toMatchSnapshot();
+  });
 
-  it('should clickColumn should succeed', () => {
+  it('should clickColumn should succeed when almost full', () => {
     const fn = actions.clickColumn(
       0,
       [

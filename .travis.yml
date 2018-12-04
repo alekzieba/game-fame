@@ -47,6 +47,7 @@ before_install:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-4.8"; fi
 install:
 - yarn
+- cd app && npm rebuild && cd ..
 - |
   if [ "$TRAVIS_OS_NAME" == "linux" ]; then
     /sbin/start-stop-daemon \
@@ -61,7 +62,6 @@ install:
     :
   fi
 before_script:
-- cd app && npm rebuild && cd ..
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi

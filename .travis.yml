@@ -29,6 +29,8 @@ matrix:
         - xz-utils
         - xorriso
         - rpm
+        - libgnome-keyring-dev
+
 before_cache:
 - rm -rf $HOME/.cache/electron-builder/wine
 cache:

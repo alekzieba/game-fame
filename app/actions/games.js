@@ -3,6 +3,7 @@ import type { Dispatch } from '../reducers/types';
 import { firebaseapp } from '../constants/firebase';
 
 export const GET_GAME = 'GET_GAME';
+export const REMOVE_GAME = 'REMOVE_GAME';
 export const CREATE_GAME = 'CREATE_GAME';
 
 export function getGames(sanitizedEmail) {
@@ -25,6 +26,12 @@ export function getGames(sanitizedEmail) {
             payload: snapshot2.val()
           });
         });
+    });
+    gameIds.on('child_removed', snapshot => {
+      dispatch({
+        type: REMOVE_GAME,
+        payload: snapshot.val()
+      });
     });
   };
 }

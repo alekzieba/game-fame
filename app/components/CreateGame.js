@@ -36,7 +36,7 @@ class CreateGame extends Component {
 
     // Make a random game ID -- very low chance of a collision, but this
     //   is a risk we take for not using a web server.
-    const gameId =
+    let gameId =
       Math.random()
         .toString(36)
         .substring(2, 15) +
@@ -47,8 +47,10 @@ class CreateGame extends Component {
     // waiting for game implementation before making sure to pass the proper values
     switch (values.game_type) {
       case 'tictactoe':
+        gameId = `tictactoe/${gameId}`;
         history.push({
           pathname: routes.TICTACTOE,
+          currentUser: auth.name,
           gameKey: gameId,
           exists: false
         });

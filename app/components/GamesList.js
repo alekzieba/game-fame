@@ -21,11 +21,11 @@ class GamesList extends Component {
   }
 
   enterCode(values) {
-    const { history } = this.props;
-
+    const { history, auth } = this.props;
     const gameKey = `tictactoe/${values.game_code}`;
     history.push({
       pathname: routes.TICTACTOE,
+      currentUser: auth.name,
       gameKey,
       exists: true
     });

@@ -7,8 +7,11 @@ import {
   fillSquare,
   resetBoard,
   getBoard,
-  createBoard
+  createBoard,
+  submitMessage,
+  getMessages
 } from '../actions/tictactoe';
+import MessageBoard from './MessageBoard';
 import styles from './TicTacToe.css';
 
 function Square(props) {
@@ -28,17 +31,26 @@ type BoardProps = {
   board: array,
   location: object
 };
+//
+//type MsgProps = {
+//  fillSquare: () => void,
+//  resetBoard: () => void,
+//  gameKey: string,
+//  xIsTrue: boolean,
+//  board: array,
+//  location: object
+//};
 
 class Board extends Component {
   props: BoardProps;
-
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const gameKey = this.props.location.gameKey;
+    const { gameKey, currentUser } = this.props.location;
     const existingGame = this.props.location.exists;
     // const user1 = 'sarthak';
     // const user2 = 'gharvhel';
@@ -46,8 +58,11 @@ class Board extends Component {
     // const existingGame = false;
     if (existingGame) {
       this.props.getBoard(gameKey);
+      this.props.getMessages(gameKey);
     } else {
-      this.props.createBoard(gameKey);
+      this.props.createBoard(gameKey, currentUser);
+      this.props.getBoard(gameKey);
+      this.props.getMessages(gameKey);
     }
   }
 
@@ -63,7 +78,7 @@ class Board extends Component {
 
   handleClick(i) {
     const { xIsTrue, board, fillSquare: fill } = this.props;
-    const { gameKey } = this.props.location;
+    const { gameKey, currentUser } = this.props.location;
     const symbol = xIsTrue ? 'X' : 'O';
     if (calculateWinner(board)) {
       return;
@@ -72,7 +87,16 @@ class Board extends Component {
     if (board[i] !== null && board[i] !== undefined) {
       return;
     }
-    fill(i, board, symbol, gameKey);
+    fill(i, board, symbol, gameKey, currentUser);
+  }
+
+  handleSubmit() {
+    let msg = document.getElementById('textInput').value;
+    document.getElementById('textInput').value = '';
+    const { submitMessage, messageList } = this.props;
+    const { gameKey, currentUser } = this.props.location;
+    msg = currentUser + ': ' + msg;
+    submitMessage(gameKey, msg, messageList);
   }
 
   render() {
@@ -112,6 +136,15 @@ class Board extends Component {
             RESET BOARD
           </button>
         </div>
+        <MessageBoard />
+        <input id="textInput" placeholder="Type here" />
+        <button
+          onClick={this.handleSubmit}
+          type="submit"
+          className="btn btn-lg btn-primary"
+        >
+          SEND
+        </button>
       </div>
     );
   }
@@ -140,7 +173,14 @@ function calculateWinner(squares) {
 // Get methods from Actions
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { fillSquare, resetBoard, getBoard, createBoard },
+    {
+      fillSquare,
+      resetBoard,
+      getBoard,
+      createBoard,
+      submitMessage,
+      getMessages
+    },
     dispatch
   );
 }

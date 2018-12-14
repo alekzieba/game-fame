@@ -19,11 +19,12 @@ class GamesList extends Component {
     );
   }
 
-  enterCode(gameKey) {
-    const { history } = this.props;
-    console.log(gameKey);
+  enterCode(values) {
+    const { history, auth } = this.props;
+    const gameKey = `tictactoe/${values.game_code}`;
     history.push({
       pathname: routes.TICTACTOE,
+      currentUser: auth.name,
       gameKey,
       exists: true
     });

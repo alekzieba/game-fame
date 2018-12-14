@@ -15,8 +15,4 @@ describe('actions', () => {
     fn(dispatch);
     expect(dispatch.called).toBe(false);
   });
-
-  it('should createBoard should succeed', () => {
-    expect(actions.createBoard('test')).toMatchSnapshot();
-  });
 });

@@ -10,11 +10,54 @@ function convertBoard(board, type1, type2) {
   return boardRet;
 }
 
-export function fillSquare(index, board, symbol, gameKey) {
+export function fillSquare(index, board, symbol, gameKey, userMakingMove) {
+  let firstUser = null;
+
+  //  dbdRef
+  //      .once('value', snapshot => {
+  //        newBoard = (snapshot.val() && snapshot.val().board) || [];
+  //        newGameIsWon = (snapshot.val() && snapshot.val().gameIsWon) || false;
+  //        newPlayer1IsNext =
+  //          (snapshot.val() && snapshot.val().player1IsNext) || false;
+  //      })
+  //      .then(() =>
+  //        dispatch(
+  //          setPost({
+  //            type: SET_BOARD,
+  //            payload: {
+  //              player1IsNext: newPlayer1IsNext,
+  //              player1: user1,
+  //              player2: user2,
+  //              gameIsWon: newGameIsWon,
+  //              gameKey,
+  //              board: newBoard
+  //            }
+  //          })
+  //        )
+  //      )
+  //      .catch();
+
+  firebaseapp
+    .database()
+    .ref(`games/${gameKey}/3`)
+    .once('value', snapshot => {
+      firstUser = snapshot.val();
+    });
   let newBoard = board.slice();
   newBoard = convertBoard(newBoard, null, 'null');
   newBoard[index] = symbol;
   const xIsTrue = !(symbol === 'X');
+  console.log(firstUser, userMakingMove, xIsTrue);
+  if (firstUser === userMakingMove && xIsTrue) {
+    return {
+      type: 'IGNORE'
+    };
+  }
+  if (firstUser !== userMakingMove && !xIsTrue) {
+    return {
+      type: 'IGNORE'
+    };
+  }
   firebaseapp
     .database()
     .ref(`games/${gameKey}/0`)
@@ -68,16 +111,52 @@ export function getBoard(gameKey) {
   };
 }
 
-export function createBoard(gameKey) {
+export function getMessages(gameKey) {
+  const gameBoardRef = firebaseapp.database().ref(`games/${gameKey}`);
+  return (dispatch: Dispatch) => {
+    gameBoardRef.on('value', snapshot => {
+      dispatch({
+        type: 'GET_MESSAGES',
+        payload: {
+          board: snapshot.val(),
+          gameKey
+        }
+      });
+    });
+  };
+}
+
+export function createBoard(gameKey, firstUser = '') {
   const gameElem = firebaseapp.database().ref(`games/${gameKey}`);
   const board = Array(9).fill('null');
-  gameElem.set([board, true]);
+  const message = [
+    'ADMIN: Welcome to the chat!',
+    "ADMIN: Type anything here and click 'Send' to submit."
+  ];
+  gameElem.set([board, true, message, firstUser]);
   return {
     type: 'NEW_BOARD',
     payload: {
       board,
       xIsTrue: true,
-      gameKey
+      gameKey,
+      message
+    }
+  };
+}
+
+export function submitMessage(gameKey, message, messageList) {
+  const newMessageList = messageList.slice();
+  newMessageList.push(message);
+  firebaseapp
+    .database()
+    .ref(`games/${gameKey}/2`)
+    .set(newMessageList);
+
+  return {
+    type: 'SUBMIT_MESSAGE',
+    payload: {
+      messageList: newMessageList
     }
   };
 }

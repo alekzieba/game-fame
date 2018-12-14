@@ -1,0 +1,1314 @@
+travis_fold:start:worker_info[0K[33;1mWorker information[0m
+hostname: 7f01de57-90cf-4b99-a555-3c374095d3db@14753.wjb-2
+version: v4.4.0 https://github.com/travis-ci/worker/tree/80d1a9bbc1de0f176c56230ce9cc27f45ff1eb27
+instance: f0d1bda0-b495-4bc5-9bfb-a1717b2b919c travis-ci-macos-10.13-xcode9.4.1-1529955246 (via amqp)
+startup: 1m7.137147534s
+travis_fold:end:worker_info[0Ktravis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: node_js
+Build id: 93514753
+Job id: 162699606
+Runtime kernel version: 17.4.0
+travis-build version: c03625144
+[34m[1mBuild image provisioning date and time[0m
+Mon Jun 25 21:55:14 GMT 2018
+[34m[1mOperating System Details[0m
+ProductName:	Mac OS X
+ProductVersion:	10.13.3
+BuildVersion:	17D102
+[34m[1mGit version[0m
+git version 2.18.0
+[34m[1mbash version[0m
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin17)
+Copyright (C) 2007 Free Software Foundation, Inc.
+[34m[1mGCC version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mLLVM version[0m
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode-9.4.1.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+[34m[1mPre-installed Ruby versions[0m
+ruby-2.3.5
+ruby-2.4.3
+[34m[1mPre-installed Node.js versions[0m
+v4.9.1
+v5.12.0
+v6.14.3
+v8.11.3
+[34m[1mmvn -version[0m
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-17T18:33:14Z)
+Maven home: /usr/local/Cellar/maven/3.5.4/libexec
+Java version: 10.0.1, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "10.13.3", arch: "x86_64", family: "mac"
+travis_fold:end:system_info[0K
+Uninstalled oclint to prevent interference with other packages.
+If you need oclint, you must explicitly install it.
+
+travis_fold:start:ssh_key[0KInstalling SSH key from: default repository key
+Key fingerprint: ce:05:92:53:02:27:2e:c1:ed:d1:46:d3:a9:f4:c6:f3
+travis_fold:end:ssh_key[0KUsing /Users/travis/.netrc to clone repository.
+
+travis_fold:start:git.checkout[0Ktravis_time:start:007e34b4[0K$ git clone --depth=50 --branch=master https://github.com/alekzieba/game-fame.git alekzieba/game-fame
+Cloning into 'alekzieba/game-fame'...
+travis_time:end:007e34b4:start=1543932230184951000,finish=1543932230878756000,duration=693805000[0K$ cd alekzieba/game-fame
+$ git checkout -qf 7366be46b07b73de527e97307fad129a3664926c
+travis_fold:end:git.checkout[0K
+
+[33;1mSetting environment variables from repository settings[0m
+$ export GH_TOKEN=[secure]
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export FIREBASE_API_KEY=[secure]
+$ export FIREBASE_AUTH_DOMAIN=[secure]
+$ export FIREBASE_DATABASE_URL=[secure]
+$ export FIREBASE_PROJECT_ID=[secure]
+$ export FIREBASE_STORAGE_BUCKET=[secure]
+$ export FIREBASE_MSID=[secure]
+$ export GOOGLE_OAUTH_CLIENT_ID=[secure]
+$ export ELECTRON_CACHE=$HOME/.cache/electron
+$ export ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+
+travis_fold:start:nvm.install[0Ktravis_time:start:2164b35b[0K$ nvm install 10
+Downloading and installing node v10.14.1...
+Downloading https://nodejs.org/dist/v10.14.1/node-v10.14.1-darwin-x64.tar.xz...
+Computing checksum with shasum -a 256
+Checksums matched!
+Now using node v10.14.1 (npm v6.4.1)
+travis_time:end:2164b35b:start=1543932232491684000,finish=1543932238278820000,duration=5787136000[0Ktravis_fold:end:nvm.install[0K
+travis_fold:start:install.yarn[0K[32;1mInstalling yarn[0m
+travis_time:start:0b0fe8d2[0K$ curl -o- -L https://yarnpkg.com/install.sh | bash
+[37mInstalling Yarn![0m
+[36m> Downloading tarball...[0m
+
+[1/2]: https://yarnpkg.com/latest.tar.gz --> /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/yarn.tar.gz.XXXXXXXXXX.RoXydYlE
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    93  100    93    0     0    838      0 --:--:-- --:--:-- --:--:--   845
+100   609    0   609    0     0   1543      0 --:--:-- --:--:-- --:--:--  1543
+100 1139k  100 1139k    0     0  1871k      0 --:--:-- --:--:-- --:--:-- 1871k
+
+[2/2]: https://yarnpkg.com/latest.tar.gz.asc --> /var/folders/nz/vv4_9tw56nv9k3tkvyszvwg80000gn/T/yarn.tar.gz.XXXXXXXXXX.RoXydYlE.asc
+100    97  100    97    0     0   3059      0 --:--:-- --:--:-- --:--:--  3059
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   613    0   613    0     0   4429      0 --:--:-- --:--:-- --:--:--  598k
+100   832  100   832    0     0   5072      0 --:--:-- --:--:-- --:--:--  5072
+[36m> Verifying integrity...[0m
+gpg: key 1646B01B86E50310: public key "Yarn Packaging <yarn@dan.cx>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: Signature made Wed Nov  7 15:13:31 2018 GMT
+gpg:                using RSA key E21930C4D0A4AA4618581F7AE074D16EB6FF4DE3
+gpg: Good signature from "Yarn Packaging <yarn@dan.cx>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 72EC F46A 56B4 AD39 C907  BBB7 1646 B01B 86E5 0310
+     Subkey fingerprint: E219 30C4 D0A4 AA46 1858  1F7A E074 D16E B6FF 4DE3
+[32m> GPG signature looks good[0m
+[36m> Extracting to ~/.yarn...[0m
+[36m> Adding to $PATH...[0m
+[36m> We've added the following to your /Users/travis/.bashrc
+> If this isn't the profile of your current shell then please add the following to your correct profile:
+   
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+[0m
+[32m> Successfully installed Yarn 1.12.3! Please open another terminal where the `yarn` command will now be available.[0m
+travis_time:end:0b0fe8d2:start=1543932239033132000,finish=1543932242000822000,duration=2967690000[0K[32;1mSetting up $PATH[0m
+$ export PATH=${TRAVIS_HOME}/.yarn/bin:$PATH
+travis_fold:end:install.yarn[0Ktravis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=${TRAVIS_HOME}/.casher
+travis_time:start:0e74d5fd[0K$ Installing caching utilities
+travis_time:end:0e74d5fd:start=1543932243616004000,finish=1543932243756733000,duration=140729000[0Ktravis_time:start:000e659b[0Ktravis_time:end:000e659b:start=1543932243771631000,finish=1543932243780320000,duration=8689000[0Ktravis_time:start:1d6ea118[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching master/cache-osx-xcode9.4-7243bb22481290cfbcce7c85bf6520426901e3ebe181e42eed18982ef2d74411--node-10.tgz[0m
+[32;1mfound cache[0m
+travis_time:end:1d6ea118:start=1543932243791145000,finish=1543932267856963000,duration=24065818000[0Ktravis_time:start:1632d944[0Ktravis_time:end:1632d944:start=1543932267868684000,finish=1543932267877648000,duration=8964000[0Ktravis_time:start:0042025b[0K[32;1madding /Users/travis/build/alekzieba/game-fame/node_modules to cache[0m
+[32;1mcreating directory /Users/travis/build/alekzieba/game-fame/node_modules[0m
+[32;1madding /Users/travis/build/alekzieba/game-fame/app/node_modules to cache[0m
+[32;1mcreating directory /Users/travis/build/alekzieba/game-fame/app/node_modules[0m
+[32;1madding /Users/travis/.nvm/versions/node/v10.14.1/lib/node_modules to cache[0m
+[32;1madding /Users/travis/build/alekzieba/game-fame/flow-typed to cache[0m
+[32;1madding /Users/travis/.cache/electron to cache[0m
+[32;1mcreating directory /Users/travis/.cache/electron[0m
+[32;1madding /Users/travis/.cache/electron-builder to cache[0m
+[32;1mcreating directory /Users/travis/.cache/electron-builder[0m
+[32;1madding /Users/travis/docker to cache[0m
+[32;1mcreating directory /Users/travis/docker[0m
+travis_time:end:0042025b:start=1543932267888815000,finish=1543932312848787000,duration=44959972000[0Ktravis_fold:end:cache.1[0K
+travis_fold:start:cache.yarn[0K
+travis_time:start:0ddc4769[0Ktravis_time:end:0ddc4769:start=1543932312861250000,finish=1543932312870579000,duration=9329000[0Ktravis_time:start:1a7d61ee[0K[32;1madding /Users/travis/.cache/yarn to cache[0m
+[32;1mcreating directory /Users/travis/.cache/yarn[0m
+travis_time:end:1a7d61ee:start=1543932312888171000,finish=1543932321137246000,duration=8249075000[0Ktravis_fold:end:cache.yarn[0K$ node --version
+v10.14.1
+$ npm --version
+6.4.1
+$ nvm --version
+0.33.11
+$ yarn --version
+1.12.3
+
+travis_fold:start:before_install[0Ktravis_time:start:0038474a[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-4.8"; fi
+travis_time:end:0038474a:start=1543932321919781000,finish=1543932321930636000,duration=10855000[0Ktravis_fold:end:before_install[0Ktravis_fold:start:install.1[0Ktravis_time:start:1e209182[0K$ yarn
+yarn install v1.12.3
+[1/4] Resolving packages...
+success Already up-to-date.
+$ node -r babel-register internals/scripts/CheckNativeDep.js && yarn flow-typed && yarn build-dll && electron-builder install-app-deps package.json
+yarn run v1.12.3
+$ rimraf flow-typed/npm && flow-typed install --overwrite || true
+• Found 98 dependencies in package.json to install libdefs for. Searching...
+• flow-typed cache not found, fetching from GitHub...
+• Installing 16 libDefs...
+[1m  • chalk_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/chalk_v2.x.x.js[39m[22m
+chalk
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • babel-register_v6.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/babel-register_v6.x.x.js[39m[22m
+babel-register
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router_v4.x.x.js[39m[22m
+react-router
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-redux_v5.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-redux_v5.x.x.js[39m[22m
+react-redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • history_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/history_v4.x.x.js[39m[22m
+history
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jquery_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jquery_v3.x.x.js[39m[22m
+jquery
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • enzyme_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/enzyme_v3.x.x.js[39m[22m
+enzyme
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router-dom_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router-dom_v4.x.x.js[39m[22m
+react-router-dom
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jest_v23.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jest_v23.x.x.js[39m[22m
+jest
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • redux_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/redux_v4.x.x.js[39m[22m
+redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • flow-bin_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/flow-bin_v0.x.x.js[39m[22m
+flow-bin
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • prettier_v1.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/prettier_v1.x.x.js[39m[22m
+prettier
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-test-renderer_v16.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-test-renderer_v16.x.x.js[39m[22m
+react-test-renderer
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • webpack_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/webpack_v4.x.x.js[39m[22m
+webpack
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • rimraf_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/rimraf_v2.x.x.js[39m[22m
+rimraf
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • testcafe_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/testcafe_v0.x.x.js[39m[22m
+testcafe
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+• Generating stubs for untyped dependencies...
+[1m  • electron-debug@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/electron-debug_vx.x.x.js[39m[22m
+[1m  • electron-store@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/electron-store_vx.x.x.js[39m[22m
+[1m  • source-map-support@^0.5.6[22m
+[1m    └> [31mflow-typed/npm/source-map-support_vx.x.x.js[39m[22m
+[1m  • babel-plugin-dev-expression@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-dev-expression_vx.x.x.js[39m[22m
+[1m  • enzyme-to-json@^3.3.4[22m
+[1m    └> [31mflow-typed/npm/enzyme-to-json_vx.x.x.js[39m[22m
+[1m  • eslint-formatter-pretty@^1.3.0[22m
+[1m    └> [31mflow-typed/npm/eslint-formatter-pretty_vx.x.x.js[39m[22m
+[1m  • eslint-import-resolver-webpack@^0.10.1[22m
+[1m    └> [31mflow-typed/npm/eslint-import-resolver-webpack_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-testcafe@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-testcafe_vx.x.x.js[39m[22m
+[1m  • stylelint-config-standard@^18.2.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-standard_vx.x.x.js[39m[22m
+[1m  • redux-persist-electron-storage@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/redux-persist-electron-storage_vx.x.x.js[39m[22m
+[1m  • react-hot-loader@^4.3.4[22m
+[1m    └> [31mflow-typed/npm/react-hot-loader_vx.x.x.js[39m[22m
+[1m  • redux-thunk@^2.3.0[22m
+[1m    └> [31mflow-typed/npm/redux-thunk_vx.x.x.js[39m[22m
+[1m  • babel-plugin-add-module-exports@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-add-module-exports_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-class-properties@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-class-properties_vx.x.x.js[39m[22m
+[1m  • babel-preset-env@^1.7.0[22m
+[1m    └> [31mflow-typed/npm/babel-preset-env_vx.x.x.js[39m[22m
+[1m  • babel-preset-react@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react_vx.x.x.js[39m[22m
+[1m  • babel-preset-react-optimize@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react-optimize_vx.x.x.js[39m[22m
+[1m  • babel-preset-stage-0@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-stage-0_vx.x.x.js[39m[22m
+[1m  • detect-port@^1.2.3[22m
+[1m    └> [31mflow-typed/npm/detect-port_vx.x.x.js[39m[22m
+[1m  • babel-jest@^23.4.2[22m
+[1m    └> [31mflow-typed/npm/babel-jest_vx.x.x.js[39m[22m
+[1m  • electron-devtools-installer@^2.2.4[22m
+[1m    └> [31mflow-typed/npm/electron-devtools-installer_vx.x.x.js[39m[22m
+[1m  • enzyme-adapter-react-16@^1.1.1[22m
+[1m    └> [31mflow-typed/npm/enzyme-adapter-react-16_vx.x.x.js[39m[22m
+[1m  • eslint-config-airbnb@^17.0.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-airbnb_vx.x.x.js[39m[22m
+[1m  • eslint-config-prettier@^2.9.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-prettier_vx.x.x.js[39m[22m
+[1m  • file-loader@^1.1.11[22m
+[1m    └> [31mflow-typed/npm/file-loader_vx.x.x.js[39m[22m
+[1m  • mini-css-extract-plugin@^0.4.1[22m
+[1m    └> [31mflow-typed/npm/mini-css-extract-plugin_vx.x.x.js[39m[22m
+[1m  • redux-logger@^3.0.6[22m
+[1m    └> [31mflow-typed/npm/redux-logger_vx.x.x.js[39m[22m
+[1m  • sass-loader@^7.0.3[22m
+[1m    └> [31mflow-typed/npm/sass-loader_vx.x.x.js[39m[22m
+[1m  • spectron@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/spectron_vx.x.x.js[39m[22m
+[1m  • style-loader@^0.21.0[22m
+[1m    └> [31mflow-typed/npm/style-loader_vx.x.x.js[39m[22m
+[1m  • stylelint-config-prettier@^4.0.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-prettier_vx.x.x.js[39m[22m
+[1m  • lint-staged@^7.2.0[22m
+[1m    └> [31mflow-typed/npm/lint-staged_vx.x.x.js[39m[22m
+[1m  • testcafe-react-selectors@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/testcafe-react-selectors_vx.x.x.js[39m[22m
+[1m  • webpack-cli@^3.1.0[22m
+[1m    └> [31mflow-typed/npm/webpack-cli_vx.x.x.js[39m[22m
+[1m  • webpack-merge@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/webpack-merge_vx.x.x.js[39m[22m
+[1m  • yarn@^1.9.2[22m
+[1m    └> [31mflow-typed/npm/yarn_vx.x.x.js[39m[22m
+[1m  • @fortawesome/fontawesome-free@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/@fortawesome/fontawesome-free_vx.x.x.js[39m[22m
+[1m  • bootstrap@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/bootstrap_vx.x.x.js[39m[22m
+[1m  • react-google-button@^0.5.3[22m
+[1m    └> [31mflow-typed/npm/react-google-button_vx.x.x.js[39m[22m
+[1m  • babel-eslint@^8.2.6[22m
+[1m    └> [31mflow-typed/npm/babel-eslint_vx.x.x.js[39m[22m
+[1m  • babel-loader@^7.1.5[22m
+[1m    └> [31mflow-typed/npm/babel-loader_vx.x.x.js[39m[22m
+[1m  • concurrently@^3.6.1[22m
+[1m    └> [31mflow-typed/npm/concurrently_vx.x.x.js[39m[22m
+[1m  • cross-env@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/cross-env_vx.x.x.js[39m[22m
+[1m  • cross-spawn@^6.0.5[22m
+[1m    └> [31mflow-typed/npm/cross-spawn_vx.x.x.js[39m[22m
+[1m  • css-loader@^1.0.0[22m
+[1m    └> [31mflow-typed/npm/css-loader_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-es2015-classes@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-es2015-classes_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-compat@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-compat_vx.x.x.js[39m[22m
+[1m  • electron-builder@^20.26.0[22m
+[1m    └> [31mflow-typed/npm/electron-builder_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-import@^2.13.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-import_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-promise@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-promise_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-react@^7.10.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-react_vx.x.x.js[39m[22m
+[1m  • fbjs-scripts@^0.8.3[22m
+[1m    └> [31mflow-typed/npm/fbjs-scripts_vx.x.x.js[39m[22m
+[1m  • husky@^0.14.3[22m
+[1m    └> [31mflow-typed/npm/husky_vx.x.x.js[39m[22m
+[1m  • identity-obj-proxy@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/identity-obj-proxy_vx.x.x.js[39m[22m
+[1m  • testcafe-browser-provider-electron@^0.0.6[22m
+[1m    └> [31mflow-typed/npm/testcafe-browser-provider-electron_vx.x.x.js[39m[22m
+[1m  • testcafe-live@^0.1.3[22m
+[1m    └> [31mflow-typed/npm/testcafe-live_vx.x.x.js[39m[22m
+[1m  • url-loader@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/url-loader_vx.x.x.js[39m[22m
+[1m  • webpack-bundle-analyzer@^2.13.1[22m
+[1m    └> [31mflow-typed/npm/webpack-bundle-analyzer_vx.x.x.js[39m[22m
+[1m  • webpack-dev-server@^3.1.5[22m
+[1m    └> [31mflow-typed/npm/webpack-dev-server_vx.x.x.js[39m[22m
+[1m  • uglifyjs-webpack-plugin@1.2.7[22m
+[1m    └> [31mflow-typed/npm/uglifyjs-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • devtron@^1.4.0[22m
+[1m    └> [31mflow-typed/npm/devtron_vx.x.x.js[39m[22m
+[1m  • connected-react-router@^4.4.1[22m
+[1m    └> [31mflow-typed/npm/connected-react-router_vx.x.x.js[39m[22m
+[1m  • eslint@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/eslint_vx.x.x.js[39m[22m
+[1m  • electron-rebuild@^1.8.2[22m
+[1m    └> [31mflow-typed/npm/electron-rebuild_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-flowtype@^2.50.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-flowtype_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jest@^21.18.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jest_vx.x.x.js[39m[22m
+[1m  • stylelint@^9.4.0[22m
+[1m    └> [31mflow-typed/npm/stylelint_vx.x.x.js[39m[22m
+[1m  • flow-typed@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/flow-typed_vx.x.x.js[39m[22m
+[1m  • googleapis@^34.0.0[22m
+[1m    └> [31mflow-typed/npm/googleapis_vx.x.x.js[39m[22m
+[1m  • babel-core@^6.26.3[22m
+[1m    └> [31mflow-typed/npm/babel-core_vx.x.x.js[39m[22m
+[1m  • flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/flow-runtime_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jsx-a11y@6.1.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jsx-a11y_vx.x.x.js[39m[22m
+[1m  • sinon@^6.1.4[22m
+[1m    └> [31mflow-typed/npm/sinon_vx.x.x.js[39m[22m
+[1m  • optimize-css-assets-webpack-plugin@^5.0.0[22m
+[1m    └> [31mflow-typed/npm/optimize-css-assets-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • babel-plugin-flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-flow-runtime_vx.x.x.js[39m[22m
+[1m  • node-sass@^4.9.2[22m
+[1m    └> [31mflow-typed/npm/node-sass_vx.x.x.js[39m[22m
+[1m  • electron@^2.0.6[22m
+[1m    └> [31mflow-typed/npm/electron_vx.x.x.js[39m[22m
+[31m[39m
+[31m!! No flow@v0.77.0-compatible libdefs found in flow-typed for the above untyped dependencies !![39m
+
+I've generated `any`-typed stubs for these packages, but consider submitting 
+libdefs for them to [1mhttps://github.com/flowtype/flow-typed/[22m
+
+Done in 30.47s.
+yarn run v1.12.3
+$ cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.dev.dll.js --colors
+Hash: 8eee9d4992edc6ca6601
+Version: webpack 4.23.1
+Time: 7038ms
+Built at: 12/04/2018 2:06:13 PM
+              Asset      Size    Chunks             Chunk Names
+renderer.dev.dll.js  12.8 MiB  renderer  [emitted]  renderer
+Entrypoint renderer = renderer.dev.dll.js
+[0] dll renderer 12 bytes {renderer} [built]
+[./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {renderer} [built]
+[./node_modules/webpack/buildin/harmony-module.js] (webpack)/buildin/harmony-module.js 573 bytes {renderer} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {renderer} [built]
+[assert] external "assert" 42 bytes {renderer} [built]
+[child_process] external "child_process" 42 bytes {renderer} [built]
+[crypto] external "crypto" 42 bytes {renderer} [built]
+[electron] external "electron" 42 bytes {renderer} [built]
+[events] external "events" 42 bytes {renderer} [built]
+[fs] external "fs" 42 bytes {renderer} [built]
+[module] external "module" 42 bytes {renderer} [built]
+[os] external "os" 42 bytes {renderer} [built]
+[path] external "path" 42 bytes {renderer} [built]
+[querystring] external "querystring" 42 bytes {renderer} [built]
+[stream] external "stream" 42 bytes {renderer} [built]
+    + 887 hidden modules
+
+WARNING in ./node_modules/electron-debug/index.js 101:45-58
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+
+WARNING in ./node_modules/electron-debug/index.js 102:61-74
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+Done in 9.92s.
+  • electron-builder version=20.29.0
+  • loaded configuration file=package.json ("build" field)
+  • installing production dependencies platform=darwin arch=x64 appDir=/Users/travis/build/alekzieba/game-fame/app
+Done in 311.58s.
+travis_time:end:1e209182:start=1543932321944505000,finish=1543932633895350000,duration=311950845000[0Ktravis_fold:end:install.1[0Ktravis_fold:start:install.2[0Ktravis_time:start:0871a764[0K$ cd app && npm rebuild && cd ..
+
+> grpc@1.13.1 install /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc
+> node-pre-gyp install --fallback-to-build --library=static_library
+
+node-pre-gyp WARN Using request for node-pre-gyp https download 
+[grpc] Success: "/Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/src/node/extension_binary/node-v64-darwin-x64-unknown/grpc_node.node" already installed
+Pass --update-binary to reinstall or --build-from-source to recompile
+
+> grpc@1.16.0 install /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc
+> node-pre-gyp install --fallback-to-build --library=static_library
+
+node-pre-gyp WARN Using request for node-pre-gyp https download 
+[grpc] Success: "/Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/src/node/extension_binary/node-v64-darwin-x64-unknown/grpc_node.node" already installed
+Pass --update-binary to reinstall or --build-from-source to recompile
+firebase@5.5.7 /Users/travis/build/alekzieba/game-fame/app/node_modules/firebase
+@firebase/app@0.3.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/app
+@firebase/app-types@0.3.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/app-types
+@firebase/util@0.2.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/util
+tslib@1.9.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/tslib
+dom-storage@2.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/dom-storage
+xmlhttprequest@1.8.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/xmlhttprequest
+@firebase/auth@0.7.8 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/auth
+@firebase/auth-types@0.3.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/auth-types
+@firebase/database@0.3.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/database
+@firebase/database-types@0.3.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/database-types
+@firebase/logger@0.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/logger
+faye-websocket@0.11.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/faye-websocket
+websocket-driver@0.7.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/websocket-driver
+http-parser-js@0.5.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/http-parser-js
+websocket-extensions@0.1.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/websocket-extensions
+@firebase/firestore@0.8.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore
+@firebase/firestore-types@0.7.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore-types
+@firebase/webchannel-wrapper@0.2.11 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/webchannel-wrapper
+grpc@1.13.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc
+lodash@4.17.11 /Users/travis/build/alekzieba/game-fame/app/node_modules/lodash
+nan@2.11.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/nan
+node-pre-gyp@0.10.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/node-pre-gyp
+detect-libc@1.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/detect-libc
+mkdirp@0.5.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/mkdirp
+minimist@0.0.8 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/mkdirp/node_modules/minimist
+needle@2.2.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/needle
+debug@2.6.9 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/debug
+ms@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/ms
+iconv-lite@0.4.23 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/iconv-lite
+safer-buffer@2.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/safer-buffer
+sax@1.2.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/sax
+nopt@4.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/nopt
+abbrev@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/abbrev
+osenv@0.1.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/osenv
+os-homedir@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/os-homedir
+os-tmpdir@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/os-tmpdir
+npm-packlist@1.1.11 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/npm-packlist
+ignore-walk@3.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/ignore-walk
+minimatch@3.0.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/minimatch
+brace-expansion@1.1.11 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/brace-expansion
+balanced-match@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/balanced-match
+concat-map@0.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/concat-map
+npm-bundled@1.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/npm-bundled
+npmlog@4.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/npmlog
+are-we-there-yet@1.1.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/are-we-there-yet
+delegates@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/delegates
+readable-stream@2.3.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/readable-stream
+core-util-is@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/core-util-is
+inherits@2.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/inherits
+isarray@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/isarray
+process-nextick-args@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/process-nextick-args
+safe-buffer@5.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/safe-buffer
+string_decoder@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/string_decoder
+util-deprecate@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/util-deprecate
+console-control-strings@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/console-control-strings
+gauge@2.7.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/gauge
+aproba@1.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/aproba
+has-unicode@2.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/has-unicode
+object-assign@4.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/object-assign
+signal-exit@3.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/signal-exit
+string-width@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/string-width
+code-point-at@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/code-point-at
+is-fullwidth-code-point@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/is-fullwidth-code-point
+number-is-nan@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/number-is-nan
+strip-ansi@3.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/strip-ansi
+ansi-regex@2.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/ansi-regex
+wide-align@1.1.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/wide-align
+set-blocking@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/set-blocking
+rc@1.2.8 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/rc
+deep-extend@0.6.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/deep-extend
+ini@1.3.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/ini
+minimist@1.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/minimist
+strip-json-comments@2.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/strip-json-comments
+rimraf@2.6.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/rimraf
+glob@7.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/glob
+fs.realpath@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/fs.realpath
+inflight@1.0.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/inflight
+once@1.4.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/once
+wrappy@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/wrappy
+path-is-absolute@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/path-is-absolute
+semver@5.5.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/semver
+tar@4.4.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/tar
+chownr@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/chownr
+fs-minipass@1.2.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/fs-minipass
+minipass@2.3.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/minipass
+yallist@3.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/yallist
+minizlib@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/node_modules/minizlib
+protobufjs@5.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/protobufjs
+ascli@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/ascli
+colour@0.7.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/colour
+optjs@3.2.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/optjs
+bytebuffer@5.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/bytebuffer
+long@3.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/long
+glob@7.1.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/glob
+fs.realpath@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/fs.realpath
+inflight@1.0.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/inflight
+once@1.4.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/once
+wrappy@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/wrappy
+inherits@2.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/inherits
+minimatch@3.0.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/minimatch
+brace-expansion@1.1.11 /Users/travis/build/alekzieba/game-fame/app/node_modules/brace-expansion
+balanced-match@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/balanced-match
+concat-map@0.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/concat-map
+path-is-absolute@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/path-is-absolute
+yargs@3.32.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/yargs
+camelcase@2.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/camelcase
+cliui@3.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/cliui
+string-width@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/string-width
+code-point-at@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/code-point-at
+is-fullwidth-code-point@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/is-fullwidth-code-point
+number-is-nan@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/number-is-nan
+strip-ansi@3.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/strip-ansi
+ansi-regex@2.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/ansi-regex
+wrap-ansi@2.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/wrap-ansi
+decamelize@1.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/decamelize
+os-locale@1.4.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/os-locale
+lcid@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/lcid
+invert-kv@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/invert-kv
+window-size@0.1.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/window-size
+y18n@3.2.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/y18n
+@firebase/functions@0.3.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/functions
+@firebase/functions-types@0.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/functions-types
+@firebase/messaging-types@0.2.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/messaging-types
+isomorphic-fetch@2.2.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/isomorphic-fetch
+node-fetch@1.7.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/node-fetch
+encoding@0.1.12 /Users/travis/build/alekzieba/game-fame/app/node_modules/encoding
+iconv-lite@0.4.24 /Users/travis/build/alekzieba/game-fame/app/node_modules/iconv-lite
+safer-buffer@2.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/safer-buffer
+is-stream@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/is-stream
+whatwg-fetch@3.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/isomorphic-fetch/node_modules/whatwg-fetch
+@firebase/messaging@0.3.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/messaging
+@firebase/polyfill@0.3.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/polyfill
+core-js@2.5.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/core-js
+promise-polyfill@7.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/promise-polyfill
+whatwg-fetch@2.0.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/whatwg-fetch
+@firebase/storage@0.2.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/storage
+@firebase/storage-types@0.2.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/storage-types
+grpc@1.16.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc
+node-pre-gyp@0.10.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/node-pre-gyp
+detect-libc@1.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/detect-libc
+mkdirp@0.5.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/mkdirp
+minimist@0.0.8 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/mkdirp/node_modules/minimist
+needle@2.2.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/needle
+debug@2.6.9 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/debug
+ms@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/ms
+iconv-lite@0.4.23 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/iconv-lite
+safer-buffer@2.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/safer-buffer
+sax@1.2.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/sax
+nopt@4.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/nopt
+abbrev@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/abbrev
+osenv@0.1.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/osenv
+os-homedir@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/os-homedir
+os-tmpdir@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/os-tmpdir
+npm-packlist@1.1.11 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/npm-packlist
+ignore-walk@3.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/ignore-walk
+minimatch@3.0.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/minimatch
+brace-expansion@1.1.11 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/brace-expansion
+balanced-match@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/balanced-match
+concat-map@0.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/concat-map
+npm-bundled@1.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/npm-bundled
+npmlog@4.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/npmlog
+are-we-there-yet@1.1.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/are-we-there-yet
+delegates@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/delegates
+readable-stream@2.3.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/readable-stream
+core-util-is@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/core-util-is
+inherits@2.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/inherits
+isarray@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/isarray
+process-nextick-args@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/process-nextick-args
+safe-buffer@5.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/safe-buffer
+string_decoder@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/string_decoder
+util-deprecate@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/util-deprecate
+console-control-strings@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/console-control-strings
+gauge@2.7.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/gauge
+aproba@1.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/aproba
+has-unicode@2.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/has-unicode
+object-assign@4.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/object-assign
+signal-exit@3.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/signal-exit
+string-width@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/string-width
+code-point-at@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/code-point-at
+is-fullwidth-code-point@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/is-fullwidth-code-point
+number-is-nan@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/number-is-nan
+strip-ansi@3.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/strip-ansi
+ansi-regex@2.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/ansi-regex
+wide-align@1.1.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/wide-align
+set-blocking@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/set-blocking
+rc@1.2.8 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/rc
+deep-extend@0.6.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/deep-extend
+ini@1.3.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/ini
+minimist@1.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/minimist
+strip-json-comments@2.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/strip-json-comments
+rimraf@2.6.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/rimraf
+glob@7.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/glob
+fs.realpath@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/fs.realpath
+inflight@1.0.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/inflight
+once@1.4.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/once
+wrappy@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/wrappy
+path-is-absolute@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/path-is-absolute
+semver@5.5.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/semver
+tar@4.4.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/tar
+chownr@1.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/chownr
+fs-minipass@1.2.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/fs-minipass
+minipass@2.3.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/minipass
+yallist@3.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/yallist
+minizlib@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/node_modules/minizlib
+abbrev@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/abbrev
+aproba@1.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/aproba
+are-we-there-yet@1.1.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/are-we-there-yet
+delegates@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/delegates
+readable-stream@2.3.6 /Users/travis/build/alekzieba/game-fame/app/node_modules/readable-stream
+core-util-is@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/core-util-is
+isarray@1.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/isarray
+process-nextick-args@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/process-nextick-args
+safe-buffer@5.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/safe-buffer
+string_decoder@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/string_decoder
+util-deprecate@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/util-deprecate
+chownr@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/chownr
+console-control-strings@1.1.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/console-control-strings
+deep-extend@0.6.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/deep-extend
+fs-minipass@1.2.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/fs-minipass
+minipass@2.3.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/minipass
+yallist@3.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/yallist
+has-unicode@2.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/has-unicode
+ignore-walk@3.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/ignore-walk
+ini@1.3.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/ini
+minimist@0.0.8 /Users/travis/build/alekzieba/game-fame/app/node_modules/minimist
+minizlib@1.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/minizlib
+ms@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/ms
+npm-bundled@1.0.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/npm-bundled
+npm-packlist@1.1.12 /Users/travis/build/alekzieba/game-fame/app/node_modules/npm-packlist
+npmlog@4.1.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/npmlog
+gauge@2.7.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/gauge
+object-assign@4.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/object-assign
+signal-exit@3.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/signal-exit
+wide-align@1.1.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/wide-align
+string-width@2.1.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/wide-align/node_modules/string-width
+is-fullwidth-code-point@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/wide-align/node_modules/is-fullwidth-code-point
+strip-ansi@4.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/wide-align/node_modules/strip-ansi
+ansi-regex@3.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/wide-align/node_modules/ansi-regex
+set-blocking@2.0.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/set-blocking
+os-homedir@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/os-homedir
+os-tmpdir@1.0.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/os-tmpdir
+osenv@0.1.5 /Users/travis/build/alekzieba/game-fame/app/node_modules/osenv
+strip-json-comments@2.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/strip-json-comments
+detect-libc@1.0.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/detect-libc
+mkdirp@0.5.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/mkdirp
+nopt@4.0.1 /Users/travis/build/alekzieba/game-fame/app/node_modules/nopt
+rimraf@2.6.2 /Users/travis/build/alekzieba/game-fame/app/node_modules/rimraf
+sax@1.2.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/sax
+debug@2.6.9 /Users/travis/build/alekzieba/game-fame/app/node_modules/debug
+semver@5.6.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/semver
+needle@2.2.4 /Users/travis/build/alekzieba/game-fame/app/node_modules/needle
+node-pre-gyp@0.10.3 /Users/travis/build/alekzieba/game-fame/app/node_modules/node-pre-gyp
+rc@1.2.8 /Users/travis/build/alekzieba/game-fame/app/node_modules/rc
+minimist@1.2.0 /Users/travis/build/alekzieba/game-fame/app/node_modules/rc/node_modules/minimist
+tar@4.4.7 /Users/travis/build/alekzieba/game-fame/app/node_modules/tar
+travis_time:end:0871a764:start=1543932633958911000,finish=1543932637550834000,duration=3591923000[0Ktravis_fold:end:install.2[0Ktravis_fold:start:install.3[0Ktravis_time:start:01dc0586[0K$ if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    /sbin/start-stop-daemon \
+    --start \
+    --quiet \
+    --pidfile /tmp/custom_xvfb_99.pid \
+    --make-pidfile \
+    --background \
+    --exec /usr/bin/Xvfb \
+    -- :99 -ac -screen 0 1280x1024x16
+  else
+    :
+  fi
+  
+travis_time:end:01dc0586:start=1543932637580429000,finish=1543932637602860000,duration=22431000[0Ktravis_fold:end:install.3[0Ktravis_fold:start:before_script.1[0Ktravis_time:start:0edadfcc[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi
+travis_time:end:0edadfcc:start=1543932637627230000,finish=1543932637655512000,duration=28282000[0Ktravis_fold:end:before_script.1[0Ktravis_fold:start:before_script.2[0Ktravis_time:start:0b187ca0[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start; fi
+travis_time:end:0b187ca0:start=1543932637720190000,finish=1543932637744759000,duration=24569000[0Ktravis_fold:end:before_script.2[0Ktravis_fold:start:before_script.3[0Ktravis_time:start:1c11acdf[0K$ if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
+travis_time:end:1c11acdf:start=1543932637768367000,finish=1543932637783105000,duration=14738000[0Ktravis_fold:end:before_script.3[0Ktravis_time:start:03daba06[0K$ yarn package-ci
+yarn run v1.12.3
+$ yarn postinstall && yarn build && electron-builder --publish always
+$ node -r babel-register internals/scripts/CheckNativeDep.js && yarn flow-typed && yarn build-dll && electron-builder install-app-deps package.json
+$ rimraf flow-typed/npm && flow-typed install --overwrite || true
+• Found 98 dependencies in package.json to install libdefs for. Searching...
+• rebasing flow-typed cache...
+• Installing 16 libDefs...
+[1m  • history_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/history_v4.x.x.js[39m[22m
+history
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • babel-register_v6.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/babel-register_v6.x.x.js[39m[22m
+babel-register
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jquery_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jquery_v3.x.x.js[39m[22m
+jquery
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router_v4.x.x.js[39m[22m
+react-router
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • jest_v23.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/jest_v23.x.x.js[39m[22m
+jest
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • enzyme_v3.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/enzyme_v3.x.x.js[39m[22m
+enzyme
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-redux_v5.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-redux_v5.x.x.js[39m[22m
+react-redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • flow-bin_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/flow-bin_v0.x.x.js[39m[22m
+flow-bin
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • chalk_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/chalk_v2.x.x.js[39m[22m
+chalk
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • redux_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/redux_v4.x.x.js[39m[22m
+redux
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-router-dom_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-router-dom_v4.x.x.js[39m[22m
+react-router-dom
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • prettier_v1.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/prettier_v1.x.x.js[39m[22m
+prettier
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • react-test-renderer_v16.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/react-test-renderer_v16.x.x.js[39m[22m
+react-test-renderer
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • rimraf_v2.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/rimraf_v2.x.x.js[39m[22m
+rimraf
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • testcafe_v0.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/testcafe_v0.x.x.js[39m[22m
+testcafe
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+[1m  • webpack_v4.x.x.js[22m
+[1m    └> [32m./flow-typed/npm/webpack_v4.x.x.js[39m[22m
+webpack
+/Users/travis/build/alekzieba/game-fame/flow-typed/npm
+• Generating stubs for untyped dependencies...
+[1m  • electron-store@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/electron-store_vx.x.x.js[39m[22m
+[1m  • electron-debug@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/electron-debug_vx.x.x.js[39m[22m
+[1m  • source-map-support@^0.5.6[22m
+[1m    └> [31mflow-typed/npm/source-map-support_vx.x.x.js[39m[22m
+[1m  • babel-plugin-dev-expression@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-dev-expression_vx.x.x.js[39m[22m
+[1m  • enzyme-to-json@^3.3.4[22m
+[1m    └> [31mflow-typed/npm/enzyme-to-json_vx.x.x.js[39m[22m
+[1m  • eslint-import-resolver-webpack@^0.10.1[22m
+[1m    └> [31mflow-typed/npm/eslint-import-resolver-webpack_vx.x.x.js[39m[22m
+[1m  • eslint-formatter-pretty@^1.3.0[22m
+[1m    └> [31mflow-typed/npm/eslint-formatter-pretty_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-testcafe@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-testcafe_vx.x.x.js[39m[22m
+[1m  • stylelint-config-standard@^18.2.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-standard_vx.x.x.js[39m[22m
+[1m  • react-hot-loader@^4.3.4[22m
+[1m    └> [31mflow-typed/npm/react-hot-loader_vx.x.x.js[39m[22m
+[1m  • redux-persist-electron-storage@^2.0.0[22m
+[1m    └> [31mflow-typed/npm/redux-persist-electron-storage_vx.x.x.js[39m[22m
+[1m  • redux-thunk@^2.3.0[22m
+[1m    └> [31mflow-typed/npm/redux-thunk_vx.x.x.js[39m[22m
+[1m  • babel-jest@^23.4.2[22m
+[1m    └> [31mflow-typed/npm/babel-jest_vx.x.x.js[39m[22m
+[1m  • babel-plugin-add-module-exports@^0.2.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-add-module-exports_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-class-properties@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-class-properties_vx.x.x.js[39m[22m
+[1m  • babel-preset-env@^1.7.0[22m
+[1m    └> [31mflow-typed/npm/babel-preset-env_vx.x.x.js[39m[22m
+[1m  • babel-preset-react@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react_vx.x.x.js[39m[22m
+[1m  • babel-preset-react-optimize@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-react-optimize_vx.x.x.js[39m[22m
+[1m  • babel-preset-stage-0@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-preset-stage-0_vx.x.x.js[39m[22m
+[1m  • detect-port@^1.2.3[22m
+[1m    └> [31mflow-typed/npm/detect-port_vx.x.x.js[39m[22m
+[1m  • electron-devtools-installer@^2.2.4[22m
+[1m    └> [31mflow-typed/npm/electron-devtools-installer_vx.x.x.js[39m[22m
+[1m  • enzyme-adapter-react-16@^1.1.1[22m
+[1m    └> [31mflow-typed/npm/enzyme-adapter-react-16_vx.x.x.js[39m[22m
+[1m  • eslint-config-airbnb@^17.0.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-airbnb_vx.x.x.js[39m[22m
+[1m  • eslint-config-prettier@^2.9.0[22m
+[1m    └> [31mflow-typed/npm/eslint-config-prettier_vx.x.x.js[39m[22m
+[1m  • lint-staged@^7.2.0[22m
+[1m    └> [31mflow-typed/npm/lint-staged_vx.x.x.js[39m[22m
+[1m  • file-loader@^1.1.11[22m
+[1m    └> [31mflow-typed/npm/file-loader_vx.x.x.js[39m[22m
+[1m  • mini-css-extract-plugin@^0.4.1[22m
+[1m    └> [31mflow-typed/npm/mini-css-extract-plugin_vx.x.x.js[39m[22m
+[1m  • redux-logger@^3.0.6[22m
+[1m    └> [31mflow-typed/npm/redux-logger_vx.x.x.js[39m[22m
+[1m  • sass-loader@^7.0.3[22m
+[1m    └> [31mflow-typed/npm/sass-loader_vx.x.x.js[39m[22m
+[1m  • spectron@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/spectron_vx.x.x.js[39m[22m
+[1m  • style-loader@^0.21.0[22m
+[1m    └> [31mflow-typed/npm/style-loader_vx.x.x.js[39m[22m
+[1m  • stylelint-config-prettier@^4.0.0[22m
+[1m    └> [31mflow-typed/npm/stylelint-config-prettier_vx.x.x.js[39m[22m
+[1m  • testcafe-react-selectors@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/testcafe-react-selectors_vx.x.x.js[39m[22m
+[1m  • webpack-cli@^3.1.0[22m
+[1m    └> [31mflow-typed/npm/webpack-cli_vx.x.x.js[39m[22m
+[1m  • webpack-merge@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/webpack-merge_vx.x.x.js[39m[22m
+[1m  • yarn@^1.9.2[22m
+[1m    └> [31mflow-typed/npm/yarn_vx.x.x.js[39m[22m
+[1m  • @fortawesome/fontawesome-free@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/@fortawesome/fontawesome-free_vx.x.x.js[39m[22m
+[1m  • bootstrap@^4.1.3[22m
+[1m    └> [31mflow-typed/npm/bootstrap_vx.x.x.js[39m[22m
+[1m  • react-google-button@^0.5.3[22m
+[1m    └> [31mflow-typed/npm/react-google-button_vx.x.x.js[39m[22m
+[1m  • babel-eslint@^8.2.6[22m
+[1m    └> [31mflow-typed/npm/babel-eslint_vx.x.x.js[39m[22m
+[1m  • babel-loader@^7.1.5[22m
+[1m    └> [31mflow-typed/npm/babel-loader_vx.x.x.js[39m[22m
+[1m  • babel-plugin-transform-es2015-classes@^6.24.1[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-transform-es2015-classes_vx.x.x.js[39m[22m
+[1m  • concurrently@^3.6.1[22m
+[1m    └> [31mflow-typed/npm/concurrently_vx.x.x.js[39m[22m
+[1m  • cross-env@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/cross-env_vx.x.x.js[39m[22m
+[1m  • cross-spawn@^6.0.5[22m
+[1m    └> [31mflow-typed/npm/cross-spawn_vx.x.x.js[39m[22m
+[1m  • css-loader@^1.0.0[22m
+[1m    └> [31mflow-typed/npm/css-loader_vx.x.x.js[39m[22m
+[1m  • electron-builder@^20.26.0[22m
+[1m    └> [31mflow-typed/npm/electron-builder_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-compat@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-compat_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-import@^2.13.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-import_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-promise@^3.8.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-promise_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-react@^7.10.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-react_vx.x.x.js[39m[22m
+[1m  • fbjs-scripts@^0.8.3[22m
+[1m    └> [31mflow-typed/npm/fbjs-scripts_vx.x.x.js[39m[22m
+[1m  • husky@^0.14.3[22m
+[1m    └> [31mflow-typed/npm/husky_vx.x.x.js[39m[22m
+[1m  • identity-obj-proxy@^3.0.0[22m
+[1m    └> [31mflow-typed/npm/identity-obj-proxy_vx.x.x.js[39m[22m
+[1m  • testcafe-browser-provider-electron@^0.0.6[22m
+[1m    └> [31mflow-typed/npm/testcafe-browser-provider-electron_vx.x.x.js[39m[22m
+[1m  • testcafe-live@^0.1.3[22m
+[1m    └> [31mflow-typed/npm/testcafe-live_vx.x.x.js[39m[22m
+[1m  • url-loader@^1.0.1[22m
+[1m    └> [31mflow-typed/npm/url-loader_vx.x.x.js[39m[22m
+[1m  • uglifyjs-webpack-plugin@1.2.7[22m
+[1m    └> [31mflow-typed/npm/uglifyjs-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • webpack-bundle-analyzer@^2.13.1[22m
+[1m    └> [31mflow-typed/npm/webpack-bundle-analyzer_vx.x.x.js[39m[22m
+[1m  • webpack-dev-server@^3.1.5[22m
+[1m    └> [31mflow-typed/npm/webpack-dev-server_vx.x.x.js[39m[22m
+[1m  • connected-react-router@^4.4.1[22m
+[1m    └> [31mflow-typed/npm/connected-react-router_vx.x.x.js[39m[22m
+[1m  • devtron@^1.4.0[22m
+[1m    └> [31mflow-typed/npm/devtron_vx.x.x.js[39m[22m
+[1m  • electron-rebuild@^1.8.2[22m
+[1m    └> [31mflow-typed/npm/electron-rebuild_vx.x.x.js[39m[22m
+[1m  • eslint@^5.2.0[22m
+[1m    └> [31mflow-typed/npm/eslint_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-flowtype@^2.50.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-flowtype_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jest@^21.18.0[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jest_vx.x.x.js[39m[22m
+[1m  • flow-typed@^2.5.1[22m
+[1m    └> [31mflow-typed/npm/flow-typed_vx.x.x.js[39m[22m
+[1m  • stylelint@^9.4.0[22m
+[1m    └> [31mflow-typed/npm/stylelint_vx.x.x.js[39m[22m
+[1m  • babel-core@^6.26.3[22m
+[1m    └> [31mflow-typed/npm/babel-core_vx.x.x.js[39m[22m
+[1m  • googleapis@^34.0.0[22m
+[1m    └> [31mflow-typed/npm/googleapis_vx.x.x.js[39m[22m
+[1m  • flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/flow-runtime_vx.x.x.js[39m[22m
+[1m  • optimize-css-assets-webpack-plugin@^5.0.0[22m
+[1m    └> [31mflow-typed/npm/optimize-css-assets-webpack-plugin_vx.x.x.js[39m[22m
+[1m  • eslint-plugin-jsx-a11y@6.1.1[22m
+[1m    └> [31mflow-typed/npm/eslint-plugin-jsx-a11y_vx.x.x.js[39m[22m
+[1m  • sinon@^6.1.4[22m
+[1m    └> [31mflow-typed/npm/sinon_vx.x.x.js[39m[22m
+[1m  • node-sass@^4.9.2[22m
+[1m    └> [31mflow-typed/npm/node-sass_vx.x.x.js[39m[22m
+[1m  • babel-plugin-flow-runtime@^0.17.0[22m
+[1m    └> [31mflow-typed/npm/babel-plugin-flow-runtime_vx.x.x.js[39m[22m
+[1m  • electron@^2.0.6[22m
+[1m    └> [31mflow-typed/npm/electron_vx.x.x.js[39m[22m
+[31m[39m
+[31m!! No flow@v0.77.0-compatible libdefs found in flow-typed for the above untyped dependencies !![39m
+
+I've generated `any`-typed stubs for these packages, but consider submitting 
+libdefs for them to [1mhttps://github.com/flowtype/flow-typed/[22m
+
+$ cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.dev.dll.js --colors
+Hash: 8eee9d4992edc6ca6601
+Version: webpack 4.23.1
+Time: 6875ms
+Built at: 12/04/2018 2:11:30 PM
+              Asset      Size    Chunks             Chunk Names
+renderer.dev.dll.js  12.8 MiB  renderer  [emitted]  renderer
+Entrypoint renderer = renderer.dev.dll.js
+[0] dll renderer 12 bytes {renderer} [built]
+[./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {renderer} [built]
+[./node_modules/webpack/buildin/harmony-module.js] (webpack)/buildin/harmony-module.js 573 bytes {renderer} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 497 bytes {renderer} [built]
+[assert] external "assert" 42 bytes {renderer} [built]
+[child_process] external "child_process" 42 bytes {renderer} [built]
+[crypto] external "crypto" 42 bytes {renderer} [built]
+[electron] external "electron" 42 bytes {renderer} [built]
+[events] external "events" 42 bytes {renderer} [built]
+[fs] external "fs" 42 bytes {renderer} [built]
+[module] external "module" 42 bytes {renderer} [built]
+[os] external "os" 42 bytes {renderer} [built]
+[path] external "path" 42 bytes {renderer} [built]
+[querystring] external "querystring" 42 bytes {renderer} [built]
+[stream] external "stream" 42 bytes {renderer} [built]
+    + 887 hidden modules
+
+WARNING in ./node_modules/electron-debug/index.js 101:45-58
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+
+WARNING in ./node_modules/electron-debug/index.js 102:61-74
+Critical dependency: the request of a dependency is an expression
+ @ dll renderer
+  • electron-builder version=20.29.0
+  • loaded configuration file=package.json ("build" field)
+  • installing production dependencies platform=darwin arch=x64 appDir=/Users/travis/build/alekzieba/game-fame/app
+$ concurrently "yarn build-main" "yarn build-renderer"
+[0] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.main.prod.js --colors
+[1] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.prod.js --colors
+[0] Hash: fb096eb59fb0dbeb5dee
+[0] Version: webpack 4.23.1
+[0] Time: 25277ms
+[0] Built at: 12/04/2018 2:15:59 PM
+[0]                  Asset      Size  Chunks             Chunk Names
+[0]     ./app/main.prod.js  3.58 MiB       0  [emitted]  main
+[0] ./app/main.prod.js.map  13.7 MiB       0  [emitted]  main
+[0] Entrypoint main = ./app/main.prod.js ./app/main.prod.js.map
+[0] [./app/main.dev.js] 5.33 KiB {0} [built]
+[0] [./app/menu.js] 5.99 KiB {0} [built]
+[0] [./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {0} [built]
+[0] [assert] external "assert" 42 bytes {0} [built]
+[0] [child_process] external "child_process" 42 bytes {0} [built]
+[0] [crypto] external "crypto" 42 bytes {0} [built]
+[0] [electron] external "electron" 42 bytes {0} [built]
+[0] [events] external "events" 42 bytes {0} [built]
+[0] [fs] external "fs" 42 bytes {0} [built]
+[0] [http] external "http" 42 bytes {0} [built]
+[0] [https] external "https" 42 bytes {0} [built]
+[0] [module] external "module" 42 bytes {0} [built]
+[0] [path] external "path" 42 bytes {0} [built]
+[0] [querystring] external "querystring" 42 bytes {0} [built]
+[0] [url] external "url" 42 bytes {0} [built]
+[0]     + 550 hidden modules
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 101:45-58
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 102:61-74
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] yarn build-main exited with code 0
+[1] Hash: 20e35e9c9ce989aac1ab
+[1] Version: webpack 4.23.1
+[1] Time: 35754ms
+[1] Built at: 12/04/2018 2:16:12 PM
+[1]                                  Asset      Size  Chunks             Chunk Names
+[1]  09bc9e8c7d6dfdace635ea073974db13.woff  90.6 KiB          [emitted]  
+[1]   0e2e26fb3527ae47f9eb1c217592b706.ttf  39.4 KiB          [emitted]  
+[1]   3f4d4ad447e748754e994a11ff8c6a6f.svg   684 KiB          [emitted]  
+[1]   3f759796d3d16b8434841d61cd2c007a.svg   709 KiB          [emitted]  
+[1]  52899632324b722c9c7931bd38196afb.woff  17.7 KiB          [emitted]  
+[1]   a31c967484b343189fc58bce914ed245.eot   122 KiB          [emitted]  
+[1]   b5a61b229c9c92a6ac21f5b0e3c6e9f1.svg   139 KiB          [emitted]  
+[1]   baa1e2496e8c71f636587c32f4016ca4.eot   187 KiB          [emitted]  
+[1]   c38ef825039cbe8ec76d4f13854f767e.eot  39.6 KiB          [emitted]  
+[1] dd25437adf06f377113f5df3507423b2.woff2  14.5 KiB          [emitted]  
+[1]   dec02372212aab5a2e5294f1a11756ed.ttf   122 KiB          [emitted]  
+[1]   e143b57de78138e6d5963908afa7e393.ttf   187 KiB          [emitted]  
+[1] e4a6cecbe2bb89b0722b5dc85090af7c.woff2  67.4 KiB          [emitted]  
+[1]  eef6051639f95300dbf0293ad216c6b0.woff  78.8 KiB          [emitted]  
+[1] fd531d212b567d6049f400165473589f.woff2  70.3 KiB          [emitted]  
+[1]                       renderer.prod.js  3.88 MiB       0  [emitted]  main
+[1]                   renderer.prod.js.map  15.1 MiB       0  [emitted]  main
+[1]                              style.css   188 KiB       0  [emitted]  main
+[1]                          style.css.map   344 KiB          [emitted]  
+[1] Entrypoint main = style.css renderer.prod.js renderer.prod.js.map
+[1] [./app/Routes.js] 2.18 KiB {0} [built]
+[1] [./app/actions/auth.js] 2.46 KiB {0} [built]
+[1] [./app/app.global.css] 39 bytes {0} [built]
+[1] [./app/constants/routes.json] 228 bytes {0} [built]
+[1] [./app/containers/App.js] 1.48 KiB {0} [built]
+[1] [./app/containers/HomePage.js] 1.58 KiB {0} [built]
+[1] [./app/containers/LoginPage.js] 1010 bytes {0} [built]
+[1] [./app/containers/Root.js] 1.86 KiB {0} [built]
+[1] [./app/index.js] 1.99 KiB {0} [built]
+[1] [./app/reducers/index.js] 1.24 KiB {0} [built]
+[1] [./app/store/configureStore.js] 251 bytes {0} [built]
+[1] [./app/store/configureStore.prod.js] 953 bytes {0} [built]
+[1] [./node_modules/history/es/index.js] ./node_modules/history/es/index.js + 9 modules 34.8 KiB {0} [built]
+[1]     |    10 modules
+[1] [./node_modules/react-redux/es/index.js] ./node_modules/react-redux/es/index.js + 19 modules 36.1 KiB {0} [built]
+[1]     |    20 modules
+[1] [./node_modules/react-router/es/index.js] ./node_modules/react-router/es/index.js + 10 modules 32.2 KiB {0} [built]
+[1]     |    11 modules
+[1]     + 587 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!app/app.global.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]     [./node_modules/css-loader/index.js?!./app/app.global.css] ./node_modules/css-loader??ref--5-1!./app/app.global.css 1.7 KiB {0} [built]
+[1]         + 19 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/ConnectFour.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/GamesList.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Home.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Login.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/TicTacToe.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] yarn build-renderer exited with code 0
+  • electron-builder version=20.29.0
+  • loaded configuration file=package.json ("build" field)
+  • rebuilding native production dependencies platform=darwin arch=x64
+  • rebuilding native dependency name=grpc
+  • rebuilding native dependency name=grpc
+  • packaging       platform=darwin arch=x64 electron=2.0.12 appOutDir=release/mac
+  • skipped macOS application code signing reason=cannot find valid "Developer ID Application" identity or custom non-Apple code signing certificate, see https://electron.build/code-signing allIdentities=
+                                                  0 identities found
+                                             
+                                               Valid identities only
+                                                  0 valid identities found
+  • building        target=macOS zip arch=x64 file=release/ElectronReact-0.16.0-mac.zip
+  • building        target=DMG arch=x64 file=release/ElectronReact-0.16.0.dmg
+  • building block map blockMapFile=release/ElectronReact-0.16.0.dmg.blockmap
+  • publishing      publisher=Github (owner: electron-react-boilerplate, project: electron-react-boilerplate, version: 0.16.0)
+  • uploading       file=ElectronReact-0.16.0.dmg.blockmap provider=GitHub
+  • uploading       file=ElectronReact-0.16.0.dmg provider=GitHub
+  • GitHub release not created reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • skipped publishing file=ElectronReact-0.16.0.dmg.blockmap reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • skipped publishing file=ElectronReact-0.16.0.dmg reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • building embedded block map file=release/ElectronReact-0.16.0-mac.zip
+  • uploading       file=ElectronReact-0.16.0-mac.zip provider=GitHub
+  • skipped publishing file=ElectronReact-0.16.0-mac.zip reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+  • skipped publishing file=latest-mac.yml reason=existing type not compatible with publishing type tag=v0.16.0 version=0.16.0 existingType=release publishingType=draft
+Done in 458.10s.
+travis_time:end:03daba06:start=1543932637804004000,finish=1543933097121881000,duration=459317877000[0K[32;1mThe command "yarn package-ci" exited with 0.[0m
+
+travis_time:start:2e248dd4[0K$ yarn lint
+yarn run v1.12.3
+$ cross-env NODE_ENV=development eslint --cache --format=pretty .
+
+  flow-typed/module_vx.x.x.js:2:27
+  ⚠  2:27  Unexpected use of weak type "any"  flowtype/no-weak-types
+
+  1 warning
+
+Done in 6.85s.
+travis_time:end:2e248dd4:start=1543933097135486000,finish=1543933104394385000,duration=7258899000[0K[32;1mThe command "yarn lint" exited with 0.[0m
+
+travis_time:start:014b7af9[0K$ yarn test -u
+yarn run v1.12.3
+$ cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings -r 'dotenv/config' -r babel-register ./internals/scripts/RunTests.js --coverage -u
+jest-haste-map: @providesModule naming collision:
+  Duplicate module name: electron-react-boilerplate
+  Paths: /Users/travis/build/alekzieba/game-fame/package.json collides with /Users/travis/build/alekzieba/game-fame/app/package.json
+
+This warning is caused by a @providesModule declaration with the same name across two different files.
+PASS test/actions/connect_four.spec.js
+  ● Console
+
+    console.log app/actions/ConnectFour.js:224
+      LOG: Create Board
+
+PASS test/actions/auth.spec.js
+PASS test/actions/tictactoe.spec.js
+PASS test/actions/games.spec.js
+  ● Console
+
+    console.log app/actions/games.js:10
+      test
+
+----------------------|----------|----------|----------|----------|-------------------|
+File                  |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+----------------------|----------|----------|----------|----------|-------------------|
+All files             |    68.75 |    49.15 |    62.16 |    69.23 |                   |
+ app/actions          |    68.15 |    49.09 |    61.11 |    68.66 |                   |
+  ConnectFour.js      |       84 |    53.06 |    70.59 |    85.14 |... 93,212,216,217 |
+  auth.js             |    19.23 |        0 |       25 |    19.23 |... 49,53,54,56,60 |
+  games.js            |       75 |      100 |       50 |       75 |             18,23 |
+  tictactoe.js        |    69.23 |       50 |    85.71 |    69.23 |... 17,18,22,26,27 |
+ app/constants        |      100 |      100 |      100 |      100 |                   |
+  firebase.js         |      100 |      100 |      100 |      100 |                   |
+ internals/scripts    |    71.43 |       50 |      100 |    71.43 |                   |
+  CheckBuiltsExist.js |    71.43 |       50 |      100 |    71.43 |             19,27 |
+----------------------|----------|----------|----------|----------|-------------------|
+
+Test Suites: 4 passed, 4 total
+Tests:       12 passed, 12 total
+Snapshots:   5 passed, 5 total
+Time:        6.321s
+Ran all test suites matching /test\/(?!e2e\/)[^\/]+\/.+\.spec\.js$/i.
+Done in 9.87s.
+travis_time:end:014b7af9:start=1543933104408105000,finish=1543933114673674000,duration=10265569000[0K[32;1mThe command "yarn test -u" exited with 0.[0m
+
+travis_time:start:03eb1ce3[0K$ yarn build-e2e
+yarn run v1.12.3
+$ cross-env E2E_BUILD=true yarn build
+$ concurrently "yarn build-main" "yarn build-renderer"
+[0] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.main.prod.js --colors
+[1] $ cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./configs/webpack.config.renderer.prod.js --colors
+[0] Hash: fb096eb59fb0dbeb5dee
+[0] Version: webpack 4.23.1
+[0] Time: 11301ms
+[0] Built at: 12/04/2018 2:18:50 PM
+[0]                  Asset      Size  Chunks             Chunk Names
+[0]     ./app/main.prod.js  10.2 MiB       0  [emitted]  main
+[0] ./app/main.prod.js.map    12 MiB       0  [emitted]  main
+[0] Entrypoint main = ./app/main.prod.js ./app/main.prod.js.map
+[0] [./app/main.dev.js] 5.33 KiB {0} [built]
+[0] [./app/menu.js] 5.99 KiB {0} [built]
+[0] [./node_modules/electron-debug sync recursive] ./node_modules/electron-debug sync 160 bytes {0} [built]
+[0] [assert] external "assert" 42 bytes {0} [built]
+[0] [child_process] external "child_process" 42 bytes {0} [built]
+[0] [crypto] external "crypto" 42 bytes {0} [built]
+[0] [electron] external "electron" 42 bytes {0} [built]
+[0] [events] external "events" 42 bytes {0} [built]
+[0] [fs] external "fs" 42 bytes {0} [built]
+[0] [http] external "http" 42 bytes {0} [built]
+[0] [https] external "https" 42 bytes {0} [built]
+[0] [module] external "module" 42 bytes {0} [built]
+[0] [path] external "path" 42 bytes {0} [built]
+[0] [querystring] external "querystring" 42 bytes {0} [built]
+[0] [url] external "url" 42 bytes {0} [built]
+[0]     + 550 hidden modules
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 101:45-58
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] 
+[0] WARNING in ./node_modules/electron-debug/index.js 102:61-74
+[0] Critical dependency: the request of a dependency is an expression
+[0]  @ ./app/main.dev.js
+[0] yarn build-main exited with code 0
+[1] Hash: 20e35e9c9ce989aac1ab
+[1] Version: webpack 4.23.1
+[1] Time: 16772ms
+[1] Built at: 12/04/2018 2:18:55 PM
+[1]                                  Asset      Size  Chunks             Chunk Names
+[1]  09bc9e8c7d6dfdace635ea073974db13.woff  90.6 KiB          [emitted]  
+[1]   0e2e26fb3527ae47f9eb1c217592b706.ttf  39.4 KiB          [emitted]  
+[1]   3f4d4ad447e748754e994a11ff8c6a6f.svg   684 KiB          [emitted]  
+[1]   3f759796d3d16b8434841d61cd2c007a.svg   709 KiB          [emitted]  
+[1]  52899632324b722c9c7931bd38196afb.woff  17.7 KiB          [emitted]  
+[1]   a31c967484b343189fc58bce914ed245.eot   122 KiB          [emitted]  
+[1]   b5a61b229c9c92a6ac21f5b0e3c6e9f1.svg   139 KiB          [emitted]  
+[1]   baa1e2496e8c71f636587c32f4016ca4.eot   187 KiB          [emitted]  
+[1]   c38ef825039cbe8ec76d4f13854f767e.eot  39.6 KiB          [emitted]  
+[1] dd25437adf06f377113f5df3507423b2.woff2  14.5 KiB          [emitted]  
+[1]   dec02372212aab5a2e5294f1a11756ed.ttf   122 KiB          [emitted]  
+[1]   e143b57de78138e6d5963908afa7e393.ttf   187 KiB          [emitted]  
+[1] e4a6cecbe2bb89b0722b5dc85090af7c.woff2  67.4 KiB          [emitted]  
+[1]  eef6051639f95300dbf0293ad216c6b0.woff  78.8 KiB          [emitted]  
+[1] fd531d212b567d6049f400165473589f.woff2  70.3 KiB          [emitted]  
+[1]                       renderer.prod.js  11.2 MiB       0  [emitted]  main
+[1]                   renderer.prod.js.map  13.2 MiB       0  [emitted]  main
+[1]                              style.css   234 KiB       0  [emitted]  main
+[1]                          style.css.map   347 KiB       0  [emitted]  main
+[1] Entrypoint main = style.css renderer.prod.js style.css.map renderer.prod.js.map
+[1] [./app/Routes.js] 2.18 KiB {0} [built]
+[1] [./app/actions/auth.js] 2.46 KiB {0} [built]
+[1] [./app/app.global.css] 39 bytes {0} [built]
+[1] [./app/constants/routes.json] 228 bytes {0} [built]
+[1] [./app/containers/App.js] 1.48 KiB {0} [built]
+[1] [./app/containers/HomePage.js] 1.58 KiB {0} [built]
+[1] [./app/containers/LoginPage.js] 1010 bytes {0} [built]
+[1] [./app/containers/Root.js] 1.86 KiB {0} [built]
+[1] [./app/index.js] 1.99 KiB {0} [built]
+[1] [./app/reducers/index.js] 1.24 KiB {0} [built]
+[1] [./app/store/configureStore.js] 251 bytes {0} [built]
+[1] [./app/store/configureStore.prod.js] 953 bytes {0} [built]
+[1] [./node_modules/history/es/index.js] ./node_modules/history/es/index.js + 9 modules 34.8 KiB {0} [built]
+[1]     |    10 modules
+[1] [./node_modules/react-redux/es/index.js] ./node_modules/react-redux/es/index.js + 19 modules 36.1 KiB {0} [built]
+[1]     |    20 modules
+[1] [./node_modules/react-router/es/index.js] ./node_modules/react-router/es/index.js + 10 modules 32.2 KiB {0} [built]
+[1]     |    11 modules
+[1]     + 587 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!app/app.global.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]     [./node_modules/css-loader/index.js?!./app/app.global.css] ./node_modules/css-loader??ref--5-1!./app/app.global.css 1.7 KiB {0} [built]
+[1]         + 19 hidden modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/ConnectFour.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/GamesList.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Home.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/Login.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] Child mini-css-extract-plugin node_modules/css-loader/index.js??ref--6-1!app/components/TicTacToe.css:
+[1]     Entrypoint mini-css-extract-plugin = *
+[1]        2 modules
+[1] yarn build-renderer exited with code 0
+Done in 21.00s.
+travis_time:end:03eb1ce3:start=1543933114697859000,finish=1543933136084626000,duration=21386767000[0K[32;1mThe command "yarn build-e2e" exited with 0.[0m
+
+travis_fold:start:before_cache[0Ktravis_time:start:30c15f1a[0K$ rm -rf $HOME/.cache/electron-builder/wine
+travis_time:end:30c15f1a:start=1543933136108540000,finish=1543933136136653000,duration=28113000[0Ktravis_fold:end:before_cache[0Ktravis_fold:start:cache.2[0Kstore build cache
+travis_time:start:0091b618[0Ktravis_time:end:0091b618:start=1543933136167116000,finish=1543933136191357000,duration=24241000[0Ktravis_time:start:14156c30[0K[32;1mchange detected (content changed, file is created, or file is deleted):
+/Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/bin/darwin-x64-57/grpc.node
+/Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/build/Release/grpc_node.node
+/Users/travis/build/alekzieba/game-fame/app/node_modules/@firebase/firestore/node_modules/grpc/build/binding.Makefile
+/Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/bin/darwin-x64-57/grpc.node
+/Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/build/Release/grpc_node.node
+/Users/travis/build/alekzieba/game-fame/app/node_modules/grpc/build/binding.Makefile
+
+[0m
+[32;1mchanges detected, packing new archive[0m
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+[32;1muploading master/cache-osx-xcode9.4-7243bb22481290cfbcce7c85bf6520426901e3ebe181e42eed18982ef2d74411--node-10.tgz[0m
+[32;1mcache uploaded[0m
+travis_time:end:14156c30:start=1543933136223434000,finish=1543933256330080000,duration=120106646000[0Ktravis_fold:end:cache.2[0K
+travis_fold:start:after_success.1[0Ktravis_time:start:31e96040[0K$ chmod 700 push.sh
+travis_time:end:31e96040:start=1543933256345546000,finish=1543933256360277000,duration=14731000[0Ktravis_fold:end:after_success.1[0Ktravis_fold:start:after_success.2[0Ktravis_time:start:3e4fdc98[0K$ ./push.sh
+Switched to a new branch 'gh-pages'
+M	push.sh
+[gh-pages 642dd53] Travis build
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 push.sh
+To https://github.com/alekzieba/game-fame.git
+ ! [rejected]        gh-pages -> gh-pages (fetch first)
+error: failed to push some refs to 'https://[secure]@github.com/alekzieba/game-fame.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+travis_time:end:3e4fdc98:start=1543933256378571000,finish=1543933256934255000,duration=555684000[0Ktravis_fold:end:after_success.2[0K
+Done. Your build exited with 0.

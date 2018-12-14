@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Field } from 'redux-form';
 import _ from 'lodash';
 import routes from '../constants/routes.json';
 import styles from './GamesList.css';
@@ -32,7 +31,7 @@ class GamesList extends Component {
   }
 
   renderGameList() {
-    const { auth, games, history, handleSubmit } = this.props;
+    const { auth, games, history } = this.props;
     if (!games || _.isEmpty(games)) {
       return (
         <div className="text-center">
@@ -49,23 +48,6 @@ class GamesList extends Component {
           >
             Create New Game
           </button>
-          <br />
-          <br />
-          <br />
-          <h4 className="text-center">Or enter a game code to join a game:</h4>
-          <br />
-          <form onSubmit={handleSubmit(this.enterCode.bind(this))}>
-            <div className="form-group text-center">
-              <Field
-                name="game_code"
-                placeholder="ABCDEFG"
-                component={this.constructor.renderGameCodeInput}
-              />
-            </div>
-            <button type="submit" className="btn btn-lg btn-primary">
-              Submit
-            </button>
-          </form>
         </div>
       );
     }
@@ -87,7 +69,11 @@ class GamesList extends Component {
             </thead>
             <tbody>
               {_.map(games, (game, gameId) => (
-                <tr key={gameId} className={styles.clickable}>
+                <tr
+                  key={gameId}
+                  className={styles.clickable}
+                  onClick={this.enterCode.bind(this, gameId)}
+                >
                   <td>{gameTypeToString[game.type]}</td>
                   <td>{game.last_move_time}</td>
                   <td>

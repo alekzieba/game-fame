@@ -96,6 +96,45 @@ export function resetBoard(gameKey) {
   };
 }
 
+export function updateWinsAndLosses(gameKey, winningSymbol, firstUserEmail, secondUserEmail){
+//    const gameBoardRef = firebaseapp.database().ref(`games/${gameKey}`);
+  const userRef = firebaseapp.database().ref(`users`);
+  let winningEmail = null;
+  let losingEmail = null;
+  let winningNum = 0;
+  let losingNum = 0;
+  if(winningSymbol === 'X'){
+    winningEmail = firstUserEmail;
+    losingEmail = secondUserEmail;
+  }
+  else{
+    winningEmail = secondUserEmail;
+    losingEmail = firstUserEmail;
+  }
+  userRef.child(winningEmail).child("wins").once('value', snapshot => {
+    winningNum = snapshot.val();
+  }).then(() =>{
+    console.log(winningNum);
+    winningNum += 1;
+    userRef.child(winningEmail).child("wins").set(winningNum);
+  });
+  
+  userRef.child(losingEmail).child("losses").once('value', snapshot => {
+    losingNum = snapshot.val();
+  }).then(() =>{
+    console.log(losingNum);
+    losingNum += 1;
+    userRef.child(losingEmail).child("losses").set(losingNum);
+  });
+  
+  return {
+    type: 'UPDATE_WIN_LOSS',
+    payload: {
+      
+    }
+  };
+}
+
 export function getBoard(gameKey) {
   const gameBoardRef = firebaseapp.database().ref(`games/${gameKey}`);
   return (dispatch: Dispatch) => {

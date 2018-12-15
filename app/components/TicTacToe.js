@@ -9,11 +9,15 @@ import {
   getBoard,
   createBoard,
   submitMessage,
-  getMessages
+  getMessages,
+  updateWinsAndLosses
 } from '../actions/tictactoe';
 import MessageBoard from './MessageBoard';
 import styles from './TicTacToe.css';
 
+// NEED TO DELETE THIS FIRST USER! REPRESENTS SANITIZED EMAIL!
+const firstUser = "sarthak96|gmail=com";
+const secondUser = "gharvhel|gmail=com"
 function Square(props) {
   const { onClick, value } = props;
   return (
@@ -31,15 +35,6 @@ type BoardProps = {
   board: array,
   location: object
 };
-//
-//type MsgProps = {
-//  fillSquare: () => void,
-//  resetBoard: () => void,
-//  gameKey: string,
-//  xIsTrue: boolean,
-//  board: array,
-//  location: object
-//};
 
 class Board extends Component {
   props: BoardProps;
@@ -60,7 +55,8 @@ class Board extends Component {
       this.props.getBoard(gameKey);
       this.props.getMessages(gameKey);
     } else {
-      this.props.createBoard(gameKey, currentUser);
+//      this.props.createBoard(gameKey, currentUser);
+      this.props.createBoard(gameKey, firstUser);
       this.props.getBoard(gameKey);
       this.props.getMessages(gameKey);
     }
@@ -87,7 +83,8 @@ class Board extends Component {
     if (board[i] !== null && board[i] !== undefined) {
       return;
     }
-    fill(i, board, symbol, gameKey, currentUser);
+//    fill(i, board, symbol, gameKey, currentUser);
+    fill(i, board, symbol, gameKey, firstUser);
   }
 
   handleSubmit() {
@@ -95,7 +92,8 @@ class Board extends Component {
     document.getElementById('textInput').value = '';
     const { submitMessage, messageList } = this.props;
     const { gameKey, currentUser } = this.props.location;
-    msg = currentUser + ': ' + msg;
+//    msg = currentUser + ': ' + msg;
+    msg = firstUser + ': ' + msg;
     submitMessage(gameKey, msg, messageList);
   }
 
@@ -105,6 +103,7 @@ class Board extends Component {
     let status;
     const winner = calculateWinner(board);
     if (winner) {
+      updateWinsAndLosses(gameKey, winner, firstUser, secondUser)
       status = `Winner: ${winner}`;
     } else {
       const symbol = xIsTrue ? 'X' : 'O';

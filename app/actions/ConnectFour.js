@@ -5,6 +5,8 @@ export const SET_BOARD = 'SET_BOARD';
 export const CREATE_BOARD = 'CREATE_BOARD';
 export const GET_BOARD = 'CREATE_BOARD';
 export const UPDATE_BOARD = 'UPDATE_BOARD';
+export const GET_MSG = 'GET_MESSAGES_CONNECT_4';
+export const SUBMIT_MSG = 'SUBMIT_MESSAGE_CONNECT_4'
 
 export function checkVertical(board) {
   return board.reduce((winner, col) => {
@@ -105,68 +107,149 @@ export function clickColumn(
   player1,
   player2,
   gameIsWon,
-  gameKey
+  gameKey,
+  currentPlayer
 ) {
-  // if available circles in column
-  if (board[colIndex][0] === '') {
-    // add current player to last empty string in column
-    const copyBoard = board.slice().map((column, index) => {
-      if (index === colIndex) {
-        const colClone = column.slice(0);
-        const lastIndex = colClone.lastIndexOf('');
-
-        colClone[lastIndex] = player1IsNext ? 'player1' : 'player2';
-
-        return colClone;
-      }
-      return column;
-    });
-
-    // A player has won the game
-    if (calculateWinner(copyBoard)) {
-      const updates = {};
-      updates[`${gameKey}/board`] = copyBoard;
-      updates[`${gameKey}/gameIsWon`] = true;
-      firebaseapp
-        .database()
-        .ref()
-        .update(updates);
-
-      return {
-        type: CLICK_COLUMN,
-        payload: {
-          board: copyBoard,
-          gameIsWon: true,
-          player1,
-          player2,
-          player1IsNext,
-          gameKey
-        }
-      };
+  
+  let lockMove = false;
+  let playerNext = null;
+  console.log(currentPlayer)
+  console.log("HIEIEIE")
+  firebaseapp.database().ref(`${gameKey}/player1IsNext`).once('value', snapshot => {
+    playerNext = snapshot.val();
+  }).then(() => {
+    console.log(playerNext);
+    if(currentPlayer === player1 && !playerNext){
+      console.log("LOCK1")
+      lockMove = true;
     }
+    else if(currentPlayer === player2 && playerNext){
+      console.log("LOCK2")
+      lockMove = true;
+    }
+    if(!lockMove){
+      // if available circles in column
+      if (board[colIndex][0] === '') {     
+        // add current player to last empty string in column
+        const copyBoard = board.slice().map((column, index) => {
+          if (index === colIndex) {
+            const colClone = column.slice(0);
+            const lastIndex = colClone.lastIndexOf('');
 
-    // No player has won
-    const updates = {};
-    updates[`${gameKey}/board`] = copyBoard;
-    updates[`${gameKey}/player1IsNext`] = !player1IsNext;
-    firebaseapp
-      .database()
-      .ref()
-      .update(updates);
+            colClone[lastIndex] = player1IsNext ? 'player1' : 'player2';
 
-    return {
-      type: CLICK_COLUMN,
-      payload: {
-        board: copyBoard,
-        gameIsWon,
-        player1,
-        player2,
-        player1IsNext: !player1IsNext,
-        gameKey
+            return colClone;
+          }
+          return column;
+        });
+
+        // A player has won the game
+        if (calculateWinner(copyBoard)) {
+          const updates = {};
+          updates[`${gameKey}/board`] = copyBoard;
+          updates[`${gameKey}/gameIsWon`] = true;
+          firebaseapp
+            .database()
+            .ref()
+            .update(updates);
+
+          return {
+            type: CLICK_COLUMN,
+            payload: {
+              board: copyBoard,
+              gameIsWon: true,
+              player1,
+              player2,
+              player1IsNext,
+              gameKey
+            }
+          };
+        }
+
+        // No player has won
+        const updates = {};
+        updates[`${gameKey}/board`] = copyBoard;
+        updates[`${gameKey}/player1IsNext`] = !player1IsNext;
+        firebaseapp
+          .database()
+          .ref()
+          .update(updates);
+
+        return {
+          type: CLICK_COLUMN,
+          payload: {
+            board: copyBoard,
+            gameIsWon,
+            player1,
+            player2,
+            player1IsNext: !player1IsNext,
+            gameKey
+          }
+        };
       }
-    };
+      return null;
   }
-  return null;
+  });
+  // if available circles in column
+//  if (board[colIndex][0] === '') {     
+//    // add current player to last empty string in column
+//    const copyBoard = board.slice().map((column, index) => {
+//      if (index === colIndex) {
+//        const colClone = column.slice(0);
+//        const lastIndex = colClone.lastIndexOf('');
+//
+//        colClone[lastIndex] = player1IsNext ? 'player1' : 'player2';
+//
+//        return colClone;
+//      }
+//      return column;
+//    });
+//
+//    // A player has won the game
+//    if (calculateWinner(copyBoard)) {
+//      const updates = {};
+//      updates[`${gameKey}/board`] = copyBoard;
+//      updates[`${gameKey}/gameIsWon`] = true;
+//      firebaseapp
+//        .database()
+//        .ref()
+//        .update(updates);
+//
+//      return {
+//        type: CLICK_COLUMN,
+//        payload: {
+//          board: copyBoard,
+//          gameIsWon: true,
+//          player1,
+//          player2,
+//          player1IsNext,
+//          gameKey
+//        }
+//      };
+//    }
+//
+//    // No player has won
+//    const updates = {};
+//    updates[`${gameKey}/board`] = copyBoard;
+//    updates[`${gameKey}/player1IsNext`] = !player1IsNext;
+//    firebaseapp
+//      .database()
+//      .ref()
+//      .update(updates);
+//
+//    return {
+//      type: CLICK_COLUMN,
+//      payload: {
+//        board: copyBoard,
+//        gameIsWon,
+//        player1,
+//        player2,
+//        player1IsNext: !player1IsNext,
+//        gameKey
+//      }
+//    };
+//  }
+//  return null;
 }
 
 export function setPost(gameData) {
@@ -188,6 +271,7 @@ export function getBoard(gameKey, user1, user2) {
         newGameIsWon = (snapshot.val() && snapshot.val().gameIsWon) || false;
         newPlayer1IsNext =
           (snapshot.val() && snapshot.val().player1IsNext) || false;
+        console.log(newPlayer1IsNext);
       })
       .then(() =>
         dispatch(
@@ -238,7 +322,15 @@ export function createBoard(newGameKey, user1, user2) {
       ['', '', '', '', '', '']
     ]
   };
-
+  console.log(initialState.gameKey);
+  const message = [
+    'ADMIN: Welcome to the chat!',
+    "ADMIN: Type anything here and click 'Send' to submit."
+  ];
+  firebaseapp
+    .database()
+    .ref(`${initialState.gameKey}/messages`)
+    .set(message);
   firebaseapp
     .database()
     .ref(`${initialState.gameKey}/board`)
@@ -267,5 +359,36 @@ export function createBoard(newGameKey, user1, user2) {
   return {
     type: CREATE_BOARD,
     payload: initialState
+  };
+}
+
+export function getMessages(gameKey) {
+  const gameBoardRef = firebaseapp.database().ref(`${gameKey}/messages`);
+  return (dispatch: Dispatch) => {
+    gameBoardRef.on('value', snapshot => {
+      dispatch({
+        type: 'GET_MESSAGES_CONNECT_4',
+        payload: {
+          board: snapshot.val(),
+          gameKey
+        }
+      });
+    });
+  };
+}
+
+export function submitMessage(gameKey, message, messageList) {
+  const newMessageList = messageList.slice();
+  newMessageList.push(message);
+  firebaseapp
+    .database()
+    .ref(`${gameKey}/messages`)
+    .set(newMessageList);
+
+  return {
+    type: 'SUBMIT_MESSAGE_CONNECT_4',
+    payload: {
+      messageList: newMessageList
+    }
   };
 }

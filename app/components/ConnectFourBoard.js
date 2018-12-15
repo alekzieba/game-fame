@@ -3,14 +3,21 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import BoardColumn from './BoardColumn';
 import Circle from './Circle';
+import MsgBoardConnect4 from './MsgBoardConnect4';
+
 import {
   clickColumn,
   createBoard,
   getBoard,
-  dbChanged
+  dbChanged,
+  getMessages
 } from '../actions/ConnectFour';
 
 import styles from './ConnectFour.css';
+
+// GET PROPER ALIASES!
+const user1 = 'gharvhel|gmail=com';
+const user2 = 'sarthak96|gmail=com';
 
 class Board extends Component {
   // generates circles within given column
@@ -27,8 +34,8 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    const user1 = 'gharvhel';
-    const user2 = 'sarthak';
+//    const user1 = 'gharvhel';
+//    const user2 = 'sarthak';
     const gameKey = `games/connect-four/${user1}&${user2}`;
     const existingGame = false;
     const { dispatch } = this.props;
@@ -39,6 +46,7 @@ class Board extends Component {
     }
 
     dbChanged(gameKey, user1, user2, dispatch);
+    dispatch(getMessages(gameKey));
   }
 
   generateColumns() {
@@ -62,7 +70,8 @@ class Board extends Component {
             player1,
             player2,
             gameIsWon,
-            gameKey
+            gameKey,
+            user2
           )
         );
 
@@ -76,7 +85,9 @@ class Board extends Component {
 
   render() {
     return (
-      <div className={styles.ConnectFourBoard}>{this.generateColumns()}</div>
+      <div className={styles.ConnectFourBoard}>
+        {this.generateColumns()}
+      </div>
     );
   }
 }
@@ -88,7 +99,8 @@ Board.propTypes = {
   gameKey: PropTypes.string.isRequired,
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   gameIsWon: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  user1: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

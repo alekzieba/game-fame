@@ -9,29 +9,6 @@ type MessageBoardProps = {
 
 class MessageBoard extends Component {
   props: MessageBoardProps;
-
-  //  constructor(props) {
-  //    super(props);
-  //    this.renderMessages = this.renderMessages.bind(this);
-  //    this.renderMessage = this.renderMessage.bind(this);
-  //  }
-
-  //  renderMessages() {
-  //    const { messageList } = this.props;
-  //    return(
-  //      <div>
-  //        { messageList }
-  //      </div>
-  //    );
-  //  }
-
-  //  renderMessage(message){
-  //    return(
-  //      <div>
-  //        { message }
-  //      </div>
-  //    )
-  //  }
   render() {
     const { messageList } = this.props;
     const messages = messageList.map(message => {

@@ -27,17 +27,17 @@ class GamesList extends Component {
     getGames(auth.sanitized_email);
   }
 
-  enterCode(values) {
-    //const { history, auth } = this.props;
-    // const gameKey = `tictactoe/${values.game_code}`;
-    // history.push({
-    //   pathname: routes.TICTACTOE,
-    //   currentUser: auth.name,
-    //   currentUserEmail: auth.email,
-    //   opponentEmail: values.friend_email,
-    //   gameKey: gameId,
-    //   exists: false
-    // });
+  enterCode(gameId, inviterEmail) {
+    const { history, auth } = this.props;
+    const gameKey = `tictactoe/${gameId}`;
+    history.push({
+      pathname: routes.TICTACTOE,
+      currentUser: auth.name,
+      currentUserEmail: auth.email,
+      opponentEmail: inviterEmail,
+      gameKey: gameId,
+      exists: false
+    });
   }
 
   clickAcceptButton(gameId) {
@@ -152,7 +152,13 @@ class GamesList extends Component {
                 <tr
                   key={gameId}
                   className={styles.clickable}
-                  onClick={this.enterCode.bind(this, gameId)}
+                  onClick={this.enterCode.bind(
+                    this,
+                    gameId,
+                    game.inviter_email === auth.sanitized_email
+                      ? game.invited_email
+                      : game.inviter_email
+                  )}
                 >
                   <td>{gameTypeToString[game.type]}</td>
                   <td>{moment(new Date(game.last_move_time)).fromNow()}</td>

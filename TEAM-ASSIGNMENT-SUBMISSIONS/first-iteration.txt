@@ -1,0 +1,7 @@
+Here is the link to our GitHub repository:
+
+https://github.com/alekzieba/game-fame (Links to an external site.)Links to an external site.
+
+
+
+The file that configures pre-commit is package.json.  You can look at the "precommit" script to observe that linting, then building, and then unit testing is being performed.  We decided to use Travis CI for post-commit CI and its configuration file is ".travis.yml".  The post-commit logs can be found within the "docs" folder of the master branch.

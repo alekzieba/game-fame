@@ -1,3 +1,4 @@
+/*
 .board_row::after {
   clear: both;
   content: '';
@@ -33,6 +34,50 @@
 
 .game {
   display: flex;
+  flex-direction: row;
+}
+
+.game_info {
+  margin-left: 20px;
+}
+*/
+
+.board_row::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 70px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 100px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 100px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd_navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  margin: auto !important;
   flex-direction: row;
 }
 

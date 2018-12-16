@@ -94,7 +94,6 @@ class CreateGame extends Component {
           //     });
           //     break;
           //   case 'connectfour':
-          //     dispatch(createBoard(gameId, auth.email, values.friend_email));
           //     history.push({
           //       pathname: routes.CONNECTFOUR,
           //       currentUser: auth.name,

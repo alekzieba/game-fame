@@ -84,6 +84,7 @@ class CreateGame extends Component {
       },
       gameId,
       auth.friends_list,
+      auth.game_ids,
       success => {
         if (success) {
           history.push({

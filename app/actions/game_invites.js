@@ -50,6 +50,7 @@ export function createGameInvite(
   },
   gameId,
   inviterFriendsList,
+  inviterGames,
   callback
 ) {
   return () => {
@@ -82,6 +83,20 @@ export function createGameInvite(
             friendGameInvites.update(currInviteIds);
           } else {
             friendGameInvites.set([gameId]);
+          }
+          callback(true);
+        });
+
+        const userGamesRef = firebaseapp
+          .database()
+          .ref(`users/${inviterEmail}/game_ids`);
+        userGamesRef.once('value', gameIdsSnapshot => {
+          const currInviteIds = gameIdsSnapshot.val();
+          if (currInviteIds) {
+            currInviteIds.push(gameId);
+            userGamesRef.update(currInviteIds);
+          } else {
+            userGamesRef.set([gameId]);
           }
           callback(true);
         });

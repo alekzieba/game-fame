@@ -7,3 +7,10 @@
   background-color: #070;
   transition: all 0.2s linear;
 }
+
+.profile_pic {
+  width: 23px;
+  height: 23px;
+  border-radius: 11px;
+  margin-right: 10px;
+}

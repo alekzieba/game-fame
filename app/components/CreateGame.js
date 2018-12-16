@@ -12,6 +12,10 @@ import { createBoard } from '../actions/ConnectFour';
 const required = value => (value ? undefined : 'Required');
 
 class CreateGame extends Component {
+  componentDidMount() {
+    this.props.change('game_type', 'connectfour');
+  }
+
   static renderFriendEmailInput({
     input,
     placeholder,
@@ -36,7 +40,11 @@ class CreateGame extends Component {
 
   static renderGameTypeInput(field) {
     return (
-      <select className="form-control" {...field.input}>
+      <select
+        className="form-control"
+        defaultValue="tictactoe"
+        {...field.input}
+      >
         <option value="connectfour">Connect Four</option>
         <option value="tictactoe">Tic-Tac Toe</option>
       </select>

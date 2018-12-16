@@ -28,7 +28,7 @@ const configureStore = (initialState?: counterStateType) => {
         encryptionKey: 'MY_ENCRYPTION_KEY'
       }
     }),
-    blacklist: ['history'],
+    blacklist: ['history', 'gameInvites'],
     stateReconciler: hardSet
   };
 

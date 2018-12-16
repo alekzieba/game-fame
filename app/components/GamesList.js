@@ -1,5 +1,7 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import _ from 'lodash';
+import moment from 'moment';
 import routes from '../constants/routes.json';
 import styles from './GamesList.css';
 
@@ -19,20 +21,46 @@ class GamesList extends Component {
     );
   }
 
+  componentDidMount() {
+    const { auth, getGameInvites, getGames } = this.props;
+    getGameInvites(auth.sanitized_email);
+    getGames(auth.sanitized_email);
+  }
+
   enterCode(values) {
-    const { history, auth } = this.props;
-    const gameKey = `tictactoe/${values.game_code}`;
-    history.push({
-      pathname: routes.TICTACTOE,
-      currentUser: auth.name,
-      gameKey,
-      exists: true
-    });
+    //const { history, auth } = this.props;
+    // const gameKey = `tictactoe/${values.game_code}`;
+    // history.push({
+    //   pathname: routes.TICTACTOE,
+    //   currentUser: auth.name,
+    //   currentUserEmail: auth.email,
+    //   opponentEmail: values.friend_email,
+    //   gameKey: gameId,
+    //   exists: false
+    // });
+  }
+
+  clickAcceptButton(gameId) {
+    const { auth, acceptGameInvite } = this.props;
+    acceptGameInvite(
+      gameId,
+      auth.game_invite_ids,
+      auth.game_ids,
+      auth.sanitized_email
+    );
+  }
+
+  clickDeclineButton(gameId) {
+    const { auth, declineGameInvite } = this.props;
+    declineGameInvite(gameId, auth.game_invite_ids, auth.sanitized_email);
   }
 
   renderGameList() {
-    const { auth, games, history } = this.props;
-    if (!games || _.isEmpty(games)) {
+    const { auth, games, gameInvites, history } = this.props;
+    if (
+      (!games || _.isEmpty(games)) &&
+      (!gameInvites || _.isEmpty(gameInvites))
+    ) {
       return (
         <div className="text-center">
           <br />
@@ -56,6 +84,57 @@ class GamesList extends Component {
     return (
       <div className="row">
         <div className="col-6">
+          <h3 className="text-center">Your Game Invites</h3>
+          <br />
+          <table className="table">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Game Type</th>
+                <th scope="col">Created Time</th>
+                <th scope="col">Invited By</th>
+                <th scope="col" />
+                <th scope="col" />
+              </tr>
+            </thead>
+            <tbody>
+              {_.map(gameInvites, (game, gameId) => (
+                <tr key={gameId} className={styles.clickable}>
+                  <td>{gameTypeToString[game.type]}</td>
+                  <td>{moment(new Date(game.last_move_time)).fromNow()}</td>
+                  <td>
+                    <img
+                      src={game.inviter_avatar}
+                      className={`d-inline-block align-top ${
+                        styles.profile_pic
+                      }`}
+                      alt=""
+                    />
+                    {game.inviter_name}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={this.clickAcceptButton.bind(this, gameId)}
+                    >
+                      Accept
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={this.clickDeclineButton.bind(this, gameId)}
+                    >
+                      Decline
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col-6">
           <h3 className="text-center">Game History</h3>
           <br />
           <table className="table">
@@ -65,6 +144,7 @@ class GamesList extends Component {
                 <th scope="col">Last Move</th>
                 <th scope="col">Your Turn?</th>
                 <th scope="col">Status</th>
+                <th scope="col">Friend</th>
               </tr>
             </thead>
             <tbody>
@@ -75,20 +155,40 @@ class GamesList extends Component {
                   onClick={this.enterCode.bind(this, gameId)}
                 >
                   <td>{gameTypeToString[game.type]}</td>
-                  <td>{game.last_move_time}</td>
+                  <td>{moment(new Date(game.last_move_time)).fromNow()}</td>
                   <td>
                     {game.whose_turn === auth.sanitized_email ? 'Yes' : 'No'}
                   </td>
-                  <td>{game.whose_turn == null ? 'Complete' : 'Ongoing'}</td>
+                  <td>{game.status}</td>
+                  <td>
+                    {game.inviter_email === auth.sanitized_email ? (
+                      <div>
+                        <img
+                          src={game.inviter_avatar}
+                          className={`d-inline-block align-top ${
+                            styles.profile_pic
+                          }`}
+                          alt=""
+                        />
+                        {game.inviter_name}
+                      </div>
+                    ) : (
+                      <div>
+                        <img
+                          src={game.invited_avatar}
+                          className={`d-inline-block align-top ${
+                            styles.profile_pic
+                          }`}
+                          alt=""
+                        />
+                        {game.invited_name}
+                      </div>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
-        <div className="col-6">
-          <h3 className="text-center">Your Game Invites</h3>
-          <br />
-          <h4 className="text-center"> You have no game invites... Yet!</h4>
         </div>
       </div>
     );

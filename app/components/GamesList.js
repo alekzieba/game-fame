@@ -40,7 +40,7 @@ class GamesList extends Component {
           currentUserEmail: auth.sanitized_email,
           opponentEmail: inviterEmail,
           gameKey: gameId,
-          exists: false
+          exists: true
         });
         break;
       case 'connectfour':

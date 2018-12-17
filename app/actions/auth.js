@@ -33,6 +33,7 @@ export function promptUserSignIn(loginHandler) {
           console.log(sanitizedEmail);
           // Set up a listener
           usersRef.child(sanitizedEmail).on('value', userSnapshot => {
+            console.log("Being called in auth.js")
             dispatch({
               type: USER_SIGNED_IN,
               payload: userSnapshot.val()

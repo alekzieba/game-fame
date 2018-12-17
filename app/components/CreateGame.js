@@ -87,32 +87,32 @@ class CreateGame extends Component {
       auth.game_ids,
       success => {
         if (success) {
-          history.push({
-            pathname: routes.GAMESLIST
-          });
-          // switch (values.game_type) {
-          //   case 'tictactoe':
-          //     gameId = `tictactoe/${gameId}`;
-          //     history.push({
-          //       pathname: routes.TICTACTOE,
-          //       currentUser: auth.name,
-          //       currentUserEmail: auth.email,
-          //       opponentEmail: values.friend_email,
-          //       gameKey: gameId,
-          //       exists: false
-          //     });
-          //     break;
-          //   case 'connectfour':
-          //     history.push({
-          //       pathname: routes.CONNECTFOUR,
-          //       currentUser: auth.name,
-          //       currentUserEmail: auth.email,
-          //       opponentEmail: values.friend_email,
-          //     });
-          //     break;
-          //   default:
-          //     break;
-          // }
+//          history.push({
+//            pathname: routes.GAMESLIST
+//          });
+           switch (values.game_type) {
+             case 'tictactoe':
+               gameId = `tictactoe/${gameId}`;
+               history.push({
+                 pathname: routes.TICTACTOE,
+                 currentUser: auth.name,
+                 currentUserEmail: auth.email,
+                 opponentEmail: values.friend_email,
+                 gameKey: gameId,
+                 exists: false
+               });
+               break;
+             case 'connectfour':
+               history.push({
+                 pathname: routes.CONNECTFOUR,
+                 currentUser: auth.name,
+                 currentUserEmail: auth.email,
+                 opponentEmail: values.friend_email,
+               });
+               break;
+             default:
+               break;
+           }
         } else {
           console.log('invalid email address');
         }

@@ -18,6 +18,8 @@ import styles from './TicTacToe.css';
 // NEED TO DELETE THIS FIRST USER! REPRESENTS SANITIZED EMAIL!
 const firstUser = 'sarthak96|gmail=com';
 const secondUser = 'gharvhel|gmail=com';
+
+let status = 'Next Player: X';
 function Square(props) {
   const { onClick, value } = props;
   return (
@@ -75,8 +77,9 @@ class Board extends Component {
   handleClick(i) {
     const { xIsTrue, board, fillSquare: fill } = this.props;
     const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
-    const symbol = xIsTrue ? 'X' : 'O';
+    let symbol = xIsTrue ? 'X' : 'O';
     if (calculateWinner(board)) {
+      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
       return;
     }
     console.log(board);
@@ -85,6 +88,16 @@ class Board extends Component {
     }
     //    fill(i, board, symbol, gameKey, currentUser);
     fill(i, board, symbol, gameKey, currentUserEmail);
+    let status;
+    const winner = calculateWinner(board);
+    if (winner) {
+      console.log('HERE');
+      status = `Winner: ${winner}`;
+    } else {
+//      symbol = xIsTrue ? 'X' : 'O';
+      symbol = (symbol === 'X') ? 'O' : 'X';
+      status = `Next player: ${symbol}`;
+    }
   }
 
   handleSubmit() {
@@ -101,16 +114,16 @@ class Board extends Component {
   render() {
     const { board, xIsTrue, resetBoard: reset } = this.props;
     const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
-    let status;
-    const winner = calculateWinner(board);
-    if (winner) {
-      console.log('HERE');
-      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
-      status = `Winner: ${winner}`;
-    } else {
-      const symbol = xIsTrue ? 'X' : 'O';
-      status = `Next player: ${symbol}`;
-    }
+//    let status;
+//    const winner = calculateWinner(board);
+//    if (winner) {
+//      console.log('HERE');
+//      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
+//      status = `Winner: ${winner}`;
+//    } else {
+//      const symbol = xIsTrue ? 'X' : 'O';
+//      status = `Next player: ${symbol}`;
+//    }
     return (
       <div>
         <div className={styles.status}>

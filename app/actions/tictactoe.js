@@ -36,7 +36,7 @@ export function fillSquare(index, board, symbol, gameKey, userMakingMove) {
   //        )
   //      )
   //      .catch();
-
+  console.log(symbol);
   firebaseapp
     .database()
     .ref(`games/${gameKey}/3`)
@@ -111,6 +111,7 @@ export function updateWinsAndLosses(gameKey, winningSymbol, firstUserEmail, seco
     winningEmail = secondUserEmail;
     losingEmail = firstUserEmail;
   }
+  console.log("Whole method being called");
   userRef.child(winningEmail).child("wins").once('value', snapshot => {
     winningNum = snapshot.val();
   }).then(() =>{
@@ -121,8 +122,6 @@ export function updateWinsAndLosses(gameKey, winningSymbol, firstUserEmail, seco
   
   userRef.child(losingEmail).child("losses").once('value', snapshot => {
     losingNum = snapshot.val();
-  }).then(() =>{
-    console.log(losingNum);
     losingNum += 1;
     userRef.child(losingEmail).child("losses").set(losingNum);
   });

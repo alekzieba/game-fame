@@ -39,6 +39,9 @@ class Board extends Component {
     const gameKey = `games/connect-four/${user1}&${user2}`;
     const existingGame = false;
     const { dispatch } = this.props;
+//    const { currentUserEmail, opponentEmail } = this.props.location;
+//    console.log(currentUserEmail, opponentEmail);
+    console.log("THE PROPS IN CONNECT4BOARD:", this.props);
     if (existingGame) {
       dispatch(getBoard(gameKey, user1, user2));
     } else {

@@ -70,7 +70,7 @@ describe('actions', () => {
       false,
       'testgamekey'
     );
-    expect(fn).toBe(null);
+    expect(fn).toBe(undefined);
   });
 
   it('should createBoard should create new board', () => {

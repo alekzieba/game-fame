@@ -11,6 +11,7 @@ class MessageBoard extends Component {
   props: MessageBoardProps;
   render() {
     const { messageList } = this.props;
+<<<<<<< HEAD
     if(messageList){
       const messages = messageList.map(message => {
         console.log('Inside');

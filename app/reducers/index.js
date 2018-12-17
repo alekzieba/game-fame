@@ -7,6 +7,7 @@ import auth from './auth';
 import tictactoe from './tictactoe';
 import connectfour from './ConnectFour';
 import games from './games';
+import gameInvites from './game_invites';
 
 export default function createRootReducer(history: {}) {
   const routerReducer = connectRouter(history)(() => {});
@@ -19,7 +20,8 @@ export default function createRootReducer(history: {}) {
       auth,
       tictactoe,
       connectfour,
-      games
+      games,
+      gameInvites
     })
   );
 }

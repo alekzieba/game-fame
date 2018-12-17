@@ -31,6 +31,13 @@ export function promptUserSignIn(loginHandler) {
             .replace(/@/g, '|')
             .replace(/\./g, '=');
           console.log(sanitizedEmail);
+          // Set up a listener
+          usersRef.child(sanitizedEmail).on('value', userSnapshot => {
+            dispatch({
+              type: USER_SIGNED_IN,
+              payload: userSnapshot.val()
+            });
+          });
           usersRef.child(sanitizedEmail).transaction(
             currentUserData => {
               if (currentUserData == null) {
@@ -46,17 +53,9 @@ export function promptUserSignIn(loginHandler) {
                   wins: 0,
                   losses: 0
                 };
-                dispatch({
-                  type: USER_SIGNED_IN,
-                  payload: userInfo
-                });
                 loginHandler(true);
                 return userInfo;
               }
-              dispatch({
-                type: USER_SIGNED_IN,
-                payload: currentUserData
-              });
               loginHandler(true);
             },
             () => {

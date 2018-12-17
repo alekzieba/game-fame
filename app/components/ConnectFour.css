@@ -41,7 +41,7 @@
 }
 
 .BoardColumn:hover {
-  border-top: 5px solid white;
+  background-color: black;
 }
 
 .CircleWrap {

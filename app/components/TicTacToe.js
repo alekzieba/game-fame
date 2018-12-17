@@ -45,7 +45,7 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    const { gameKey, currentUser } = this.props.location;
+    const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
     const existingGame = this.props.location.exists;
     // const user1 = 'sarthak';
     // const user2 = 'gharvhel';
@@ -56,7 +56,7 @@ class Board extends Component {
       this.props.getMessages(gameKey);
     } else {
       //      this.props.createBoard(gameKey, currentUser);
-      this.props.createBoard(gameKey, firstUser);
+      this.props.createBoard(gameKey, currentUserEmail);
       this.props.getBoard(gameKey);
       this.props.getMessages(gameKey);
     }
@@ -74,7 +74,7 @@ class Board extends Component {
 
   handleClick(i) {
     const { xIsTrue, board, fillSquare: fill } = this.props;
-    const { gameKey, currentUser } = this.props.location;
+    const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
     const symbol = xIsTrue ? 'X' : 'O';
     if (calculateWinner(board)) {
       return;
@@ -84,27 +84,28 @@ class Board extends Component {
       return;
     }
     //    fill(i, board, symbol, gameKey, currentUser);
-    fill(i, board, symbol, gameKey, firstUser);
+    fill(i, board, symbol, gameKey, currentUserEmail);
   }
 
   handleSubmit() {
     let msg = document.getElementById('textInput').value;
     document.getElementById('textInput').value = '';
     const { submitMessage, messageList } = this.props;
-    const { gameKey, currentUser } = this.props.location;
+    const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
     //    msg = currentUser + ': ' + msg;
-    msg = firstUser + ': ' + msg;
+    const userName = currentUserEmail.split('|')[0];
+    msg = userName + ': ' + msg;
     submitMessage(gameKey, msg, messageList);
   }
 
   render() {
     const { board, xIsTrue, resetBoard: reset } = this.props;
-    const { gameKey } = this.props.location;
+    const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
     let status;
     const winner = calculateWinner(board);
     if (winner) {
       console.log('HERE');
-      updateWinsAndLosses(gameKey, winner, firstUser, secondUser);
+      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
       status = `Winner: ${winner}`;
     } else {
       const symbol = xIsTrue ? 'X' : 'O';

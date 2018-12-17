@@ -1,26 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`actions should createBoard should succeed 1`] = `
-Object {
-  "payload": Object {
-    "board": Array [
-      "null",
-      "null",
-      "null",
-      "null",
-      "null",
-      "null",
-      "null",
-      "null",
-      "null",
-    ],
-    "gameKey": "test",
-    "xIsTrue": true,
-  },
-  "type": "NEW_BOARD",
-}
-`;
-
 exports[`actions should resetBoard should succeed 1`] = `
 Object {
   "payload": Object {

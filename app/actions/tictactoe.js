@@ -172,7 +172,9 @@ export function createBoard(gameKey, firstUser = '') {
     'ADMIN: Welcome to the chat!',
     "ADMIN: Type anything here and click 'Send' to submit."
   ];
+  console.log("Started")
   gameElem.set([board, true, message, firstUser]);
+  console.log("Ended")
   return {
     type: 'NEW_BOARD',
     payload: {

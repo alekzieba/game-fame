@@ -29,17 +29,18 @@ class GamesList extends Component {
 
   enterCode(gameId, type, inviterEmail) {
     const { history, auth } = this.props;
-
+    
     // TODO make sure this works
     switch (type) {
       case 'tictactoe':
+        gameId = 'tictactoe/' + gameId;
         history.push({
           pathname: routes.TICTACTOE,
           currentUser: auth.name,
           currentUserEmail: auth.sanitized_email,
           opponentEmail: inviterEmail,
           gameKey: gameId,
-          exists: true
+          exists: false
         });
         break;
       case 'connectfour':
@@ -49,7 +50,7 @@ class GamesList extends Component {
           currentUserEmail: auth.sanitized_email,
           opponentEmail: inviterEmail,
           gameKey: gameId,
-          exists: true
+          exists: false
         });
         break;
       default:

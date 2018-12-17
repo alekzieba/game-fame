@@ -16,8 +16,8 @@ import {
 import styles from './ConnectFour.css';
 
 // GET PROPER ALIASES!
-const user1 = 'gharvhel|gmail=com';
-const user2 = 'sarthak96|gmail=com';
+let user1 = '';
+let user2 = '';
 
 class Board extends Component {
   // generates circles within given column
@@ -36,11 +36,14 @@ class Board extends Component {
   componentDidMount() {
 //    const user1 = 'gharvhel';
 //    const user2 = 'sarthak';
-    const gameKey = `games/connect-four/${user1}&${user2}`;
     const existingGame = false;
     const { dispatch } = this.props;
-//    const { currentUserEmail, opponentEmail } = this.props.location;
+    const { currentUserEmail, opponentEmail } = this.props.location;
 //    console.log(currentUserEmail, opponentEmail);
+    user1 = currentUserEmail.split("@")[0];
+    user2 = opponentEmail.split("@")[0];
+    const gameKey = `games/connect-four/${user1}&${user2}`;
+
     console.log("THE PROPS IN CONNECT4BOARD:", this.props);
     if (existingGame) {
       dispatch(getBoard(gameKey, user1, user2));
@@ -57,6 +60,7 @@ class Board extends Component {
       board,
       dispatch,
       player1IsNext,
+
       player1,
       player2,
       gameIsWon,
@@ -74,7 +78,7 @@ class Board extends Component {
             player2,
             gameIsWon,
             gameKey,
-            user2
+            user1
           )
         );
 

@@ -79,6 +79,7 @@ class Board extends Component {
     const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
     let symbol = xIsTrue ? 'X' : 'O';
     if (calculateWinner(board)) {
+      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
       return;
     }
     console.log(board);
@@ -91,7 +92,6 @@ class Board extends Component {
     const winner = calculateWinner(board);
     if (winner) {
       console.log('HERE');
-      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
       status = `Winner: ${winner}`;
     } else {
 //      symbol = xIsTrue ? 'X' : 'O';

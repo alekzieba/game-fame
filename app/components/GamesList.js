@@ -27,17 +27,34 @@ class GamesList extends Component {
     getGames(auth.sanitized_email);
   }
 
-  enterCode(gameId, inviterEmail) {
+  enterCode(gameId, type, inviterEmail) {
     const { history, auth } = this.props;
-    const gameKey = `tictactoe/${gameId}`;
-    history.push({
-      pathname: routes.TICTACTOE,
-      currentUser: auth.name,
-      currentUserEmail: auth.email,
-      opponentEmail: inviterEmail,
-      gameKey: gameId,
-      exists: false
-    });
+
+    // TODO make sure this works
+    switch (type) {
+      case 'tictactoe':
+        history.push({
+          pathname: routes.TICTACTOE,
+          currentUser: auth.name,
+          currentUserEmail: auth.sanitized_email,
+          opponentEmail: inviterEmail,
+          gameKey: gameId,
+          exists: true
+        });
+        break;
+      case 'connectfour':
+        history.push({
+          pathname: routes.CONNECTFOUR,
+          currentUser: auth.name,
+          currentUserEmail: auth.sanitized_email,
+          opponentEmail: inviterEmail,
+          gameKey: gameId,
+          exists: true
+        });
+        break;
+      default:
+      // Do nothing
+    }
   }
 
   clickAcceptButton(gameId) {
@@ -155,6 +172,7 @@ class GamesList extends Component {
                   onClick={this.enterCode.bind(
                     this,
                     gameId,
+                    game.type,
                     game.inviter_email === auth.sanitized_email
                       ? game.invited_email
                       : game.inviter_email

@@ -113,12 +113,10 @@ export function clickColumn(
   
   let lockMove = false;
   let playerNext = null;
-  console.log(currentPlayer)
-  console.log("HIEIEIE")
   firebaseapp.database().ref(`${gameKey}/player1IsNext`).once('value', snapshot => {
     playerNext = snapshot.val();
   }).then(() => {
-    console.log(playerNext);
+    console.log(playerNext, player1, currentPlayer);
     if(currentPlayer === player1 && !playerNext){
       console.log("LOCK1")
       lockMove = true;

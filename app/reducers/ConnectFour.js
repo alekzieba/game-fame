@@ -31,17 +31,15 @@ export default function connect4Reducer(state = initialState, action) {
       }
       return Object.assign({}, action.payload);
     case actions.GET_MSG:
-      let messageList = action.payload.board;
       return {
         ...state,
-        messageList
-      }
+        messageList: action.payload.board
+      };
     case actions.SUBMIT_MSG:
-      messageList = action.payload.messageList;
       return {
         ...state,
-        messageList
-      }
+        messageList: action.payload.messageList
+      };
     default:
       return state;
   }

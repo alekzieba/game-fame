@@ -8,8 +8,6 @@ import { firebaseapp } from '../constants/firebase';
 export const USER_SIGNED_IN = 'USER_SIGNED_IN';
 export const USER_SIGNED_OUT = 'USER_SIGNED_OUT';
 
-const usersRef = firebaseapp.database().ref('users');
-
 export function promptUserSignIn(loginHandler) {
   return (dispatch: (action: actionType) => void) => {
     ipcRenderer.removeAllListeners('signin:google');
@@ -32,38 +30,61 @@ export function promptUserSignIn(loginHandler) {
             .replace(/\./g, '=');
           console.log(sanitizedEmail);
           // Set up a listener
-          usersRef.child(sanitizedEmail).on('value', userSnapshot => {
-            console.log("Being called in auth.js")
-            dispatch({
-              type: USER_SIGNED_IN,
-              payload: userSnapshot.val()
-            });
-          });
-          usersRef.child(sanitizedEmail).transaction(
-            currentUserData => {
-              if (currentUserData == null) {
-                const { email, name, given_name, picture } = res.data;
-                const userInfo = {
-                  email,
-                  name,
-                  given_name,
-                  picture,
-                  sanitized_email: sanitizedEmail,
-                  game_ids: [],
-                  game_invite_ids: [],
-                  wins: 0,
-                  losses: 0
-                };
-                loginHandler(true);
-                return userInfo;
+          firebaseapp
+            .database()
+            .ref(`users/${sanitizedEmail}`)
+            .on('value', userSnapshot => {
+              if (userSnapshot.val()) {
+                dispatch({
+                  type: USER_SIGNED_IN,
+                  payload: userSnapshot.val()
+                });
               }
-              loginHandler(true);
-            },
-            () => {
-              // params: error, committed
-              // do nothing
-            }
-          );
+            });
+          firebaseapp
+            .database()
+            .ref(`users/${sanitizedEmail}`)
+            .transaction(
+              currentUserData => {
+                if (currentUserData == null) {
+                  console.log(res.data);
+                  const { email, picture } = res.data;
+                  let { name, given_name } = res.data;
+                  if (!name) {
+                    name = '<name witheld>';
+                  }
+                  if (!given_name) {
+                    given_name = '<first name witheld>';
+                  }
+                  const userInfo = {
+                    email,
+                    name,
+                    given_name,
+                    picture,
+                    sanitized_email: sanitizedEmail,
+                    game_ids: [],
+                    game_invite_ids: [],
+                    wins: 0,
+                    losses: 0
+                  };
+                  dispatch({
+                    type: USER_SIGNED_IN,
+                    payload: userInfo
+                  });
+                  loginHandler(true);
+                  return userInfo;
+                }
+                dispatch({
+                  type: USER_SIGNED_IN,
+                  payload: currentUserData
+                });
+                loginHandler(true);
+              },
+              () => {
+                // params: error, committed
+                // do nothing
+              }
+            );
         }
       });
     });

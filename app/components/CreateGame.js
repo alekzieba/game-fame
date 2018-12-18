@@ -125,29 +125,33 @@ class CreateGame extends Component {
       auth.game_ids,
       success => {
         if (success) {
-           switch (values.game_type) {
-             case 'tictactoe':
-               gameId = `tictactoe/${gameId}`;
-               history.push({
-                 pathname: routes.TICTACTOE,
-                 currentUser: auth.name,
-                 currentUserEmail: auth.sanitized_email,
-                 opponentEmail: values.friend_email.replace(/@/g, '|').replace(/\./g, '='),
-                 gameKey: gameId,
-                 exists: false
-               });
-               break;
-             case 'connectfour':
-               history.push({
-                 pathname: routes.CONNECTFOUR,
-                 currentUser: auth.name,
-                 currentUserEmail: auth.sanitized_email,
-                 opponentEmail: values.friend_email.replace(/@/g, '|').replace(/\./g, '='),
-               });
-               break;
-             default:
-               break;
-           }
+          switch (values.game_type) {
+            case 'tictactoe':
+              gameId = `tictactoe/${gameId}`;
+              history.push({
+                pathname: routes.TICTACTOE,
+                currentUser: auth.name,
+                currentUserEmail: auth.sanitized_email,
+                opponentEmail: values.friend_email
+                  .replace(/@/g, '|')
+                  .replace(/\./g, '='),
+                gameKey: gameId,
+                exists: false
+              });
+              break;
+            case 'connectfour':
+              history.push({
+                pathname: routes.CONNECTFOUR,
+                currentUser: auth.name,
+                currentUserEmail: auth.sanitized_email,
+                opponentEmail: values.friend_email
+                  .replace(/@/g, '|')
+                  .replace(/\./g, '=')
+              });
+              break;
+            default:
+              break;
+          }
         } else {
           console.log('invalid email address');
         }
@@ -205,7 +209,7 @@ class CreateGame extends Component {
             <h1 className="text-center">Your Friends</h1>
             <br />
             {auth.friends_list === undefined ? (
-              <h3>No friends yet... shame...</h3>
+              <h3 className="text-center">No friends yet... shame...</h3>
             ) : (
               _.map(auth.friends_list, friend => {
                 return (

@@ -78,7 +78,9 @@ class Board extends Component {
     const { xIsTrue, board, fillSquare: fill } = this.props;
     const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
     let symbol = xIsTrue ? 'X' : 'O';
-    if (calculateWinner(board)) {
+    const winner = calculateWinner(board);
+    console.log(winner);
+    if (winner) {
       updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
       return;
     }
@@ -89,13 +91,13 @@ class Board extends Component {
     //    fill(i, board, symbol, gameKey, currentUser);
     fill(i, board, symbol, gameKey, currentUserEmail);
     let status;
-    const winner = calculateWinner(board);
+
     if (winner) {
       console.log('HERE');
       status = `Winner: ${winner}`;
     } else {
-//      symbol = xIsTrue ? 'X' : 'O';
-      symbol = (symbol === 'X') ? 'O' : 'X';
+      //      symbol = xIsTrue ? 'X' : 'O';
+      symbol = symbol === 'X' ? 'O' : 'X';
       status = `Next player: ${symbol}`;
     }
   }
@@ -114,16 +116,16 @@ class Board extends Component {
   render() {
     const { board, xIsTrue, resetBoard: reset } = this.props;
     const { gameKey, currentUserEmail, opponentEmail } = this.props.location;
-//    let status;
-//    const winner = calculateWinner(board);
-//    if (winner) {
-//      console.log('HERE');
-//      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
-//      status = `Winner: ${winner}`;
-//    } else {
-//      const symbol = xIsTrue ? 'X' : 'O';
-//      status = `Next player: ${symbol}`;
-//    }
+    //    let status;
+    //    const winner = calculateWinner(board);
+    //    if (winner) {
+    //      console.log('HERE');
+    //      updateWinsAndLosses(gameKey, winner, currentUserEmail, opponentEmail);
+    //      status = `Winner: ${winner}`;
+    //    } else {
+    //      const symbol = xIsTrue ? 'X' : 'O';
+    //      status = `Next player: ${symbol}`;
+    //    }
     return (
       <div>
         <div className={styles.status}>

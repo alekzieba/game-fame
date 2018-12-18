@@ -21,7 +21,8 @@ export default class Home extends Component<Props> {
 
   componentDidMount() {
     const { auth, getGames, history } = this.props;
-
+    console.log('checking...');
+    console.log(auth.email);
     if (!auth.email) {
       history.push(routes.LOGIN);
     }

@@ -9,9 +9,10 @@ type MessageBoardProps = {
 
 class MessageBoard extends Component {
   props: MessageBoardProps;
+
   render() {
     const { messageList } = this.props;
-    if(messageList){
+    if (messageList) {
       const messages = messageList.map(message => {
         console.log('Inside');
         return <div>{message}</div>;

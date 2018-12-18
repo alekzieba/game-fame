@@ -1,3 +1,4 @@
+/* eslint-disable promise/always-return */
 import { firebaseapp } from '../constants/firebase';
 
 function convertBoard(board, type1, type2) {
@@ -96,41 +97,66 @@ export function resetBoard(gameKey) {
   };
 }
 
-export function updateWinsAndLosses(gameKey, winningSymbol, firstUserEmail, secondUserEmail){
-//    const gameBoardRef = firebaseapp.database().ref(`games/${gameKey}`);
+export function updateWinsAndLosses(
+  gameKey,
+  winningSymbol,
+  firstUserEmail,
+  secondUserEmail
+) {
+  //    const gameBoardRef = firebaseapp.database().ref(`games/${gameKey}`);
   const userRef = firebaseapp.database().ref(`users`);
   let winningEmail = null;
   let losingEmail = null;
   let winningNum = 0;
   let losingNum = 0;
-  if(winningSymbol === 'X'){
+  if (winningSymbol === 'X') {
     winningEmail = firstUserEmail;
     losingEmail = secondUserEmail;
-  }
-  else{
+  } else {
     winningEmail = secondUserEmail;
     losingEmail = firstUserEmail;
   }
-  console.log("Whole method being called");
-  userRef.child(winningEmail).child("wins").once('value', snapshot => {
-    winningNum = snapshot.val();
-  }).then(() =>{
-    console.log(winningNum);
-    winningNum += 1;
-    userRef.child(winningEmail).child("wins").set(winningNum);
-  });
-  
-  userRef.child(losingEmail).child("losses").once('value', snapshot => {
-    losingNum = snapshot.val();
-    losingNum += 1;
-    userRef.child(losingEmail).child("losses").set(losingNum);
-  });
-  
+  console.log('Whole method being called');
+  userRef
+    .child(winningEmail)
+    .child('wins')
+    .once('value', snapshot => {
+      winningNum = snapshot.val();
+    })
+    .then(() => {
+      console.log(winningNum);
+      winningNum += 1;
+      userRef
+        .child(winningEmail)
+        .child('wins')
+        .set(winningNum);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+  userRef
+    .child(losingEmail)
+    .child('losses')
+    .once('value', snapshot => {
+      losingNum = snapshot.val();
+      losingNum += 1;
+      userRef
+        .child(losingEmail)
+        .child('losses')
+        .set(losingNum);
+    });
+
+  const n = gameKey.lastIndexOf('/');
+  const gameId = gameKey.substring(n + 1);
+  firebaseapp
+    .database()
+    .ref(`game_info/${gameId}/status`)
+    .set('complete');
+
   return {
     type: 'UPDATE_WIN_LOSS',
-    payload: {
-      
-    }
+    payload: {}
   };
 }
 
@@ -171,9 +197,9 @@ export function createBoard(gameKey, firstUser = '') {
     'ADMIN: Welcome to the chat!',
     "ADMIN: Type anything here and click 'Send' to submit."
   ];
-  console.log("Started")
+  console.log('Started');
   gameElem.set([board, true, message, firstUser]);
-  console.log("Ended")
+  console.log('Ended');
   return {
     type: 'NEW_BOARD',
     payload: {

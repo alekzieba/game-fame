@@ -7,6 +7,7 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import dotenv from 'dotenv';
 import baseConfig from './webpack.config.base';
 import CheckNodeEnv from '../internals/scripts/CheckNodeEnv';
 
@@ -57,7 +58,12 @@ export default merge.smart(baseConfig, {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
       DEBUG_PROD: false,
-      START_MINIMIZED: false
+      START_MINIMIZED: false,
+      ...dotenv.config().parsed
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
+      ...dotenv.config().parsed
     })
   ],
 

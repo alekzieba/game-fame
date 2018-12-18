@@ -1,13 +1,17 @@
+/* eslint-disable no-shadow */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { submitMessage, getMessages } from '../actions/ConnectFour';
+import { submitMessage } from '../actions/ConnectFour';
 
 type MessageBoardProps = {
-  messageList: array
+  messageList: array,
+  submitMessage: () => void,
+  gameKey: string,
+  player1: string
 };
 
-const firstUser = "Sarthak";
+// const firstUser = "Sarthak";
 
 class MsgBoardConnect4 extends Component {
   props: MessageBoardProps;
@@ -21,16 +25,16 @@ class MsgBoardConnect4 extends Component {
     let msg = document.getElementById('textInput').value;
     document.getElementById('textInput').value = '';
     const { submitMessage, messageList } = this.props;
-//    const { gameKey, currentUser } = this.props.location;
+    //    const { gameKey, currentUser } = this.props.location;
     const { gameKey, player1 } = this.props;
-    msg = player1 + ': ' + msg;
+    msg = `${player1}: ${msg}`;
     submitMessage(gameKey, msg, messageList);
   }
 
   render() {
-    const { messageList, submitMessage } = this.props;
+    const { messageList } = this.props;
     console.log(messageList);
-    if(messageList){
+    if (messageList) {
       const messages = messageList.map(message => {
         console.log('Inside');
         return <div>{message}</div>;
@@ -55,7 +59,7 @@ class MsgBoardConnect4 extends Component {
 
 // Get methods from Actions
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitMessage, getMessages }, dispatch);
+  return bindActionCreators({ submitMessage }, dispatch);
 }
 
 // Get Redux state from store

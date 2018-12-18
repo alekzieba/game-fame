@@ -49,7 +49,9 @@ class Board extends Component {
   componentDidMount() {
     // const user1 = 'gharvhel';
     // const user2 = 'sarthak';
-    const existingGame = false;
+//    const existingGame = false;
+    const { exists } = this.props.location;
+    const existingGame = exists;
     const {
       dispatch
     } = this.props;

@@ -36,7 +36,7 @@ export function fillSquare(index, board, symbol, gameKey, userMakingMove) {
   //        )
   //      )
   //      .catch();
-
+  console.log(symbol);
   firebaseapp
     .database()
     .ref(`games/${gameKey}/3`)

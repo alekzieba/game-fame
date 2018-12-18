@@ -2,7 +2,7 @@
 import _ from 'lodash';
 
 import React, { Component } from 'react';
-import { Field } from 'redux-form';
+import { Field, formValues } from 'redux-form';
 import routes from '../constants/routes';
 
 import styles from './CreateGame.css';
@@ -12,8 +12,16 @@ import { createBoard } from '../actions/ConnectFour';
 const required = value => (value ? undefined : 'Required');
 
 class CreateGame extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      game_type_selected: 'connectfour'
+    };
+  }
+
   componentDidMount() {
     this.props.change('game_type', 'connectfour');
+    this.renderGameInstructions = this.renderGameInstructions.bind(this);
   }
 
   static renderFriendEmailInput({
@@ -49,6 +57,36 @@ class CreateGame extends Component {
         <option value="tictactoe">Tic-Tac Toe</option>
       </select>
     );
+  }
+
+  renderGameInstructions() {
+    console.log('THIS:');
+    console.log(this);
+    switch (this.state.game_type_selected) {
+      case 'tictactoe':
+        return (
+          <p>
+            Tic-tac-toe is a paper-and-pencil game for two players, X and O, who
+            take turns marking the spaces in a 3×3 grid. The player who succeeds
+            in placing three of their marks in a horizontal, vertical, or
+            diagonal row wins the game. (Description from Wikipedia)
+          </p>
+        );
+        break;
+      case 'connectfour':
+        return (
+          <p>
+            Connect Four is a two-player connection game in which the players
+            first choose a color and then take turns dropping one colored disc
+            from the top into a seven-column, six-row vertically suspended grid.
+            The pieces fall straight down, occupying the lowest available space
+            within the column. The objective of the game is to be the first to
+            form a horizontal, vertical, or diagonal line of four of one's own
+            discs. (Description from Wikipedia)
+          </p>
+        );
+        break;
+    }
   }
 
   onSubmit(values) {
@@ -137,8 +175,13 @@ class CreateGame extends Component {
                 <Field
                   name="game_type"
                   component={this.constructor.renderGameTypeInput}
+                  onChange={event =>
+                    this.setState({ game_type_selected: event.target.value })
+                  }
                 />
               </div>
+              <br />
+              {this.renderGameInstructions()}
               <br />
               <div className="form-group text-center">
                 <label>Friend Email</label>

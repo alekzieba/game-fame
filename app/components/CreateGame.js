@@ -12,11 +12,16 @@ import { createBoard } from '../actions/ConnectFour';
 const required = value => (value ? undefined : 'Required');
 
 class CreateGame extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      game_type_selected: 'connectfour'
+    };
+  }
+
   componentDidMount() {
     this.props.change('game_type', 'connectfour');
-    this.setState({
-      game_type_selected: 'connectfour'
-    });
+    this.renderGameInstructions = this.renderGameInstructions.bind(this);
   }
 
   static renderFriendEmailInput({
@@ -55,7 +60,8 @@ class CreateGame extends Component {
   }
 
   renderGameInstructions() {
-    console.log(this.state.game_type_selected);
+    console.log('THIS:');
+    console.log(this);
     switch (this.state.game_type_selected) {
       case 'tictactoe':
         return (
@@ -119,32 +125,32 @@ class CreateGame extends Component {
       auth.game_ids,
       success => {
         if (success) {
-//          history.push({
-//            pathname: routes.GAMESLIST
-//          });
-           switch (values.game_type) {
-             case 'tictactoe':
-               gameId = `tictactoe/${gameId}`;
-               history.push({
-                 pathname: routes.TICTACTOE,
-                 currentUser: auth.name,
-                 currentUserEmail: auth.email,
-                 opponentEmail: values.friend_email,
-                 gameKey: gameId,
-                 exists: false
-               });
-               break;
-             case 'connectfour':
-               history.push({
-                 pathname: routes.CONNECTFOUR,
-                 currentUser: auth.name,
-                 currentUserEmail: auth.email,
-                 opponentEmail: values.friend_email,
-               });
-               break;
-             default:
-               break;
-           }
+          //          history.push({
+          //            pathname: routes.GAMESLIST
+          //          });
+          switch (values.game_type) {
+            case 'tictactoe':
+              gameId = `tictactoe/${gameId}`;
+              history.push({
+                pathname: routes.TICTACTOE,
+                currentUser: auth.name,
+                currentUserEmail: auth.email,
+                opponentEmail: values.friend_email,
+                gameKey: gameId,
+                exists: false
+              });
+              break;
+            case 'connectfour':
+              history.push({
+                pathname: routes.CONNECTFOUR,
+                currentUser: auth.name,
+                currentUserEmail: auth.email,
+                opponentEmail: values.friend_email
+              });
+              break;
+            default:
+              break;
+          }
         } else {
           console.log('invalid email address');
         }

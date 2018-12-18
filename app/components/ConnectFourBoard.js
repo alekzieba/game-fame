@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {
+  Component
+} from 'react';
+import {
+  connect
+} from 'react-redux';
 import PropTypes from 'prop-types';
 import BoardColumn from './BoardColumn';
 import Circle from './Circle';
@@ -16,15 +20,24 @@ import {
 import styles from './ConnectFour.css';
 
 // GET PROPER ALIASES!
-const user1 = 'gharvhel|gmail=com';
-const user2 = 'sarthak96|gmail=com';
+let user1 = '';
+let user2 = '';
 
 class Board extends Component {
   // generates circles within given column
   static generateCircles(circles) {
     return circles.map((circleVal, circleIndex) => {
       const index = circleIndex;
-      return <Circle circleOccupier={circleVal} index={index} key={index} />;
+      return <Circle circleOccupier = {
+        circleVal
+      }
+      index = {
+        index
+      }
+      key = {
+        index
+      }
+      />;
     });
   }
 
@@ -34,13 +47,24 @@ class Board extends Component {
   }
 
   componentDidMount() {
-//    const user1 = 'gharvhel';
-//    const user2 = 'sarthak';
-    const gameKey = `games/connect-four/${user1}&${user2}`;
+    // const user1 = 'gharvhel';
+    // const user2 = 'sarthak';
     const existingGame = false;
-    const { dispatch } = this.props;
-//    const { currentUserEmail, opponentEmail } = this.props.location;
-//    console.log(currentUserEmail, opponentEmail);
+    const {
+      dispatch
+    } = this.props;
+    const {
+      currentUserEmail,
+      opponentEmail
+    } = this.props.location;
+
+    console.log(currentUserEmail, opponentEmail)
+    //    console.log(currentUserEmail, opponentEmail);
+    const user1 = currentUserEmail.split("|")[0];
+    const user2 = opponentEmail.split("|")[0];
+    // const gameKey = `games/connect-four/${user1}&${user2}`;
+    const gameKey = `games/connect-four/gharvhel&sarthak`
+
     console.log("THE PROPS IN CONNECT4BOARD:", this.props);
     if (existingGame) {
       dispatch(getBoard(gameKey, user1, user2));
@@ -57,11 +81,18 @@ class Board extends Component {
       board,
       dispatch,
       player1IsNext,
+
       player1,
       player2,
       gameIsWon,
       gameKey
     } = this.props;
+    const {
+      currentUserEmail,
+      opponentEmail
+    } = this.props.location;
+    // const user1 = currentUserEmail.split("|")[0];
+    // const user2 = opponentEmail.split("|")[0];
     return board.map((column, colIndex) => {
       const index = colIndex;
       const handleColumnClick = () =>
@@ -74,23 +105,32 @@ class Board extends Component {
             player2,
             gameIsWon,
             gameKey,
-            user2
+            currentUserEmail.split("|")[0]
           )
         );
 
-      return (
-        <BoardColumn handleColumnClick={handleColumnClick} key={index}>
-          {this.constructor.generateCircles(column, colIndex)}
-        </BoardColumn>
+      return ( <
+        BoardColumn handleColumnClick = {
+          handleColumnClick
+        }
+        key = {
+          index
+        } > {
+          this.constructor.generateCircles(column, colIndex)
+        } <
+        /BoardColumn>
       );
     });
   }
 
   render() {
-    return (
-      <div className={styles.ConnectFourBoard}>
-        {this.generateColumns()}
-      </div>
+    return ( <
+      div className = {
+        styles.ConnectFourBoard
+      } > {
+        this.generateColumns()
+      } <
+      /div>
     );
   }
 }

@@ -87,17 +87,14 @@ class CreateGame extends Component {
       auth.game_ids,
       success => {
         if (success) {
-//          history.push({
-//            pathname: routes.GAMESLIST
-//          });
            switch (values.game_type) {
              case 'tictactoe':
                gameId = `tictactoe/${gameId}`;
                history.push({
                  pathname: routes.TICTACTOE,
                  currentUser: auth.name,
-                 currentUserEmail: auth.email,
-                 opponentEmail: values.friend_email,
+                 currentUserEmail: auth.sanitized_email,
+                 opponentEmail: values.friend_email.replace(/@/g, '|').replace(/\./g, '='),
                  gameKey: gameId,
                  exists: false
                });
@@ -106,8 +103,8 @@ class CreateGame extends Component {
                history.push({
                  pathname: routes.CONNECTFOUR,
                  currentUser: auth.name,
-                 currentUserEmail: auth.email,
-                 opponentEmail: values.friend_email,
+                 currentUserEmail: auth.sanitized_email,
+                 opponentEmail: values.friend_email.replace(/@/g, '|').replace(/\./g, '='),
                });
                break;
              default:

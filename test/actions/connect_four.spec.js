@@ -70,7 +70,9 @@ describe('actions', () => {
       false,
       'testgamekey'
     );
-    expect(fn).toBe(undefined);
+    const dispatch = spy();
+    fn(dispatch);
+    expect(dispatch.called).toBe(false);
   });
 
   it('should createBoard should create new board', () => {

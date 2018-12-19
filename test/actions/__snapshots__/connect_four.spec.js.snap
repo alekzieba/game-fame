@@ -2,7 +2,7 @@
 
 exports[`actions should clickColumn should succeed when almost full 1`] = `[Function]`;
 
-exports[`actions should clickColumn should succeed when empty 1`] = `[Function]`;
+exports[`actions should clickColumn should succeed when empty 1`] = `undefined`;
 
 exports[`actions should createBoard should create new board 1`] = `
 Object {

@@ -7,7 +7,7 @@ export const GET_GAME = 'GET_GAME';
 export const CLEAR_GAMES = 'CLEAR_GAMES';
 
 export function getGames(sanitizedEmail) {
-  return (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch) => {
     const gameIds = firebaseapp
       .database()
       .ref('users')
@@ -19,18 +19,18 @@ export function getGames(sanitizedEmail) {
         type: CLEAR_GAMES
       });
       _.each(gameIdsSnapshot.val(), gameId => {
-        if (gameId !== undefined) {
-          firebaseapp
-            .database()
-            .ref('game_info')
-            .child(gameId)
-            .on('value', snapshot => {
-              dispatch({
-                type: GET_GAME,
-                payload: snapshot.val()
-              });
+        // if (gameId !== undefined) {
+        firebaseapp
+          .database()
+          .ref('game_info')
+          .child(gameId)
+          .on('value', snapshot => {
+            dispatch({
+              type: GET_GAME,
+              payload: snapshot.val()
             });
-        }
+          });
+        // } else {
       });
     });
   };

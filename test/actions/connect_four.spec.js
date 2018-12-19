@@ -26,9 +26,10 @@ describe('actions', () => {
       'sarthak',
       'gharvhel',
       false,
-      'testgamekey'
+      'testgamekey',
+      'sarthak'
     );
-    expect(fn).toMatchSnapshot();
+    expect(fn()).toMatchSnapshot();
   });
 
   it('should clickColumn should succeed when almost full', () => {
@@ -47,7 +48,8 @@ describe('actions', () => {
       'sarthak',
       'gharvhel',
       false,
-      'testgamekey'
+      'testgamekey',
+      'sarthak'
     );
     expect(fn).toMatchSnapshot();
   });

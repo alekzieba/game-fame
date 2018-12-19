@@ -53,7 +53,7 @@ export function createGameInvite(
   inviterGames,
   callback
 ) {
-  return () => {
+  return async () => {
     // Add a reference to this object in the invited user's object
     const friendRef = firebaseapp.database().ref(`users/${invitedEmail}`);
     friendRef.once('value', snapshot => {
@@ -134,7 +134,7 @@ export function acceptGameInvite(
   gameIds,
   sanitizedEmail
 ) {
-  return () => {
+  return async () => {
     const fixedInvitesArr = _.without(gameInviteIds, gameId);
     firebaseapp
       .database()

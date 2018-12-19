@@ -72,7 +72,6 @@ export function createGameInvite(
           invited_email: invitedEmail,
           invited_avatar: snapshot.val().picture
         };
-        console.log(toSet);
         gameInfoRef.set(toSet); // the listener made for game invites should automatically trigger
 
         const friendGameInvites = friendRef.child('game_invite_ids');

@@ -4,7 +4,7 @@ import * as actions from '../../app/actions/game_invites';
 import { firebaseapp } from '../../app/constants/firebase';
 
 describe('actions', () => {
-  it('should getGames should not dispatch for bad sanitized email', () => {
+  it('should getGameInvites should not dispatch for bad sanitized email', () => {
     const fn = actions.getGameInvites('test-bad');
     const dispatch = spy();
 
@@ -137,7 +137,7 @@ describe('actions', () => {
     expect(dispatch.called).toBe(false);
   });
 
-  it('should createGameInvite work', async () => {
+  it('should createGameInvite work for users without friends', async () => {
     console.log('working1');
     await firebaseapp
       .database()
@@ -234,6 +234,143 @@ describe('actions', () => {
       'abcdef',
       [{ email: 'test4', picture: 'test4', name: 'test4' }],
       null,
+      () => {}
+    );
+
+    const dispatch = spy();
+
+    await fn(dispatch);
+    expect(dispatch.called).toBe(false);
+  });
+
+  it('should createGameInvite work for user with games already', async () => {
+    await firebaseapp
+      .database()
+      .ref(`users/test5`)
+      .transaction(() => ({
+        email: 'test5',
+        name: 'test5',
+        given_name: 'test5',
+        picture: 'test5',
+        sanitized_email: 'test5',
+        wins: 0,
+        losses: 0,
+        game_ids: ['ghijk']
+      }));
+
+    await firebaseapp
+      .database()
+      .ref(`users/test6`)
+      .transaction(() => ({
+        email: 'test6',
+        name: 'test6',
+        given_name: 'test6',
+        picture: 'test6',
+        sanitized_email: 'test6',
+        wins: 0,
+        losses: 0
+      }));
+    const fn = actions.createGameInvite(
+      {
+        type: 'tictactoe',
+        lastMoveTime: 'never',
+        whoseTurn: 'test',
+        status: 'ongoing',
+        inviterEmail: 'test5',
+        inviterName: 'test5',
+        inviterAvatar: 'test5',
+        invitedEmail: 'test6'
+      },
+      'abcdef',
+      undefined,
+      ['ghijk'],
+      () => {}
+    );
+
+    const dispatch = spy();
+
+    await fn(dispatch);
+    expect(dispatch.called).toBe(false);
+  });
+
+  it('should createGameInvite work for user friend with game invites already', async () => {
+    await firebaseapp
+      .database()
+      .ref(`users/test7`)
+      .transaction(() => ({
+        email: 'test7',
+        name: 'test7',
+        given_name: 'test7',
+        picture: 'test7',
+        sanitized_email: 'test7',
+        wins: 0,
+        losses: 0
+      }));
+
+    await firebaseapp
+      .database()
+      .ref(`users/test8`)
+      .transaction(() => ({
+        email: 'test8',
+        name: 'test8',
+        given_name: 'test8',
+        picture: 'test8',
+        sanitized_email: 'test8',
+        wins: 0,
+        losses: 0,
+        game_invite_ids: ['lmnop']
+      }));
+    const fn = actions.createGameInvite(
+      {
+        type: 'tictactoe',
+        lastMoveTime: 'never',
+        whoseTurn: 'test',
+        status: 'ongoing',
+        inviterEmail: 'test7',
+        inviterName: 'test7',
+        inviterAvatar: 'test7',
+        invitedEmail: 'test8'
+      },
+      'hi',
+      undefined,
+      undefined,
+      () => {}
+    );
+
+    const dispatch = spy();
+
+    await fn(dispatch);
+    expect(dispatch.called).toBe(false);
+  });
+
+  it('should createGameInvite not crash for bad friend', async () => {
+    await firebaseapp
+      .database()
+      .ref(`users/test9`)
+      .transaction(() => ({
+        email: 'test9',
+        name: 'test9',
+        given_name: 'test9',
+        picture: 'test9',
+        sanitized_email: 'test9',
+        wins: 0,
+        losses: 0
+      }));
+
+    const fn = actions.createGameInvite(
+      {
+        type: 'tictactoe',
+        lastMoveTime: 'never',
+        whoseTurn: 'test',
+        status: 'ongoing',
+        inviterEmail: 'test9',
+        inviterName: 'test9',
+        inviterAvatar: 'test9',
+        invitedEmail: 'test-that-should-not-exist'
+      },
+      'hi',
+      undefined,
+      undefined,
       () => {}
     );
 

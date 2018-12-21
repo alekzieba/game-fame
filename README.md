@@ -31,6 +31,8 @@ of commands from the root directory of the project:
 
 `$ yarn install`
 
+`$ cd app && npm rebuild && cd ..`
+
 `$ yarn build`
 
 `$ yarn dev`
